@@ -1,0 +1,338 @@
+2024-12-13 19:50:59 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Dashboard = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-14 02:34:37 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Auth = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-14 03:22:15 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $AcademyConfig = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-15 15:31:52 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-15 15:43:38 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-15 15:51:12 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-15 15:55:28 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-20 14:47:33 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-20 15:08:45 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-20 15:10:23 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-20 15:14:50 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-20 15:16:40 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-20 15:19:47 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-20 15:27:23 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-20 15:42:48 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-20 15:44:09 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+
+2024-12-20 15:46:17 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line: 493
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/bake/src/Command/TestCommand.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Trace:
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 493
+Bake\Command\TestCommand->_processController() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 452
+Bake\Command\TestCommand->generateFixtureList() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 258
+Bake\Command\TestCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/TestCommand.php, line 132
+Bake\Command\TestCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 207
+Bake\Command\ControllerCommand->bakeTest() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 154
+Bake\Command\ControllerCommand->bake() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/ControllerCommand.php, line 64
+Bake\Command\ControllerCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/bake/src/Command/AllCommand.php, line 115
+Bake\Command\AllCommand->execute() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/BaseCommand.php, line 190
+Cake\Console\BaseCommand->run() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 334
+Cake\Console\CommandRunner->runCommand() /var/www/html/academia/aslafit/vendor/cakephp/cakephp/src/Console/CommandRunner.php, line 172
+Cake\Console\CommandRunner->run() /var/www/html/academia/aslafit/bin/cake.php, line 12
+[main]
+

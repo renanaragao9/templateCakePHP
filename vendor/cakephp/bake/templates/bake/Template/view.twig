@@ -1,0 +1,24 @@
+<div class="modal fade" id="detailsModal-<?= ${{ singularVar }}->id ?>" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel-<?= ${{ singularVar }}->id ?>" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailsModalLabel-<?= ${{ singularVar }}->id ?>"><?= h(${{ singularVar }}->name) ?> Detalhes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <ul class="list-group list-group-flush">
+{% for field in fields %}
+                        <li class="list-group-item"><strong>{{ field|humanize }}:</strong> <span><?= h(${{ singularVar }}->{{ field }}) ?></span></li>
+{% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="viewButton" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>

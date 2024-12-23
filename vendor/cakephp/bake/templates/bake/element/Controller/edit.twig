@@ -1,0 +1,37 @@
+
+{% set belongsTo = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
+{% set belongsToMany = Bake.aliasExtractor(modelObj, 'belongsToMany') %}
+{% set compact = ["'#{singularName}'"] %}
+
+public function edit(?int $id = null): ?Response
+{
+    ${{ singularName }} = $this->{{ currentModelName }}->get($id, [
+        'contain' => {{ Bake.exportArray(belongsToMany)|raw }},
+    ]);
+    
+    if ($this->request->is(['patch', 'post', 'put'])) {
+        
+        ${{ singularName }} = $this->{{ currentModelName }}->patchEntity(${{ singularName }}, $this->request->getData());
+        
+        if ($this->{{ currentModelName }}->save(${{ singularName }})) {
+            $this->Flash->success(__('O {{ singularHumanName|lower }} foi editado com sucesso.'));
+            $this->log('O {{ singularHumanName|lower }} foi editado com sucesso.', 'info');
+            return $this->redirect(['action' => 'index']);
+        } else {
+            $this->Flash->error(__('O {{ singularHumanName|lower }} não pôde ser editado. Por favor, tente novamente.'));
+            return $this->redirect(['action' => 'index']);
+        }
+    }
+{% for assoc in belongsTo|merge(belongsToMany) %}
+    {%- set otherName = Bake.getAssociatedTableAlias(modelObj, assoc) %}
+    
+    {%- set otherPlural = otherName|variable %}
+        ${{ otherPlural }} = $this->{{ currentModelName }}->{{ otherName }}->find('list', ['limit' => 200])->all();
+        {{- "\n" }}
+    
+    {%- set compact = compact|merge(["'#{otherPlural}'"]) %}
+{% endfor %}
+    
+    $this->set(compact({{ compact|join(', ')|raw }}));
+    return null;
+}

@@ -1,0 +1,34 @@
+
+{% set compact = ["'#{singularName}'"] %}
+
+public function add(): ?Response
+{
+    ${{ singularName }} = $this->{{ currentModelName }}->newEmptyEntity();
+    
+    if ($this->request->is('post')) {
+        
+        ${{ singularName }} = $this->{{ currentModelName }}->patchEntity(${{ singularName }}, $this->request->getData());
+        
+        if ($this->{{ currentModelName }}->save(${{ singularName }})) {
+            $this->Flash->success(__('O {{ singularHumanName|lower }} foi salvo com sucesso.'));
+            return $this->redirect(['action' => 'index']);
+        }
+        else {
+            $this->Flash->error(__('O {{ singularHumanName|lower }} não pôde ser salvo. Por favor, tente novamente.'));            
+            return $this->redirect(['action' => 'index']);
+        }
+    }
+{% set associations = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
+{% set associations = associations|merge(Bake.aliasExtractor(modelObj, 'BelongsToMany')) %}
+
+{%- for assoc in associations %}
+    {%- set otherName = Bake.getAssociatedTableAlias(modelObj, assoc) %}
+    {%- set otherPlural = otherName|variable %}
+        ${{ otherPlural }} = $this->{{ currentModelName }}->{{ otherName }}->find('list', ['limit' => 200])->all();
+        {{- "\n" }}
+    {%- set compact = compact|merge(["'#{otherPlural}'"]) %}
+{% endfor %}
+    
+    $this->set(compact({{ compact|join(', ')|raw }}));
+    return null;
+}

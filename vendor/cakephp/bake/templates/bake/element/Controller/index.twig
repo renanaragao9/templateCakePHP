@@ -1,0 +1,32 @@
+
+public function index(): void
+{
+    $search = $this->request->getQuery('search');
+    $conditions = [];
+
+    if ($search) {
+        
+        if ($search) {
+            $conditions = [
+                'OR' => [
+                    'name LIKE' => '%' . $search . '%',
+                    'email LIKE' => '%' . $search . '%',
+                ],
+            ];
+        }
+    }
+
+    $query = $this->{{ currentModelName }}->find('all', [
+        'conditions' => $conditions,
+    ]);
+
+    if ($this->request->is('get')) {
+        $query = $this->applyFilters($query);
+    }
+
+    ${{ pluralName }} = $this->paginate($query);
+    $fields = $this->getFields();
+    $conditions = $this->getConditions();
+
+    $this->set(compact('{{ pluralName }}', 'fields', 'conditions'));
+}
