@@ -58,10 +58,6 @@
         toggleButton.on('click', function() {
             const isDarkMode = $('body').toggleClass('dark-mode').hasClass('dark-mode');
             toggleButton.html(isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>');
-
-            $.post('<?= $this->Url->build(['controller' => 'AcademyConfig', 'action' => 'toggleDarkMode']) ?>', {
-                _csrfToken: '<?= $this->request->getAttribute('csrfToken') ?>'
-            });
         });
     });
 </script>

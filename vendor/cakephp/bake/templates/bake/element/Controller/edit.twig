@@ -5,6 +5,10 @@
 
 public function edit(?int $id = null): ?Response
 {
+    if (!$this->checkPermission('{{ currentModelName }}/edit')) {
+        return $this->redirect(['action' => 'index']);
+    }
+
     ${{ singularName }} = $this->{{ currentModelName }}->get($id, [
         'contain' => {{ Bake.exportArray(belongsToMany)|raw }},
     ]);

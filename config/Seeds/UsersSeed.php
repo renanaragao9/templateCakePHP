@@ -1,4 +1,5 @@
 <?php
+
 use Cake\Auth\DefaultPasswordHasher;
 use Migrations\AbstractSeed;
 
@@ -14,6 +15,7 @@ class UsersSeed extends AbstractSeed
                 'last_login' => null,
                 'login_count' => 0,
                 'active' => true,
+                'role_id' => 1,
                 'created' => date('Y-m-d H:i:s'),
                 'modified' => date('Y-m-d H:i:s'),
             ],

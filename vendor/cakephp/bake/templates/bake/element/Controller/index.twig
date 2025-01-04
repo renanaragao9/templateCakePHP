@@ -1,6 +1,27 @@
+private $identity;
+
+public function initialize(): void
+{
+    parent::initialize();
+    $this->identity = $this->request->getSession()->read('Auth.User.id');
+}
+
+private function checkPermission(string $permission): bool
+{
+    if (!$this->identity || !AccessChecker::hasPermission($this->identity, $permission)) {
+        $this->Flash->error('Você não tem permissão para acessar esta área.');
+        $this->redirect('/');
+        return false;
+    }
+    return true;
+}
 
 public function index(): void
 {
+    if (!$this->checkPermission('{{ currentModelName }}/index')) {
+        return;
+    }
+
     $search = $this->request->getQuery('search');
     $conditions = [];
 
@@ -10,7 +31,6 @@ public function index(): void
             $conditions = [
                 'OR' => [
                     'name LIKE' => '%' . $search . '%',
-                    'email LIKE' => '%' . $search . '%',
                 ],
             ];
         }
@@ -28,5 +48,17 @@ public function index(): void
     $fields = $this->getFields();
     $conditions = $this->getConditions();
 
-    $this->set(compact('{{ pluralName }}', 'fields', 'conditions'));
+    {% set compact = ["'#{pluralName}'", "'fields'", "'conditions'"] %}
+    {% set associations = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
+    {% set associations = associations|merge(Bake.aliasExtractor(modelObj, 'BelongsToMany')) %}
+
+    {%- for assoc in associations %}
+        {%- set otherName = Bake.getAssociatedTableAlias(modelObj, assoc) %}
+        {%- set otherPlural = otherName|variable %}
+            ${{ otherPlural }} = $this->{{ currentModelName }}->{{ otherName }}->find('list', ['limit' => 200])->all();
+            {{- "\n" }}
+        {%- set compact = compact|merge(["'#{otherPlural}'"]) %}
+    {% endfor %}
+
+    $this->set(compact('{{ pluralName }}', {{ compact|join(', ')|raw }}, 'fields', 'conditions'));
 }

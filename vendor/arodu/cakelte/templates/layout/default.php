@@ -1,4 +1,6 @@
 <?php
+
+use Cake\Core\Configure;
 ?>
 
 <!DOCTYPE html>
@@ -29,12 +31,12 @@
 
         <aside class="main-sidebar <?= $this->CakeLte->getSidebarClass() ?>">
             <a href="<?= $this->Url->build('/') ?>" class="brand-link">
-                <?= $this->Html->image($academyConfigGlobal->logo, [
-                    'alt' => $academyConfigGlobal->name . ' logo',
+                <?= $this->Html->image('logo/logo.png', [
+                    'alt' => Configure::read('App.name') . ' logo',
                     'class' => 'brand-image',
                     'fullBase' => true,
                 ]) ?>
-                <span class="brand-text font-weight-light"><?= $academyConfigGlobal->name ?></span>
+                <span class="brand-text font-weight-light"><?= Configure::read('App.name') ?></span>
             </a>
             <div class="sidebar">
                 <?= $this->element('sidebar/main') ?>

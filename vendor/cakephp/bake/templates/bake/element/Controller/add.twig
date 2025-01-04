@@ -3,6 +3,10 @@
 
 public function add(): ?Response
 {
+    if (!$this->checkPermission('{{ currentModelName }}/add')) {
+        return $this->redirect(['action' => 'index']);
+    }
+
     ${{ singularName }} = $this->{{ currentModelName }}->newEmptyEntity();
     
     if ($this->request->is('post')) {

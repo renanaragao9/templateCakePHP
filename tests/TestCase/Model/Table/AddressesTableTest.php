@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\AcademyConfigTable;
+use App\Model\Table\AddressesTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\AcademyConfigTable Test Case
+ * App\Model\Table\AddressesTable Test Case
  */
-class AcademyConfigTableTest extends TestCase
+class AddressesTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\AcademyConfigTable
+     * @var \App\Model\Table\AddressesTable
      */
-    protected $AcademyConfig;
+    protected $Addresses;
 
     /**
      * Fixtures
@@ -24,7 +24,7 @@ class AcademyConfigTableTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.AcademyConfig',
+        'app.Addresses',
     ];
 
     /**
@@ -35,8 +35,8 @@ class AcademyConfigTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('AcademyConfig') ? [] : ['className' => AcademyConfigTable::class];
-        $this->AcademyConfig = $this->getTableLocator()->get('AcademyConfig', $config);
+        $config = $this->getTableLocator()->exists('Addresses') ? [] : ['className' => AddressesTable::class];
+        $this->Addresses = $this->getTableLocator()->get('Addresses', $config);
     }
 
     /**
@@ -46,7 +46,7 @@ class AcademyConfigTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->AcademyConfig);
+        unset($this->Addresses);
 
         parent::tearDown();
     }
@@ -55,7 +55,7 @@ class AcademyConfigTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\AcademyConfigTable::validationDefault()
+     * @uses \App\Model\Table\AddressesTable::validationDefault()
      */
     public function testValidationDefault(): void
     {

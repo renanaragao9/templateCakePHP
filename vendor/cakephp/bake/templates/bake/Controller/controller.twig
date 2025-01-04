@@ -5,9 +5,17 @@
 
 use Cake\Event\EventInterface;
 use Authentication\Controller\Component\AuthenticationComponent;
+use App\Utility\AccessChecker;
+use Cake\Core\Configure;
 use Cake\Http\Response;
 use Cake\ORM\Query;
 use TCPDF;
+
+// {{ name }} Seeder
+//    ['name' => '{{ name }}/index', 'description' => 'Visualizar'],
+//    ['name' => '{{ name }}/add', 'description' => 'Criar'],
+//    ['name' => '{{ name }}/edit', 'description' => 'Editar'],
+//    ['name' => '{{ name }}/delete', 'description' => 'Deletar'],
 
 class {{ name }}Controller extends AppController
 {

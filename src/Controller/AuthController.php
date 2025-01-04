@@ -10,7 +10,7 @@ class AuthController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $this->loadModel('Users'); // Load the Users model
+        $this->loadModel('Users');
     }
 
     public function beforeFilter(EventInterface $event)
@@ -30,7 +30,7 @@ class AuthController extends AppController
             if ($user) {
                 if ($user['active']) {
                     $userEntity = $this->Users->get($user['id'], [
-                        'contain' => ['AcademyConfig'],
+                        'contain' => ['Roles'],
                     ]);
                     $userEntity->last_login = date('Y-m-d H:i:s');
                     $userEntity->login_count += 1;

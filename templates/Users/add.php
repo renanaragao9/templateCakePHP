@@ -9,36 +9,37 @@
             </div>
             <div class="modal-body">
                 <?= $this->Form->create(null, ['url' => ['action' => 'add'], 'type' => 'file']) ?>
-                 <div class="row">
-                                    <div class="col-lg-6 col-s12">
+                <div class="row">
+                    <div class="col-lg-6 col-s12">
                         <div class="form-group">
-                            <?= $this->Form->control('name', ['class' => 'form-control']) ?>
+                            <?= $this->Form->control('name', ['label' => 'Nome', 'class' => 'form-control', 'required' => true]) ?>
                         </div>
-                    </div>                            <div class="col-lg-6 col-s12">
+                    </div>
+                    <div class="col-lg-6 col-s12">
                         <div class="form-group">
-                            <?= $this->Form->control('email', ['class' => 'form-control']) ?>
+                            <?= $this->Form->control('email', ['label' => 'Email', 'class' => 'form-control', 'required' => true]) ?>
                         </div>
-                    </div>                            <div class="col-lg-6 col-s12">
+                    </div>
+                    <div class="col-lg-6 col-s12">
                         <div class="form-group">
-                            <?= $this->Form->control('password', ['class' => 'form-control']) ?>
+                            <?= $this->Form->control('password', ['label' => 'Senha', 'class' => 'form-control', 'required' => true]) ?>
                         </div>
-                    </div>                            <div class="col-lg-6 col-s12">
+                    </div>
+                    <div class="col-lg-6 col-s12">
                         <div class="form-group">
-                            <?= $this->Form->control('last_login', ['class' => 'form-control']) ?>
+                            <?= $this->Form->control('role_id', ['label' => 'Perfil', 'class' => 'form-control', 'required' => true]) ?>
                         </div>
-                    </div>                            <div class="col-lg-6 col-s12">
+                    </div>
+                    <div class="col-lg-12 col-s12">
                         <div class="form-group">
-                            <?= $this->Form->control('login_count', ['class' => 'form-control']) ?>
+                            <?= $this->Form->control('active', ['type' => 'checkbox', 'label' => 'Ativo', 'class' => 'form-check-input']) ?>
                         </div>
-                    </div>                            <div class="col-lg-6 col-s12">
-                        <div class="form-group">
-                            <?= $this->Form->control('active', ['class' => 'form-control']) ?>
-                        </div>
-                    </div>                            </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-modalCancel" id="cancelButton" data-dismiss="modal">Cancelar</button>
-                <?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-modalAdd', 'id' => 'saveButton', 'escape' => false]) ?>
+                <button type="button" class="btn modalCancel" id="cancelButton" data-dismiss="modal">Cancelar</button>
+                <?= $this->Form->button(__('Salvar'), ['class' => 'btn modalAdd', 'id' => 'saveButton', 'escape' => false]) ?>
             </div>
             <?= $this->Form->end() ?>
         </div>

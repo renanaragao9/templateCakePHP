@@ -1,5 +1,6 @@
 <?php
-declare (strict_types = 1);
+
+declare(strict_types=1);
 
 use Migrations\AbstractMigration;
 
@@ -43,6 +44,11 @@ class CreateUsers extends AbstractMigration
             'default' => true,
             'null' => false,
         ]);
+        $table->addColumn('role_id', 'integer', [
+            'default' => null,
+            'limit' => 11,
+            'null' => false,
+        ]);
         $table->addColumn('created', 'datetime', [
             'default' => 'CURRENT_TIMESTAMP',
             'null' => false,
@@ -53,6 +59,10 @@ class CreateUsers extends AbstractMigration
             'null' => false,
         ]);
         $table->addIndex(['email'], ['unique' => true]);
+        $table->addForeignKey('role_id', 'roles', 'id', [
+            'delete' => 'CASCADE',
+            'update' => 'NO_ACTION',
+        ]);
         $table->create();
     }
 }

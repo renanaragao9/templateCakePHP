@@ -15,10 +15,11 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime|null $last_login
  * @property int $login_count
  * @property bool $active
+ * @property int $role_id
  * @property \Cake\I18n\FrozenTime $created
  * @property \Cake\I18n\FrozenTime $modified
  *
- * @property \App\Model\Entity\AcademyConfig[] $academy_config
+ * @property \App\Model\Entity\Role $role
  */
 class User extends Entity
 {
@@ -38,9 +39,10 @@ class User extends Entity
         'last_login' => true,
         'login_count' => true,
         'active' => true,
+        'role_id' => true,
         'created' => true,
         'modified' => true,
-        'academy_config' => true,
+        'role' => true,
     ];
 
     /**

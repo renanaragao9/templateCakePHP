@@ -1,6 +1,10 @@
 
     public function delete(?int $id = null): Response
     {
+        if (!$this->checkPermission('{{ currentModelName }}/delete')) {
+            return $this->redirect(['action' => 'index']);
+        }
+        
         $this->request->allowMethod(['post', 'delete']);
         
         ${{ singularName }} = $this->{{ currentModelName }}->get($id);
@@ -17,11 +21,11 @@
 
      public function pdf(): void
     {
-        $query = $this->Users->find('all');
+        $query = $this->{{ currentModelName }}->find('all');
         $query = $this->applyFilters($query);
-        $users = $query->toArray();
+        ${{ pluralName }} = $query->toArray();
 
-        $systemName = 'Nome do Sistema';
+        $systemName = Configure::read('App.name');
 
         $loggedInUser = $this->Auth->user('name');
 
@@ -30,7 +34,7 @@
 
         $html = '<div style="text-align: center;">';
         $html .= '<img src="' . WWW_ROOT . 'img/logo/logo.png" alt="Logo" width="100" height="100">';
-        $html .= '<h1>Relatório de Usuários</h1>';
+        $html .= '<h1>Relatório</h1>';
         $html .= '</div>';
         $html .= '<div style="text-align: right;">';
         $html .= '<p>Fortaleza, ' . $dataAtual . '</p>';
@@ -38,9 +42,9 @@
         $html .= '<table border="1" cellpadding="5" cellspacing="0" style="width: 100%;">';
         $html .= '<thead><tr><th>ID</th></tr></thead>';
         $html .= '<tbody>';
-        foreach ($users as $user) {
+        foreach (${{ pluralName }} as ${{ singularName }}) {
             $html .= '<tr>';
-            $html .= '<td>' . h($user->id) . '</td>';
+            $html .= '<td>' . h(${{ singularName }}->id) . '</td>';
             $html .= '</tr>';
         }
         $html .= '</tbody></table>';

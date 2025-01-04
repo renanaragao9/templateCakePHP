@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\AcademyConfigController;
+use App\Controller\RolesController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\AcademyConfigController Test Case
+ * App\Controller\RolesController Test Case
  *
- * @uses \App\Controller\AcademyConfigController
+ * @uses \App\Controller\RolesController
  */
-class AcademyConfigControllerTest extends TestCase
+class RolesControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -22,14 +22,17 @@ class AcademyConfigControllerTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.AcademyConfig',
+        'app.Roles',
+        'app.Users',
+        'app.Permissions',
+        'app.RolesPermissions',
     ];
 
     /**
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\AcademyConfigController::index()
+     * @uses \App\Controller\RolesController::index()
      */
     public function testIndex(): void
     {
@@ -40,7 +43,7 @@ class AcademyConfigControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\AcademyConfigController::view()
+     * @uses \App\Controller\RolesController::view()
      */
     public function testView(): void
     {
@@ -51,7 +54,7 @@ class AcademyConfigControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\AcademyConfigController::add()
+     * @uses \App\Controller\RolesController::add()
      */
     public function testAdd(): void
     {
@@ -62,7 +65,7 @@ class AcademyConfigControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\AcademyConfigController::edit()
+     * @uses \App\Controller\RolesController::edit()
      */
     public function testEdit(): void
     {
@@ -73,9 +76,31 @@ class AcademyConfigControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\AcademyConfigController::delete()
+     * @uses \App\Controller\RolesController::delete()
      */
     public function testDelete(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test pdf method
+     *
+     * @return void
+     * @uses \App\Controller\RolesController::pdf()
+     */
+    public function testPdf(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test csv method
+     *
+     * @return void
+     * @uses \App\Controller\RolesController::csv()
+     */
+    public function testCsv(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

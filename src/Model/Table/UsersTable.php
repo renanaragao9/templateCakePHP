@@ -11,7 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
- * @property \App\Model\Table\AcademyConfigTable&\Cake\ORM\Association\HasMany $AcademyConfig
+ * @property \App\Model\Table\RolesTable&\Cake\ORM\Association\BelongsTo $Roles
  *
  * @method \App\Model\Entity\User newEmptyEntity()
  * @method \App\Model\Entity\User newEntity(array $data, array $options = [])
@@ -47,8 +47,9 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
-        $this->hasMany('AcademyConfig', [
-            'foreignKey' => 'user_id',
+        $this->belongsTo('Roles', [
+            'foreignKey' => 'role_id',
+            'joinType' => 'INNER',
         ]);
     }
 
@@ -90,6 +91,10 @@ class UsersTable extends Table
             ->boolean('active')
             ->notEmptyString('active');
 
+        $validator
+            ->integer('role_id')
+            ->notEmptyString('role_id');
+
         return $validator;
     }
 
@@ -103,6 +108,7 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+        $rules->add($rules->existsIn('role_id', 'Roles'), ['errorField' => 'role_id']);
 
         return $rules;
     }

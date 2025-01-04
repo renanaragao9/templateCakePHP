@@ -1,13 +1,21 @@
-<!-- Substitua 'Adicione o titulo' pelo título desejado e 'Adicione o controller' pelo nome do controller correto -->
+<?php
+
+use App\Utility\AccessChecker;
+
+$loggedUserId = $this->request->getSession()->read('Auth.User.id');
+$this->assign('title', 'Usuários');
+?>
+
 <div class="content-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>" style="font-size: 1.25rem;">Início</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?= __('users') ?></li>
+                        <li class="breadcrumb-item"><a href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>">Início</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?= __('Usuários') ?></li>
                     </ol>
+                    <hr>
                 </nav>
             </div>
         </div>
@@ -18,7 +26,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-s12">
-                <h1 class="page-title m-0 text-dark"><?= __('users') ?></h1>
+                <h1 class="page-title m-0"><?= __('Usuários') ?></h1>
             </div>
         </div>
     </div>
@@ -38,14 +46,17 @@
                             </form>
                         </div>
                         <div class="col-12 col-md-6 text-md-right">
-                            <button type="button" class="btn btn-add btn-sm mb-2 mb-md-0 col-12 col-md-auto" data-toggle="modal" data-target="#addNewItemModal">
-                                <i class="fas fa-plus-circle"></i> Adicionar Novo Item
-                            </button>
-                            <button type="button" class="btn btn-add btn-filter btn-sm mb-0 col-12 col-md-auto" data-toggle="modal" data-target="#filterModal">
-                                <i class="fas fa-filter"></i> Filtrar
-                            </button>
+                            <?php if (AccessChecker::hasPermission($loggedUserId, 'Users/add')): ?>
+                                <button type="button" class="btn btn-add btn-sm mb-2 mb-md-0 col-12 col-md-auto" data-toggle="modal" data-target="#addNewItemModal">
+                                    <i class="fas fa-plus-circle"></i> Adicionar Usuário
+                                </button>
+                                <button type="button" class="btn btn-add btn-filter btn-sm mb-0 col-12 col-md-auto" data-toggle="modal" data-target="#filterModal">
+                                    <i class="fas fa-filter"></i> Filtrar
+                                </button>
+                            <?php endif; ?>
                             <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-refresh btn-sm mb-0 col-12 col-md-auto text-dark dark-mode-text-white">
                                 <i class="fas fa-sync-alt"></i> Atualizar
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;" id="refreshSpinner"></span>
                             </a>
                         </div>
                     </div>
@@ -53,60 +64,60 @@
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th><?= $this->Paginator->sort('id') ?></th>
-                                    <th><?= $this->Paginator->sort('name') ?></th>
-                                    <th><?= $this->Paginator->sort('email') ?></th>
-                                    <th><?= $this->Paginator->sort('last_login') ?></th>
-                                    <th><?= $this->Paginator->sort('login_count') ?></th>
-                                    <th><?= $this->Paginator->sort('active') ?></th>
-                                    <th><?= $this->Paginator->sort('created') ?></th>
-                                    <th><?= $this->Paginator->sort('modified') ?></th>
+                                    <th><?= $this->Paginator->sort('id', 'ID') ?></th>
+                                    <th><?= $this->Paginator->sort('name', 'Nome') ?></th>
+                                    <th><?= $this->Paginator->sort('email', 'Email') ?></th>
+                                    <th><?= $this->Paginator->sort('role_id', 'Perfil') ?></th>
+                                    <th><?= $this->Paginator->sort('last_login', 'Último Login') ?></th>
+                                    <th><?= $this->Paginator->sort('active', 'Ativo') ?></th>
                                     <th class="actions"><?= __('Ações') ?></th>
                                 </tr>
                             </thead>
                             <tbody id="TableBody">
                                 <?php foreach ($users as $user): ?>
-                                <tr>
-                                    <td><?= $this->Number->format($user->id) ?></td>
-                                    <td><?= h($user->name) ?></td>
-                                    <td><?= h($user->email) ?></td>
-                                    <td><?= h($user->last_login) ?></td>
-                                    <td><?= $this->Number->format($user->login_count) ?></td>
-                                    <td><?= h($user->active) ?></td>
-                                    <td><?= h($user->created) ?></td>
-                                    <td><?= h($user->modified) ?></td>
-                                    <td class="actions">
-                                        <a href="#" class="btn btn-view btn-sm" data-toggle="modal" data-target="#detailsModal-<?= $user->id ?>"><i class="fas fa-eye"></i></a>
-                                        <a href="#" class="btn btn-edit btn-sm" data-toggle="modal" data-target="#editModal-<?= $user->id ?>"><i class="fas fa-edit"></i></a>
-                                        <a href="#" class="btn btn-delete btn-sm" data-toggle="modal" data-target="#deleteModal-<?= $user->id ?>"><i class="fas fa-trash"></i></a>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td><?= $this->Number->format($user->id) ?></td>
+                                        <td><?= h($user->name) ?></td>
+                                        <td><?= h($user->email) ?></td>
+                                        <td><?= $user->role_id ? h($user->role->name) : 'N/A' ?></td>
+                                        <td><?= $user->last_login ? $user->last_login->i18nFormat('dd/MM/yyyy HH:mm:ss') : 'N/A' ?></td>
+                                        <td><?= h($user->active ? 'Sim' : 'Não') ?></td>
+                                        <td class="actions">
+                                            <a href="#" class="btn btn-view btn-sm" data-toggle="modal" data-target="#detailsModal-<?= $user->id ?>"><i class="fas fa-eye"></i></a>
+                                            <?php if (AccessChecker::hasPermission($loggedUserId, 'Users/edit')): ?>
+                                                <a href="#" class="btn btn-edit btn-sm" data-toggle="modal" data-target="#editModal-<?= $user->id ?>"><i class="fas fa-edit"></i></a>
+                                            <?php endif; ?>
+                                            <?php if (AccessChecker::hasPermission($loggedUserId, 'Users/delete')): ?>
+                                                <a href="#" class="btn btn-delete btn-sm" data-toggle="modal" data-target="#deleteModal-<?= $user->id ?>"><i class="fas fa-trash"></i></a>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
 
-                                <!-- Incluir os modais de edição, visualização e exclusão -->
-                                <?php
-                                include __DIR__ . '/edit.php';
-                                include __DIR__ . '/view.php';
-                                ?>
+                                    <!-- Incluir os modais de edição, visualização e exclusão -->
+                                    <?php
+                                    include __DIR__ . '/edit.php';
+                                    include __DIR__ . '/view.php';
+                                    ?>
 
-                                <div class="modal fade" id="deleteModal-<?= $user->id ?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-<?= $user->id ?>" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="deleteModalLabel-<?= $user->id ?>"><?= __('Confirmar Exclusão') ?></h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <p><?= __('Você tem certeza que deseja excluir # {0}?', $user->name) ?></p>
-                                            </div>
-                                            <div class="modal-footer justify-content-between">
-                                                <button type="button" class="btn btn-modalCancel" data-dismiss="modal">Cancelar</button>
-                                                <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $user->id], ['class' => 'btn modalDelete', 'id' => 'deleteButton-' . $user->id, 'data-id' => $user->id]) ?>
+                                    <div class="modal fade" id="deleteModal-<?= $user->id ?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-<?= $user->id ?>" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="deleteModalLabel-<?= $user->id ?>"><?= __('Confirmar Exclusão') ?></h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p><?= __('Você tem certeza que deseja excluir # {0}?', $user->name) ?></p>
+                                                </div>
+                                                <div class="modal-footer justify-content-between">
+                                                    <button type="button" class="btn modalCancel" data-dismiss="modal">Cancelar</button>
+                                                    <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $user->id], ['class' => 'btn modalDelete', 'id' => 'deleteButton' . $user->id, 'data-id' => $user->id]) ?>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -136,11 +147,11 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body modal-lg">
                 <form id="filterForm" method="get" action="<?= $this->Url->build(['action' => 'pdf']) ?>">
                     <div id="conditions-container">
-                        <div class="form-group row">
-                            <div class="col-md-3">
+                        <div class="form-group row condition-template">
+                            <div class="col-md-2">
                                 <label for="field">Campo</label>
                                 <select class="form-control" name="fields[]" id="field" onchange="updateInputType(this)">
                                     <?php foreach ($fields as $field => $data): ?>
@@ -165,25 +176,25 @@
                                 <input type="text" class="form-control" name="values2[]" id="value2" placeholder="Valor 2">
                             </div>
                             <div class="col-md-1 d-flex align-items-end">
-                                <button type="button" class="btn btn-danger btn-sm w-100 mt-4 mt-md-0" onclick="removeCondition(this)">
+                                <button type="button" class="btn btnTrash btn-sm w-100 mt-4 mt-md-0" onclick="removeCondition(this)">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-secondary" id="add-condition">Adicionar Condição</button>
+                    <button type="button" class="btn btnConditions" id="add-condition">Adicionar Condição</button>
                 </form>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-modalCancel" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn modalCancel" data-dismiss="modal">Fechar</button>
                 <div>
-                    <button type="submit" class="btn btn-danger" id="applyPDF" form="filterForm">
+                    <button type="submit" class="btn btnPDF" id="applyPDF" form="filterForm">
                         <i class="fas fa-file-pdf"></i> Gerar PDF
                     </button>
-                    <button type="button" class="btn btn-success" id="applyCSV" onclick="applyCSV()">
+                    <button type="button" class="btn btnCSV" id="applyCSV" onclick="applyCSV()">
                         <i class="fas fa-file-csv"></i> Gerar CSV
                     </button>
-                    <button type="button" class="btn btn-primary" id="applyFilter" onclick="applyFilter()">
+                    <button type="button" class="btn btnFilter" id="applyFilter" onclick="applyFilter()">
                         <i class="fas fa-filter"></i> Aplicar Filtro
                     </button>
                 </div>

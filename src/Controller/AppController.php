@@ -44,18 +44,4 @@ class AppController extends Controller
     {
         $this->Auth->allow(['display']);
     }
-
-    public function beforeRender(\Cake\Event\EventInterface $event)
-    {
-        parent::beforeRender($event);
-
-        $academyConfigsTable = TableRegistry::getTableLocator()->get('AcademyConfig');
-        $academyConfigGlobal = $academyConfigsTable->find()->first();
-
-        if ($academyConfigGlobal) {
-            $academyConfigGlobal->logo = $this->request->getAttribute('webroot') . 'img/logo/' . $academyConfigGlobal->logo;
-        }
-
-        $this->set('academyConfigGlobal', $academyConfigGlobal);
-    }
 }
