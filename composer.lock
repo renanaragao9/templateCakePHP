@@ -2296,20 +2296,21 @@
         },
         {
             "name": "tecnickcom/tcpdf",
-            "version": "6.7.8",
+            "version": "6.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tecnickcom/TCPDF.git",
-                "reference": "7956f5e37863c6a569d5ccfae826f353a12a2493"
+                "reference": "f7a781073e1645062f163e058139e2f89355d420"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/7956f5e37863c6a569d5ccfae826f353a12a2493",
-                "reference": "7956f5e37863c6a569d5ccfae826f353a12a2493",
+                "url": "https://api.github.com/repos/tecnickcom/TCPDF/zipball/f7a781073e1645062f163e058139e2f89355d420",
+                "reference": "f7a781073e1645062f163e058139e2f89355d420",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.0"
+                "ext-curl": "*",
+                "php": ">=7.1.0"
             },
             "type": "library",
             "autoload": {
@@ -2356,7 +2357,7 @@
             ],
             "support": {
                 "issues": "https://github.com/tecnickcom/TCPDF/issues",
-                "source": "https://github.com/tecnickcom/TCPDF/tree/6.7.8"
+                "source": "https://github.com/tecnickcom/TCPDF/tree/6.8.2"
             },
             "funding": [
                 {
@@ -2364,7 +2365,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-12-13T19:31:40+00:00"
+            "time": "2025-01-26T14:03:12+00:00"
         }
     ],
     "packages-dev": [
@@ -6067,5 +6068,5 @@
     "platform-overrides": {
         "php": "7.4.3"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
