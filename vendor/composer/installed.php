@@ -3,7 +3,7 @@
         'name' => 'cakephp/app',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '6518c8432a12db3f285ba19ff34877f8de4f6187',
+        'reference' => '66d54dde20c958b7049d217c576db790e7ac108b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'cakephp/app' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '6518c8432a12db3f285ba19ff34877f8de4f6187',
+            'reference' => '66d54dde20c958b7049d217c576db790e7ac108b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -49,13 +49,13 @@
         'cakephp/cache' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/cakephp' => array(
-            'pretty_version' => '4.5.8',
-            'version' => '4.5.8.0',
-            'reference' => 'aa2336193cc0dc2d828d98a1e8cf0f5dfda6efae',
+            'pretty_version' => '4.5.9',
+            'version' => '4.5.9.0',
+            'reference' => 'd0a413d32840493e7c34dc4ccec93c21b158922b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../cakephp/cakephp',
             'aliases' => array(),
@@ -82,31 +82,31 @@
         'cakephp/collection' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/console' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/core' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/database' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/datasource' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/debug_kit' => array(
@@ -121,37 +121,37 @@
         'cakephp/event' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/filesystem' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/form' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/http' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/i18n' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/log' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/migrations' => array(
@@ -166,7 +166,7 @@
         'cakephp/orm' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/plugin-installer' => array(
@@ -190,37 +190,37 @@
         'cakephp/utility' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'cakephp/validation' => array(
             'dev_requirement' => false,
             'replaced' => array(
-                0 => '4.5.8',
+                0 => '4.5.9',
             ),
         ),
         'composer/ca-bundle' => array(
-            'pretty_version' => '1.5.4',
-            'version' => '1.5.4.0',
-            'reference' => 'bc0593537a463e55cadf45fd938d23b75095b7e1',
+            'pretty_version' => '1.5.6',
+            'version' => '1.5.6.0',
+            'reference' => 'f65c239c970e7f072f067ab78646e9f0b2935175',
             'type' => 'library',
             'install_path' => __DIR__ . '/./ca-bundle',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'composer/class-map-generator' => array(
-            'pretty_version' => '1.5.0',
-            'version' => '1.5.0.0',
-            'reference' => '4b0a223cf5be7c9ee7e0ef1bc7db42b4a97c9915',
+            'pretty_version' => '1.6.0',
+            'version' => '1.6.0.0',
+            'reference' => 'ffe442c5974c44a9343e37a0abcb1cc37319f5b9',
             'type' => 'library',
             'install_path' => __DIR__ . '/./class-map-generator',
             'aliases' => array(),
             'dev_requirement' => true,
         ),
         'composer/composer' => array(
-            'pretty_version' => '2.8.4',
-            'version' => '2.8.4.0',
-            'reference' => '112e37d1dca22b3fdb81cf3524ab4994f47fdb8c',
+            'pretty_version' => '2.8.6',
+            'version' => '2.8.6.0',
+            'reference' => '937c775a644bd7d2c3dfbb352747488463a6e673',
             'type' => 'library',
             'install_path' => __DIR__ . '/./composer',
             'aliases' => array(),
@@ -380,9 +380,9 @@
             'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(
-            'pretty_version' => '1.12.1',
-            'version' => '1.12.1.0',
-            'reference' => '123267b2c49fbf30d78a7b2d333f6be754b94845',
+            'pretty_version' => '1.13.0',
+            'version' => '1.13.0.0',
+            'reference' => '024473a478be9df5fdaca2c793f2232fe788e414',
             'type' => 'library',
             'install_path' => __DIR__ . '/../myclabs/deep-copy',
             'aliases' => array(),
@@ -422,9 +422,9 @@
             'dev_requirement' => true,
         ),
         'phpstan/phpdoc-parser' => array(
-            'pretty_version' => '1.33.0',
-            'version' => '1.33.0.0',
-            'reference' => '82a311fd3690fb2bf7b64d5c98f912b3dd746140',
+            'pretty_version' => '2.1.0',
+            'version' => '2.1.0.0',
+            'reference' => '9b30d6fd026b2c132b3985ce6b23bec09ab3aa68',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpstan/phpdoc-parser',
             'aliases' => array(),
@@ -496,8 +496,8 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '^1.0 || ^2.0',
-                1 => '^1.0',
+                0 => '^1.0',
+                1 => '^1.0 || ^2.0',
             ),
         ),
         'psr/http-client' => array(
@@ -587,8 +587,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '^1.0 || ^2.0',
-                1 => '1.0|2.0',
+                0 => '1.0|2.0',
+                1 => '^1.0 || ^2.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -796,18 +796,18 @@
             'dev_requirement' => true,
         ),
         'slevomat/coding-standard' => array(
-            'pretty_version' => '8.15.0',
-            'version' => '8.15.0.0',
-            'reference' => '7d1d957421618a3803b593ec31ace470177d7817',
+            'pretty_version' => '8.16.0',
+            'version' => '8.16.0.0',
+            'reference' => '7748a4282df19daf966fda1d8c60a8aec803c83a',
             'type' => 'phpcodesniffer-standard',
             'install_path' => __DIR__ . '/../slevomat/coding-standard',
             'aliases' => array(),
             'dev_requirement' => true,
         ),
         'squizlabs/php_codesniffer' => array(
-            'pretty_version' => '3.11.2',
-            'version' => '3.11.2.0',
-            'reference' => '1368f4a58c3c52114b86b1abe8f4098869cb0079',
+            'pretty_version' => '3.11.3',
+            'version' => '3.11.3.0',
+            'reference' => 'ba05f990e79cbe69b9f35c8c1ac8dca7eecc3a10',
             'type' => 'library',
             'install_path' => __DIR__ . '/../squizlabs/php_codesniffer',
             'aliases' => array(),
@@ -949,9 +949,9 @@
             'dev_requirement' => false,
         ),
         'tecnickcom/tcpdf' => array(
-            'pretty_version' => '6.7.8',
-            'version' => '6.7.8.0',
-            'reference' => '7956f5e37863c6a569d5ccfae826f353a12a2493',
+            'pretty_version' => '6.8.2',
+            'version' => '6.8.2.0',
+            'reference' => 'f7a781073e1645062f163e058139e2f89355d420',
             'type' => 'library',
             'install_path' => __DIR__ . '/../tecnickcom/tcpdf',
             'aliases' => array(),

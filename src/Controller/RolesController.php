@@ -37,27 +37,25 @@ class RolesController extends AppController
         $conditions = [];
 
         if ($search) {
-
-            if ($search) {
-                $conditions = [
-                    'OR' => [
-                        'name LIKE' => '%' . $search . '%',
-                    ],
-                ];
-            }
+            $conditions = [
+                'OR' => [
+                    'name LIKE' => '%' . $search . '%',
+                ],
+            ];
         }
 
         $query = $this->Roles->find('all', [
             'conditions' => $conditions,
         ]);
 
-
         $query = $query->contain(['RolesPermissions']);
         $roles = $this->paginate($query);
 
         $permissions = $this->Roles->Permissions->find()
             ->all()
-            ->groupBy('group');
+            ->groupBy(function ($permission) {
+                return $permission->group ?? 'default';
+            });
 
         $this->set(compact('roles', 'permissions'));
     }
@@ -74,7 +72,6 @@ class RolesController extends AppController
 
         $this->set(compact('role'));
     }
-
 
     public function add(): ?Response
     {
@@ -108,7 +105,6 @@ class RolesController extends AppController
         return null;
     }
 
-
     public function edit(?int $id = null): ?Response
     {
         if (!$this->checkPermission('Roles/edit')) {
@@ -123,7 +119,6 @@ class RolesController extends AppController
             $role = $this->Roles->patchEntity($role, $this->request->getData());
 
             if ($this->Roles->save($role)) {
-
                 $this->Roles->RolesPermissions->deleteAll(['role_id' => $role->id]);
 
                 $permissions = $this->request->getData('permissions');
@@ -140,7 +135,7 @@ class RolesController extends AppController
                 $this->log('O perfil foi editado com sucesso.', 'info');
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('O perfil não pôde ser editado. Por favor, tente novamente.'));
+                $this->Flash->error(__('O perfil não pôde ser salvo. Por favor, tente novamente.'));
             }
         }
 

@@ -50,9 +50,6 @@ $this->assign('title', 'Usuários');
                                 <button type="button" class="btn btn-add btn-sm mb-2 mb-md-0 col-12 col-md-auto" data-toggle="modal" data-target="#addNewItemModal">
                                     <i class="fas fa-plus-circle"></i> Adicionar Usuário
                                 </button>
-                                <button type="button" class="btn btn-add btn-filter btn-sm mb-0 col-12 col-md-auto" data-toggle="modal" data-target="#filterModal">
-                                    <i class="fas fa-filter"></i> Filtrar
-                                </button>
                             <?php endif; ?>
                             <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-refresh btn-sm mb-0 col-12 col-md-auto text-dark dark-mode-text-white">
                                 <i class="fas fa-sync-alt"></i> Atualizar
@@ -95,6 +92,7 @@ $this->assign('title', 'Usuários');
 
                                     <!-- Incluir os modais de edição, visualização e exclusão -->
                                     <?php
+                                    include __DIR__ . '/add.php';
                                     include __DIR__ . '/edit.php';
                                     include __DIR__ . '/view.php';
                                     ?>
@@ -137,76 +135,10 @@ $this->assign('title', 'Usuários');
     </div>
 </div>
 
-<!-- Modal para Filtragem e Geração de PDF -->
-<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="filterModalLabel">Gerar Filtro</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body modal-lg">
-                <form id="filterForm" method="get" action="<?= $this->Url->build(['action' => 'pdf']) ?>">
-                    <div id="conditions-container">
-                        <div class="form-group row condition-template">
-                            <div class="col-md-2">
-                                <label for="field">Campo</label>
-                                <select class="form-control" name="fields[]" id="field" onchange="updateInputType(this)">
-                                    <?php foreach ($fields as $field => $data): ?>
-                                        <option value="<?= $field ?>" data-type="<?= $data['type'] ?>"><?= $data['label'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="condition">Condição</label>
-                                <select class="form-control" name="conditions[]" id="condition" onchange="toggleBetweenInput(this)">
-                                    <?php foreach ($conditions as $condition => $label): ?>
-                                        <option value="<?= $condition ?>"><?= $label ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                            </div>
-                            <div class="col-md-3">
-                                <label for="value">Valor</label>
-                                <input type="text" class="form-control" name="values[]" id="value" placeholder="Valor">
-                            </div>
-                            <div class="col-md-3" style="display: none;" id="value2-container">
-                                <label for="value2">Valor 2</label>
-                                <input type="text" class="form-control" name="values2[]" id="value2" placeholder="Valor 2">
-                            </div>
-                            <div class="col-md-1 d-flex align-items-end">
-                                <button type="button" class="btn btnTrash btn-sm w-100 mt-4 mt-md-0" onclick="removeCondition(this)">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btnConditions" id="add-condition">Adicionar Condição</button>
-                </form>
-            </div>
-            <div class="modal-footer justify-content-between">
-                <button type="button" class="btn modalCancel" data-dismiss="modal">Fechar</button>
-                <div>
-                    <button type="submit" class="btn btnPDF" id="applyPDF" form="filterForm">
-                        <i class="fas fa-file-pdf"></i> Gerar PDF
-                    </button>
-                    <button type="button" class="btn btnCSV" id="applyCSV" onclick="applyCSV()">
-                        <i class="fas fa-file-csv"></i> Gerar CSV
-                    </button>
-                    <button type="button" class="btn btnFilter" id="applyFilter" onclick="applyFilter()">
-                        <i class="fas fa-filter"></i> Aplicar Filtro
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
     function searchTableBody(query) {
         $.ajax({
-            url: '<?= $this->Url->build(['controller' => 'users', 'action' => 'index']) ?>',
+            url: '<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>',
             method: 'GET',
             data: {
                 search: query
@@ -225,23 +157,7 @@ $this->assign('title', 'Usuários');
         });
     }
 
-    function applyFilter() {
-        var form = document.getElementById("filterForm");
-        form.action = "<?= $this->Url->build(['action' => 'index']) ?>";
-        form.submit();
-    }
-
-    function applyCSV() {
-        var form = document.getElementById("filterForm");
-        form.action = "<?= $this->Url->build(['action' => 'csv']) ?>";
-        form.submit();
-    }
-
     (function() {
         Object.freeze(searchTableBody);
-        Object.freeze(applyFilter);
-        Object.freeze(applyCSV);
     })();
 </script>
-
-<?php include __DIR__ . '/add.php'; ?>
