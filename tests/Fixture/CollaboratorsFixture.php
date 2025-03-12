@@ -26,8 +26,8 @@ class CollaboratorsFixture extends TestFixture
                 'color' => 'Lorem ipsum dolor sit amet',
                 'active' => 1,
                 'user_id' => 1,
-                'created' => '2025-03-12 14:51:57',
-                'modified' => '2025-03-12 14:51:57',
+                'created' => '2025-03-12 15:52:24',
+                'modified' => '2025-03-12 15:52:24',
             ],
         ];
         parent::init();

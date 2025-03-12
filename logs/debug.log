@@ -448,3 +448,4 @@ Cake\Http\Runner->run() /var/www/html/pessoais/template/templateCake/vendor/cake
 Cake\Http\Server->run() /var/www/html/pessoais/template/templateCake/webroot/index.php, line 40
 [main]
 
+2025-03-12 15:00:48 info: O user foi editado com sucesso.

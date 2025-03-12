@@ -74,6 +74,7 @@ class CollaboratorsController extends AppController
         $this->set(compact('collaborator'));
     }
 
+
     public function add(): ?Response
     {
         if (!$this->checkPermission('Collaborators/add')) {
@@ -99,6 +100,7 @@ class CollaboratorsController extends AppController
         $this->set(compact('collaborator', 'users'));
         return null;
     }
+
 
     public function edit(?int $id = null): ?Response
     {

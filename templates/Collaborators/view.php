@@ -4,21 +4,48 @@ use App\Utility\AccessChecker;
 
 $loggedUserId = $this->request->getSession()->read('Auth.User.id');
 $this->assign('title', 'Titulo'); ?>     
-<section class="content mt-3">
+<section class="content">
     <div class="container-fluid">
         <div class="card card-outline card-primary">
-            <div class="card-header" style="margin: 0 auto">
-                <h3 class="card-title">Dados Detalhados</h3>
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-md-6 order-2 order-md-1 mt-4">
+                            <h3 class="card-title">
+                                <?= __('Visualizar collaborator') ?>
+                            </h3>
+                        </div>
+                        <div
+                            class="col-12 col-md-6 text-md-right order-1 order-md-2"
+                        >
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-md-end">
+                                    <li class="breadcrumb-item">
+                                        <a
+                                            href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>"
+                                            >Início</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a
+                                            href="<?= $this->Url->build(['action' => 'index']) ?>"
+                                            >collaborator</a
+                                        >
+                                    </li>
+                                    <li
+                                        class="breadcrumb-item active"
+                                        aria-current="page"
+                                    >
+                                        <?= __('Visualizar') ?>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <a
-                        href="<?= $this->Url->build(['action' => 'index']) ?>"
-                        class="btn btn-secondary btn-sm button-detail"
-                    >
-                        <?= __('Voltar') ?>
-                    </a>
-                </div>
                                   <div class="row item-row">
                     <label
                         class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
@@ -148,7 +175,7 @@ $this->assign('title', 'Titulo'); ?>
             >
                 <div class="col-12 col-md-6 mb-2 mb-md-2 mt-2">
                     <form
-                        class="form-inline w-50"
+                        class="form-inline w-100"
                         method="get"
                         action="<?= $this->Url->build() ?>"
                     >

@@ -18,21 +18,48 @@ associationFields = fieldsData.associationFields %} {% set groupedFields =
 fieldsData.groupedFields %} {% set pK = '$' ~ singularVar ~ '->' ~ primaryKey[0]
 %}
 
-<section class="content mt-3">
+<section class="content mt-4">
     <div class="container-fluid">
         <div class="card card-outline card-primary">
-            <div class="card-header" style="margin: 0 auto">
-                <h3 class="card-title">Dados Detalhados</h3>
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-md-6 order-2 order-md-1 mt-4">
+                            <h3 class="card-title">
+                                <?= __('Visualizar {{ singularVar }}') ?>
+                            </h3>
+                        </div>
+                        <div
+                            class="col-12 col-md-6 text-md-right order-1 order-md-2"
+                        >
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-md-end">
+                                    <li class="breadcrumb-item">
+                                        <a
+                                            href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>"
+                                            >Início</a
+                                        >
+                                    </li>
+                                    <li class="breadcrumb-item">
+                                        <a
+                                            href="<?= $this->Url->build(['action' => 'index']) ?>"
+                                            >{{ singularVar }}</a
+                                        >
+                                    </li>
+                                    <li
+                                        class="breadcrumb-item active"
+                                        aria-current="page"
+                                    >
+                                        <?= __('Visualizar') ?>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
             </div>
             <div class="card-body">
-                <div class="row">
-                    <a
-                        href="<?= $this->Url->build(['action' => 'index']) ?>"
-                        class="btn btn-secondary btn-sm button-detail"
-                    >
-                        <?= __('Voltar') ?>
-                    </a>
-                </div>
                 {% if groupedFields['string'] %} {% for field in
                 groupedFields['string'] %} {% if associationFields[field] is
                 defined %} {% set details = associationFields[field] %}
@@ -161,11 +188,36 @@ tableBodyId = otherPluralHumanName ~ 'TableBody' %}
 
 <section class="content">
     <div class="container-fluid">
-        <div class="card card-outline card-primary">
-            <div class="card-header" style="margin: 0 auto">
-                <h3 class="card-title">
-                    <?= __('Relacionado {{ otherPluralHumanName }}') ?>
-                </h3>
+        <div class="card card-outline card-danger">
+            <div class="card-header">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-md-6 order-2 order-md-1 mt-4">
+                            <h3 class="card-title">
+                                <?= __('Relacionado {{ otherPluralHumanName }}') ?>
+                            </h3>
+                        </div>
+                        <div
+                            class="col-12 col-md-6 text-md-right order-1 order-md-2"
+                        >
+                            <div class="card-tools">
+                                <button
+                                    type="button"
+                                    class="btn btn-tool"
+                                    id="icon-dropdown"
+                                    data-card-widget="collapse"
+                                >
+                                    <i
+                                        class="fas fa-minus"
+                                        data-collapsed-icon="fa-plus"
+                                        data-expanded-icon="fa-minus"
+                                    ></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
             </div>
             <?php if (!empty(${{ singularVar }}->{{ details.property }})) : ?>
             <div
@@ -174,11 +226,11 @@ tableBodyId = otherPluralHumanName ~ 'TableBody' %}
             >
                 <div class="col-12 col-md-6 mb-2 mb-md-2 mt-2">
                     <form
-                        class="form-inline w-50"
+                        class="form-inline w-100"
                         method="get"
                         action="<?= $this->Url->build() ?>"
                     >
-                        <div class="input-group w-100">
+                        <div class="input-group">
                             <input
                                 id="{{ searchInputId }}"
                                 class="form-control col-12"

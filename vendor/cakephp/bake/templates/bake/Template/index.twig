@@ -192,6 +192,7 @@ $this->assign('title', 'Titulo'); ?>
                                 #include __DIR__ . '/view.php';
                                 ?>
 
+                                <!-- Modal de Delete -->
                                 <div
                                     class="modal fade"
                                     id="deleteModal-<?= ${{
@@ -285,6 +286,7 @@ $this->assign('title', 'Titulo'); ?>
     </div>
 </div>
 
+<!-- Modal de Detalhes -->
 <div
     class="modal fade"
     id="detailsModal-<?= ${{ singularVar }}->id ?>"
@@ -303,7 +305,8 @@ $this->assign('title', 'Titulo'); ?>
                     class="modal-title"
                     id="detailsModalLabel-<?= ${{ singularVar }}->id ?>"
                 >
-                    <?= h(${{ singularVar }}->name) ?> Detalhes
+                    Visualizar
+                    <?= h(${{ singularVar }}->name) ?>
                 </h5>
                 <button
                     type="button"
@@ -316,16 +319,37 @@ $this->assign('title', 'Titulo'); ?>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <ul class="list-group list-group-flush">
-                        {% for field in fields %}
-                        <li class="list-group-item">
-                            <strong>{{ field | humanize }}:</strong>
-                            <span
-                                ><?= h(${{ singularVar }}->{{ field }}) ?></span
-                            >
-                        </li>
-                        {% endfor %}
-                    </ul>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <ul class="list-group list-group-flush">
+                                {% for field in fields %} {% if loop.index <=
+                                (fields|length // 2) %}
+                                <li class="list-group-item">
+                                    <strong>{{ field | humanize }}:</strong>
+                                    <span
+                                        ><?= h(${{ singularVar }}->{{ field }})
+                                        ?></span
+                                    >
+                                </li>
+                                {% endif %} {% endfor %}
+                            </ul>
+                            <hr />
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <ul class="list-group list-group-flush">
+                                {% for field in fields %} {% if loop.index >
+                                (fields|length // 2) %}
+                                <li class="list-group-item">
+                                    <strong>{{ field | humanize }}:</strong>
+                                    <span
+                                        ><?= h(${{ singularVar }}->{{ field }})
+                                        ?></span
+                                    >
+                                </li>
+                                {% endif %} {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -337,6 +361,14 @@ $this->assign('title', 'Titulo'); ?>
                 >
                     Fechar
                 </button>
+                <a
+                    href="<?= $this->Url->build(['action' => 'view', ${{
+                        singularVar
+                    }}->id]) ?>"
+                    class="btn modalView"
+                >
+                    Ver Detalhes
+                </a>
             </div>
         </div>
     </div>

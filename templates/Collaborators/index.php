@@ -202,6 +202,7 @@ $this->assign('title', 'Titulo'); ?>
                                 #include __DIR__ . '/view.php';
                                 ?>
 
+                                <!-- Modal de Delete -->
                                 <div
                                     class="modal fade"
                                     id="deleteModal-<?= $collaborator->id ?>"
@@ -281,6 +282,7 @@ $this->assign('title', 'Titulo'); ?>
     </div>
 </div>
 
+<!-- Modal de Detalhes -->
 <div
     class="modal fade"
     id="detailsModal-<?= $collaborator->id ?>"
@@ -299,7 +301,8 @@ $this->assign('title', 'Titulo'); ?>
                     class="modal-title"
                     id="detailsModalLabel-<?= $collaborator->id ?>"
                 >
-                    <?= h($collaborator->name) ?> Detalhes
+                    Visualizar
+                    <?= h($collaborator->name) ?>
                 </h5>
                 <button
                     type="button"
@@ -312,62 +315,80 @@ $this->assign('title', 'Titulo'); ?>
             </div>
             <div class="modal-body">
                 <div class="container-fluid">
-                    <ul class="list-group list-group-flush">
-                                                <li class="list-group-item">
-                            <strong>Id:</strong>
-                            <span
-                                ><?= h($collaborator->id) ?></span
-                            >
-                        </li>
-                                                <li class="list-group-item">
-                            <strong>Name:</strong>
-                            <span
-                                ><?= h($collaborator->name) ?></span
-                            >
-                        </li>
-                                                <li class="list-group-item">
-                            <strong>Sexo:</strong>
-                            <span
-                                ><?= h($collaborator->sexo) ?></span
-                            >
-                        </li>
-                                                <li class="list-group-item">
-                            <strong>Date:</strong>
-                            <span
-                                ><?= h($collaborator->date) ?></span
-                            >
-                        </li>
-                                                <li class="list-group-item">
-                            <strong>Color:</strong>
-                            <span
-                                ><?= h($collaborator->color) ?></span
-                            >
-                        </li>
-                                                <li class="list-group-item">
-                            <strong>Active:</strong>
-                            <span
-                                ><?= h($collaborator->active) ?></span
-                            >
-                        </li>
-                                                <li class="list-group-item">
-                            <strong>User Id:</strong>
-                            <span
-                                ><?= h($collaborator->user_id) ?></span
-                            >
-                        </li>
-                                                <li class="list-group-item">
-                            <strong>Created:</strong>
-                            <span
-                                ><?= h($collaborator->created) ?></span
-                            >
-                        </li>
-                                                <li class="list-group-item">
-                            <strong>Modified:</strong>
-                            <span
-                                ><?= h($collaborator->modified) ?></span
-                            >
-                        </li>
-                                            </ul>
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <ul class="list-group list-group-flush">
+                                                                 <li class="list-group-item">
+                                    <strong>Id:</strong>
+                                    <span
+                                        ><?= h($collaborator->id)
+                                        ?></span
+                                    >
+                                </li>
+                                                                  <li class="list-group-item">
+                                    <strong>Name:</strong>
+                                    <span
+                                        ><?= h($collaborator->name)
+                                        ?></span
+                                    >
+                                </li>
+                                                                  <li class="list-group-item">
+                                    <strong>Sexo:</strong>
+                                    <span
+                                        ><?= h($collaborator->sexo)
+                                        ?></span
+                                    >
+                                </li>
+                                                                  <li class="list-group-item">
+                                    <strong>Date:</strong>
+                                    <span
+                                        ><?= h($collaborator->date)
+                                        ?></span
+                                    >
+                                </li>
+                                                                       </ul>
+                            <hr />
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <ul class="list-group list-group-flush">
+                                                                         <li class="list-group-item">
+                                    <strong>Color:</strong>
+                                    <span
+                                        ><?= h($collaborator->color)
+                                        ?></span
+                                    >
+                                </li>
+                                                                  <li class="list-group-item">
+                                    <strong>Active:</strong>
+                                    <span
+                                        ><?= h($collaborator->active)
+                                        ?></span
+                                    >
+                                </li>
+                                                                  <li class="list-group-item">
+                                    <strong>User Id:</strong>
+                                    <span
+                                        ><?= h($collaborator->user_id)
+                                        ?></span
+                                    >
+                                </li>
+                                                                  <li class="list-group-item">
+                                    <strong>Created:</strong>
+                                    <span
+                                        ><?= h($collaborator->created)
+                                        ?></span
+                                    >
+                                </li>
+                                                                  <li class="list-group-item">
+                                    <strong>Modified:</strong>
+                                    <span
+                                        ><?= h($collaborator->modified)
+                                        ?></span
+                                    >
+                                </li>
+                                                             </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">
@@ -379,6 +400,12 @@ $this->assign('title', 'Titulo'); ?>
                 >
                     Fechar
                 </button>
+                <a
+                    href="<?= $this->Url->build(['action' => 'view', $collaborator->id]) ?>"
+                    class="btn modalView"
+                >
+                    Ver Detalhes
+                </a>
             </div>
         </div>
     </div>
