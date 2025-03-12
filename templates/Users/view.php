@@ -11,14 +11,14 @@
                 <div class="container-fluid">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>Id:</strong> <span><?= h($user->id) ?></span></li>
-                        <li class="list-group-item"><strong>Nome:</strong> <span><?= h($user->name) ?></span></li>
+                        <li class="list-group-item"><strong>Name:</strong> <span><?= h($user->name) ?></span></li>
                         <li class="list-group-item"><strong>Email:</strong> <span><?= h($user->email) ?></span></li>
-                        <li class="list-group-item"><strong>Perfil:</strong> <span><?= $user->role_id ? h($user->role->name) : 'N/A' ?></span></li>
-                        <li class="list-group-item"><strong>Último Login:</strong> <span><?= $user->last_login ? h($user->last_login->i18nFormat('dd/MM/yyyy HH:mm:ss')) : 'N/A' ?></span></li>
-                        <li class="list-group-item"><strong>Contagem de Logins:</strong> <span><?= h($user->login_count) ?></span></li>
-                        <li class="list-group-item"><strong>Ativo:</strong> <span><?= h($user->active ? 'Sim' : 'Não') ?></span></li>
-                        <li class="list-group-item"><strong>Criado:</strong> <span><?= h($user->created->i18nFormat('dd/MM/yyyy HH:mm:ss')) ?></span></li>
-                        <li class="list-group-item"><strong>Modificado:</strong> <span><?= h($user->modified->i18nFormat('dd/MM/yyyy HH:mm:ss')) ?></span></li>
+                        <li class="list-group-item"><strong>Last Login:</strong> <span><?= h($user->last_login) ?></span></li>
+                        <li class="list-group-item"><strong>Login Count:</strong> <span><?= h($user->login_count) ?></span></li>
+                        <li class="list-group-item"><strong>Active:</strong> <span><?= h($user->active) ?></span></li>
+                        <li class="list-group-item"><strong>Role Id:</strong> <span><?= h($user->role_id) ?></span></li>
+                        <li class="list-group-item"><strong>Created:</strong> <span><?= h($user->created) ?></span></li>
+                        <li class="list-group-item"><strong>Modified:</strong> <span><?= h($user->modified) ?></span></li>
                     </ul>
                 </div>
             </div>

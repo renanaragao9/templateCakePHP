@@ -22,7 +22,7 @@ public function edit(?int $id = null): ?Response
             $this->log('O {{ singularHumanName|lower }} foi editado com sucesso.', 'info');
             return $this->redirect(['action' => 'index']);
         } else {
-            $this->Flash->error(__('O {{ singularHumanName|lower }} não pôde ser editado. Por favor, tente novamente.'));
+            $this->Flash->error(__('O {{ singularHumanName|lower }} não pode ser editado. Por favor, tente novamente.'));
             return $this->redirect(['action' => 'index']);
         }
     }

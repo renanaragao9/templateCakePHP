@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <?= $this->Form->create(null, ['url' => ['action' => 'add'], 'type' => 'file']) ?>
+                <?= $this->Form->create(null, ['url' => ['action' => 'add']]) ?>
                  <div class="row">
         {% for field in fields %}
             {%- if field not in primaryKey %}
@@ -39,8 +39,8 @@
     </div>
             </div>
             <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-modalCancel" id="cancelButton" data-dismiss="modal">Cancelar</button>
-                <?= $this->Form->button(__('Salvar'), ['class' => 'btn btn-modalAdd', 'id' => 'saveButton', 'escape' => false]) ?>
+                <button type="button" class="btn modalCancel" id="cancelButton" data-dismiss="modal">Cancelar</button>
+                <?= $this->Form->button(__('Salvar'), ['class' => 'btn modalAdd', 'id' => 'saveButton', 'escape' => false]) ?>
             </div>
             <?= $this->Form->end() ?>
         </div>

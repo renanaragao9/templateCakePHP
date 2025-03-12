@@ -18,7 +18,7 @@ public function add(): ?Response
             return $this->redirect(['action' => 'index']);
         }
         else {
-            $this->Flash->error(__('O {{ singularHumanName|lower }} não pôde ser salvo. Por favor, tente novamente.'));            
+            $this->Flash->error(__('O {{ singularHumanName|lower }} não pode ser salvo. Por favor, tente novamente.'));            
             return $this->redirect(['action' => 'index']);
         }
     }

@@ -80,26 +80,4 @@ class UsersControllerTest extends TestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
-
-    /**
-     * Test pdf method
-     *
-     * @return void
-     * @uses \App\Controller\UsersController::pdf()
-     */
-    public function testPdf(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test csv method
-     *
-     * @return void
-     * @uses \App\Controller\UsersController::csv()
-     */
-    public function testCsv(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
 }

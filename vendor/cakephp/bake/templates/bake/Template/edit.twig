@@ -8,7 +8,7 @@
 </button>
 </div>
 <div class="modal-body">
-    <?= $this->Form->create(${{ singularVar }}, ['url' => ['action' => 'edit', ${{ singularVar }}->id], 'type' => 'file', 'id' => 'editForm-' . ${{ singularVar }}->id]) ?>
+    <?= $this->Form->create(${{ singularVar }}, ['url' => ['action' => 'edit', ${{ singularVar }}->id], 'id' => 'editForm-' . ${{ singularVar }}->id]) ?>
     <div class="row">
         {% for field in fields %}
             {%- if field not in primaryKey %}
@@ -41,12 +41,10 @@
  <div class="modal-footer justify-content-between">
                 <button type="button" class="btn modalCancel" id="cancelButton" data-dismiss="modal">Cancelar</button>
                 <?= $this->Form->button(
-                    __('Editar') . ' <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;" id="spinner-' . $user->id . '"></span>',
+                    __('Editar'),
                     [
                         'class' => 'btn modalEdit',
                         'id' => 'editSaveButton' . ${{ singularVar }}->id,
-                        'escapeTitle' => false,
-                        'onclick' => 'document.getElementById("spinner-' . $user->id . '").style.display = "inline-block"; this.innerHTML = "Editando...";'
                     ]
                 ) ?>
             </div>

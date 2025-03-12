@@ -51,6 +51,9 @@ class UsersTable extends Table
             'foreignKey' => 'role_id',
             'joinType' => 'INNER',
         ]);
+        $this->hasMany('Collaborators', [
+            'foreignKey' => 'user_id',
+        ]);
     }
 
     /**

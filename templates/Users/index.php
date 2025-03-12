@@ -3,7 +3,7 @@
 use App\Utility\AccessChecker;
 
 $loggedUserId = $this->request->getSession()->read('Auth.User.id');
-$this->assign('title', 'Usuários');
+$this->assign('title', 'Titulo');
 ?>
 
 <div class="content-header">
@@ -13,7 +13,7 @@ $this->assign('title', 'Usuários');
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>">Início</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><?= __('Usuários') ?></li>
+                        <li class="breadcrumb-item active" aria-current="page"><?= __('users') ?></li>
                     </ol>
                     <hr>
                 </nav>
@@ -26,7 +26,7 @@ $this->assign('title', 'Usuários');
     <div class="container-fluid">
         <div class="row">
             <div class="col-s12">
-                <h1 class="page-title m-0"><?= __('Usuários') ?></h1>
+                <h1 class="page-title m-0"><?= __('users') ?></h1>
             </div>
         </div>
     </div>
@@ -46,9 +46,9 @@ $this->assign('title', 'Usuários');
                             </form>
                         </div>
                         <div class="col-12 col-md-6 text-md-right">
-                            <?php if (AccessChecker::hasPermission($loggedUserId, 'Users/add')): ?>
+                            <?php if (AccessChecker::hasPermission($loggedUserId, 'users/add')): ?>
                                 <button type="button" class="btn btn-add btn-sm mb-2 mb-md-0 col-12 col-md-auto" data-toggle="modal" data-target="#addNewItemModal">
-                                    <i class="fas fa-plus-circle"></i> Adicionar Usuário
+                                    <i class="fas fa-plus-circle"></i> Adicionar
                                 </button>
                             <?php endif; ?>
                             <a href="<?= $this->Url->build(['action' => 'index']) ?>" class="btn btn-refresh btn-sm mb-0 col-12 col-md-auto text-dark dark-mode-text-white">
@@ -61,61 +61,67 @@ $this->assign('title', 'Usuários');
                         <table class="table table-hover text-nowrap">
                             <thead>
                                 <tr>
-                                    <th><?= $this->Paginator->sort('id', 'ID') ?></th>
-                                    <th><?= $this->Paginator->sort('name', 'Nome') ?></th>
-                                    <th><?= $this->Paginator->sort('email', 'Email') ?></th>
-                                    <th><?= $this->Paginator->sort('role_id', 'Perfil') ?></th>
-                                    <th><?= $this->Paginator->sort('last_login', 'Último Login') ?></th>
-                                    <th><?= $this->Paginator->sort('active', 'Ativo') ?></th>
+                                    <th><?= $this->Paginator->sort('id') ?></th>
+                                    <th><?= $this->Paginator->sort('name') ?></th>
+                                    <th><?= $this->Paginator->sort('email') ?></th>
+                                    <th><?= $this->Paginator->sort('last_login') ?></th>
+                                    <th><?= $this->Paginator->sort('login_count') ?></th>
+                                    <th><?= $this->Paginator->sort('active') ?></th>
+                                    <th><?= $this->Paginator->sort('role_id') ?></th>
+                                    <th><?= $this->Paginator->sort('created') ?></th>
+                                    <th><?= $this->Paginator->sort('modified') ?></th>
                                     <th class="actions"><?= __('Ações') ?></th>
                                 </tr>
                             </thead>
                             <tbody id="TableBody">
                                 <?php foreach ($users as $user): ?>
-                                    <tr>
-                                        <td><?= $this->Number->format($user->id) ?></td>
-                                        <td><?= h($user->name) ?></td>
-                                        <td><?= h($user->email) ?></td>
-                                        <td><?= $user->role_id ? h($user->role->name) : 'N/A' ?></td>
-                                        <td><?= $user->last_login ? $user->last_login->i18nFormat('dd/MM/yyyy HH:mm:ss') : 'N/A' ?></td>
-                                        <td><?= h($user->active ? 'Sim' : 'Não') ?></td>
-                                        <td class="actions">
-                                            <a href="#" class="btn btn-view btn-sm" data-toggle="modal" data-target="#detailsModal-<?= $user->id ?>"><i class="fas fa-eye"></i></a>
-                                            <?php if (AccessChecker::hasPermission($loggedUserId, 'Users/edit')): ?>
-                                                <a href="#" class="btn btn-edit btn-sm" data-toggle="modal" data-target="#editModal-<?= $user->id ?>"><i class="fas fa-edit"></i></a>
-                                            <?php endif; ?>
-                                            <?php if (AccessChecker::hasPermission($loggedUserId, 'Users/delete')): ?>
-                                                <a href="#" class="btn btn-delete btn-sm" data-toggle="modal" data-target="#deleteModal-<?= $user->id ?>"><i class="fas fa-trash"></i></a>
-                                            <?php endif; ?>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td><?= $this->Number->format($user->id) ?></td>
+                                    <td><?= h($user->name) ?></td>
+                                    <td><?= h($user->email) ?></td>
+                                    <td><?= h($user->last_login) ?></td>
+                                    <td><?= $this->Number->format($user->login_count) ?></td>
+                                    <td><?= h($user->active) ?></td>
+                                    <td><?= $user->role ? h($user->role->name) : '-' ?></td>
+                                    <td><?= h($user->created) ?></td>
+                                    <td><?= h($user->modified) ?></td>
+                                    <td class="actions">
+                                        <a href="#" class="btn btn-view btn-sm" data-toggle="modal" data-target="#detailsModal-<?= $user->id ?>"><i class="fas fa-eye"></i></a>
+                                        <?php if (AccessChecker::hasPermission($loggedUserId, 'users/edit')): ?>
+                                            <a href="#" class="btn btn-edit btn-sm" data-toggle="modal" data-target="#editModal-<?= $user->id ?>"><i class="fas fa-edit"></i></a>
+                                        <?php endif; ?>
+                                        <?php if (AccessChecker::hasPermission($loggedUserId, 'users/delete')): ?>
+                                            <a href="#" class="btn btn-delete btn-sm" data-toggle="modal" data-target="#deleteModal-<?= $user->id ?>"><i class="fas fa-trash"></i></a>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
 
-                                    <!-- Incluir os modais de edição, visualização e exclusão -->
-                                    <?php
-                                    include __DIR__ . '/add.php';
-                                    include __DIR__ . '/edit.php';
-                                    include __DIR__ . '/view.php';
-                                    ?>
+                                <!-- Incluir os modais de edição, visualização e exclusão -->
+                                <?php
+                                include __DIR__ . '/add.php';
+                                include __DIR__ . '/edit.php';
+                                include __DIR__ . '/view.php';
+                                ?>
 
-                                    <div class="modal fade" id="deleteModal-<?= $user->id ?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-<?= $user->id ?>" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel-<?= $user->id ?>"><?= __('Confirmar Exclusão') ?></h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p><?= __('Você tem certeza que deseja excluir # {0}?', $user->name) ?></p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn modalCancel" data-dismiss="modal">Cancelar</button>
-                                                    <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $user->id], ['class' => 'btn modalDelete', 'id' => 'deleteButton' . $user->id, 'data-id' => $user->id]) ?>
-                                                </div>
+                                <div class="modal fade" id="deleteModal-<?= $user->id ?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-<?= $user->id ?>" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel-<?= $user->id ?>"><?= __('Confirmar Exclusão') ?></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p><?= __('Você tem certeza que deseja excluir # {0}?', $user->name) ?></p>
+                                            </div>
+                                            <div class="modal-footer justify-content-between">
+                                                <button type="button" class="btn modalCancel" data-dismiss="modal">Cancelar</button>
+                                                <?= $this->Form->postLink(__('Excluir'), ['action' => 'delete', $user->id], ['class' => 'btn modalDelete', 'id' => 'deleteButton-' . $user->id, 'data-id' => $user->id]) ?>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -138,7 +144,7 @@ $this->assign('title', 'Usuários');
 <script>
     function searchTableBody(query) {
         $.ajax({
-            url: '<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>',
+            url: '<?= $this->Url->build(['action' => 'index']) ?>',
             method: 'GET',
             data: {
                 search: query
@@ -146,7 +152,7 @@ $this->assign('title', 'Usuários');
             success: function(response) {
                 var tableBody = $(response).find('#TableBody').html();
                 if (tableBody.trim() === '') {
-                    $('#TableBody').html('<tr><td colspan="9">Não foi possível encontrar resultados para "' + query + '".</td></tr>');
+                    $('#TableBody').html('<tr><td colspan="9">Não foi possível encontrar resultados para "' + query + '"</td></tr>');
                 } else {
                     $('#TableBody').html(tableBody);
                 }
