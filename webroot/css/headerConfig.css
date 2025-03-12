@@ -13,6 +13,9 @@ body {
     --color-text-orange: #ff6f3c;
     --color-hover-orange: #ffa07a;
 
+    --color-bg-orange-3e: #cb5616;
+    --color-text-orange-3e: #cb5616;
+
     --color-bg-teal: #008080;
     --color-bg-teal-light: #20b2aa;
     --color-text-teal: #008080;
@@ -42,6 +45,8 @@ body {
     );
 }
 
+/* Estilização de navegação */
+
 .nav-link.active {
     background-color: rgba(0, 123, 255, 0.1) !important;
     color: #fff !important;
@@ -53,7 +58,6 @@ button {
     font-family: "Outfit", sans-serif;
 }
 
-/* Estilização de navegação */
 #nav-icon,
 #nav-menu,
 #dark-mode-toggle {
@@ -115,6 +119,25 @@ button {
     justify-content: center;
 }
 
+/* Estilização de rapidas */
+
+/* Estilização de tabelas */
+.table {
+    border: 1px solid #dee2e6;
+}
+
+.table tr th a {
+    color: var(--color-bg-gray-dark);
+    font-size: 15px;
+    font-family: "Outfit", sans-serif !important;
+}
+
+/* Estilização de tooltip */
+.text-danger[title] {
+    cursor: pointer;
+    border-bottom: 1px dotted;
+}
+
 /* Estilização de listas */
 .list-group-item {
     display: flex;
@@ -159,12 +182,11 @@ hr {
 }
 
 /* Estilização de botões */
-.btn {
-    font-family: "Outfit", sans-serif;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+
+/* Icones */
+.btn-add:hover {
+    color: var(--color-bg-gray-dark);
+    transition: color 0.2s ease;
 }
 
 .btn-view {
@@ -174,6 +196,7 @@ hr {
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
+
 .btn-view:hover {
     background-color: var(--color-hover-teal);
 }
@@ -185,6 +208,7 @@ hr {
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
+
 .btn-edit:hover {
     background-color: var(--color-hover-orange);
 }
@@ -196,62 +220,42 @@ hr {
     border-radius: 4px;
     transition: background-color 0.3s ease;
 }
+
 .btn-delete:hover {
     background-color: var(--color-hover-error);
 }
 
+/* Modais e index */
+.btn {
+    font-family: "Outfit", sans-serif;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
 .btn-add {
-    background-color: var(--color-bg-teal);
+    background-color: var(--color-bg-orange-3e);
     color: var(--color-text-white);
     font-weight: bold;
     padding: 10px 16px;
-    border-radius: 20px;
+    border-radius: 10px;
     transition: background-color 0.5s ease;
 }
 
 .btn-add:hover {
-    color: var(--color-bg-gray-dark);
-}
-
-.btn-filter {
-    background-color: var(--color-bg-success);
+    background-color: var(--color-bg-orange-3e);
     color: var(--color-text-white);
-    font-weight: bold;
-    padding: 10px 16px;
-    border-radius: 20px;
-    transition: background-color 0.5s ease;
-}
-.btn-filter:hover {
-    color: var(--color-bg-gray-dark);
 }
 
-/* Espaçamento entre botões dentro de células */
-.table-buttons {
-    display: flex;
-    gap: 8px;
-}
-
-/* Estilização de Modais */
-.modalCancel {
-    background-color: var(--color-bg-gray-dark);
-    color: var(--color-text-white);
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.modalCancel:hover {
-    background-color: #5a6268;
-}
-
+/* Estilização de Modais (Botoes) */
 .modalAdd,
 .modalEdit,
 .modalView {
-    background-color: var(--color-bg-teal);
+    background-color: var(--color-bg-orange-3e);
     color: var(--color-text-white);
     padding: 8px 16px;
-    border-radius: 4px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -260,8 +264,23 @@ hr {
 .modalAdd:hover,
 .modalEdit:hover,
 .modalView:hover {
-    color: var(--color-bg-gray-dark);
-    background-color: var(--color-hover-teal);
+    background-color: var(--color-bg-orange-3e);
+    color: var(--color-text-white);
+}
+
+.modalCancel {
+    background-color: var(--color-bg-gray-dark);
+    color: var(--color-text-white);
+    padding: 8px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.modalCancel:hover {
+    background-color: var(--color-bg-gray-dark);
+    color: var(--color-text-white);
 }
 
 .modalDelete {
@@ -277,69 +296,11 @@ hr {
     background-color: var(--color-hover-error);
 }
 
-.btnConditions {
-    background-color: rgba(51, 51, 51, 0.5);
-    color: var(--color-text-white);
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.btnConditions:hover {
-    background-color: rgba(51, 51, 51, 0.7);
-}
-
-.btnTrash {
-    background-color: var(--color-bg-error);
-    color: var(--color-text-white);
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.btnTrash:hover {
-    background-color: var(--color-hover-error);
-}
-
-.btnPDF {
-    background-color: var(--color-bg-error);
-    color: var(--color-text-white);
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.btnPDF:hover {
-    color: var(--color-bg-gray-dark);
-}
-
-.btnCSV {
-    background-color: var(--color-bg-success);
-    color: var(--color-text-white);
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.btnCSV:hover {
-    color: var(--color-bg-gray-dark);
-}
-
-.btnFilter {
-    background-color: var(--color-bg-teal);
-    color: var(--color-text-white);
-    padding: 8px 16px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.btnFilter:hover {
-    color: var(--color-bg-gray-dark);
+/* Outline modal */
+.card-primary.card-outline {
+    border-top: 3px solid var(--color-text-orange-3e);
+    border-bottom: 1px solid var(--color-text-orange-3e);
+    border-radius: 10px;
 }
 
 /* Espaçamento entre os botões */
@@ -347,6 +308,13 @@ hr {
     display: flex;
     gap: 10px;
     justify-content: flex-end;
+}
+
+/* Espaçamento entre botões dentro de células */
+
+.table-buttons {
+    display: flex;
+    gap: 8px;
 }
 
 /* Estilização de inputs */
@@ -383,15 +351,9 @@ hr {
     outline: none;
 }
 
-/* Estilização de tabelas */
-.table {
-    border: 1px solid #dee2e6;
-}
-
-/* Estilização de tooltip */
-.text-danger[title] {
-    cursor: pointer;
-    border-bottom: 1px dotted;
+/* Estilização de breadcrumb */
+.bread-crumb-home {
+    color: var(--color-text-orange-3e) !important;
 }
 
 /* Estilização de loader */

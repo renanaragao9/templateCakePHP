@@ -29,6 +29,7 @@ $this->assign('title', 'Titulo'); ?>
                                         >
                                             <li class="breadcrumb-item">
                                                 <a
+                                                    class="bread-crumb-home"
                                                     href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>"
                                                     >Início</a
                                                 >
@@ -76,7 +77,7 @@ $this->assign('title', 'Titulo'); ?>
                                 data-toggle="modal"
                                 data-target="#addNewItemModal"
                             >
-                                <i class="fas fa-plus-circle"></i> Adicionar
+                                Adicionar
                             </button>
                             <?php endif; ?>
                             <a
