@@ -1,0 +1,268 @@
+<?php
+
+use App\Utility\AccessChecker;
+
+$loggedUserId = $this->request->getSession()->read('Auth.User.id');
+$this->assign('title', 'Titulo'); ?>     
+<section class="content mt-3">
+    <div class="container-fluid">
+        <div class="card card-outline card-primary">
+            <div class="card-header" style="margin: 0 auto">
+                <h3 class="card-title">Dados Detalhados</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <a
+                        href="<?= $this->Url->build(['action' => 'index']) ?>"
+                        class="btn btn-secondary btn-sm button-detail"
+                    >
+                        <?= __('Voltar') ?>
+                    </a>
+                </div>
+                                  <div class="row item-row">
+                    <label
+                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
+                    >
+                        <?= __('Name'); ?>
+                    </label>
+                    <div
+                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
+                    >
+                        <?= h($collaborator->name) ?>
+                    </div>
+                </div>
+                                  <div class="row item-row">
+                    <label
+                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
+                    >
+                        <?= __('Sexo'); ?>
+                    </label>
+                    <div
+                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
+                    >
+                        <?= h($collaborator->sexo) ?>
+                    </div>
+                </div>
+                                  <div class="row item-row">
+                    <label
+                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
+                    >
+                        <?= __('Color'); ?>
+                    </label>
+                    <div
+                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
+                    >
+                        <?= h($collaborator->color) ?>
+                    </div>
+                </div>
+                                   <div class="row item-row">
+                    <label
+                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
+                    >
+                        <?= __('User'); ?>
+                    </label>
+                    <div
+                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
+                    >
+                        <?= $collaborator->has('user') ?
+                        $this->Html->link($collaborator->user->name, ['controller' => 'Users', 'action' => 'view', $collaborator->user->id]) : '' ?>
+                    </div>
+                </div>
+                                     <div class="row item-row">
+                    <label
+                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
+                    >
+                        <?= __('Id'); ?>
+                    </label>
+                    <div
+                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
+                    >
+                                                 <?= $this->Number->format($collaborator->id) ?>                     </div>
+                </div>
+                                   <div class="row item-row">
+                    <label
+                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
+                    >
+                        <?= __('Date'); ?>
+                    </label>
+                    <div
+                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
+                    >
+                        <?= h($collaborator->date) ?>
+                    </div>
+                </div>
+                                <div class="row item-row">
+                    <label
+                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
+                    >
+                        <?= __('Created'); ?>
+                    </label>
+                    <div
+                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
+                    >
+                        <?= h($collaborator->created) ?>
+                    </div>
+                </div>
+                                <div class="row item-row">
+                    <label
+                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
+                    >
+                        <?= __('Modified'); ?>
+                    </label>
+                    <div
+                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
+                    >
+                        <?= h($collaborator->modified) ?>
+                    </div>
+                </div>
+                                   <div class="row item-row">
+                    <label
+                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
+                    >
+                        <?= __('Active'); ?>
+                    </label>
+                    <div
+                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
+                    >
+                        <?= $collaborator->active ? __('Sim') :
+                        __('Não'); ?>
+                    </div>
+                </div>
+                             </div>
+        </div>
+    </div>
+</section>
+       
+<section class="content">
+    <div class="container-fluid">
+        <div class="card card-outline card-primary">
+            <div class="card-header" style="margin: 0 auto">
+                <h3 class="card-title">
+                    <?= __('Relacionado Events') ?>
+                </h3>
+            </div>
+            <?php if (!empty($collaborator->events)) : ?>
+            <div
+                class="card-body table-responsive p-0"
+                style="max-height: 400px; overflow-y: auto"
+            >
+                <div class="col-12 col-md-6 mb-2 mb-md-2 mt-2">
+                    <form
+                        class="form-inline w-50"
+                        method="get"
+                        action="<?= $this->Url->build() ?>"
+                    >
+                        <div class="input-group w-100">
+                            <input
+                                id="EventsSearchInput"
+                                class="form-control col-12"
+                                type="search"
+                                placeholder="Pesquisar..."
+                                aria-label="Pesquisar"
+                                name="search"
+                                value="<?= $this->request->getQuery('search') ?>"
+                            />
+                        </div>
+                    </form>
+                </div>
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                                                        <th><?= __('Id') ?></th>
+                                                        <th><?= __('Name') ?></th>
+                                                        <th><?= __('Event Date') ?></th>
+                                                        <th><?= __('Event Period') ?></th>
+                                                        <th><?= __('Qtd People') ?></th>
+                                                        <th><?= __('Collaborator Id') ?></th>
+                                                        <th><?= __('Space Id') ?></th>
+                                                        <th><?= __('Responsible Name') ?></th>
+                                                        <th><?= __('Created') ?></th>
+                                                        <th><?= __('Modified') ?></th>
+                                                        <th class="actions"><?= __('Ações') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody id="EventsTableBody">
+                        <?php foreach ($collaborator->events
+                        as $events) : ?>
+                        <tr>
+                                                        <td>
+                                <?= h($events->id) ?>
+                            </td>
+                                                        <td>
+                                <?= h($events->name) ?>
+                            </td>
+                                                        <td>
+                                <?= h($events->event_date) ?>
+                            </td>
+                                                        <td>
+                                <?= h($events->event_period) ?>
+                            </td>
+                                                        <td>
+                                <?= h($events->qtd_people) ?>
+                            </td>
+                                                        <td>
+                                <?= h($events->collaborator_id) ?>
+                            </td>
+                                                        <td>
+                                <?= h($events->space_id) ?>
+                            </td>
+                                                        <td>
+                                <?= h($events->responsible_name) ?>
+                            </td>
+                                                        <td>
+                                <?= h($events->created) ?>
+                            </td>
+                                                        <td>
+                                <?= h($events->modified) ?>
+                            </td>
+                                                         <td class="actions">
+                                <?= $this->Html->link('<i class="fas fa-eye"></i
+                                >', ['controller' => 'Events', 'action' => 'view', $collaborator->id], [ 'class' => 'btn btn-view btn-sm',
+                                'escape' => false ]) ?>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <div
+                    id="EventsNoResultsMessage"
+                    style="display: none; text-align: center; padding: 10px"
+                >
+                    <?= __('Nenhum resultado encontrado.') ?>
+                </div>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+    <script>
+        document
+            .getElementById("EventsSearchInput")
+            .addEventListener("keyup", function () {
+                var input, filter, table, tr, td, i, j, txtValue, found;
+                input = document.getElementById("EventsSearchInput");
+                filter = input.value.toUpperCase();
+                table = document.querySelector("table");
+                tr = table.getElementsByTagName("tr");
+                found = false;
+
+                for (i = 1; i < tr.length; i++) {
+                    tr[i].style.display = "none";
+                    td = tr[i].getElementsByTagName("td");
+                    for (j = 0; j < td.length; j++) {
+                        if (td[j]) {
+                            txtValue = td[j].textContent || td[j].innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                tr[i].style.display = "";
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                document.getElementById(
+                    "EventsNoResultsMessage"
+                ).style.display = found ? "none" : "block";
+            });
+    </script>
+</section>

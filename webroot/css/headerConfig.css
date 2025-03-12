@@ -364,6 +364,19 @@ hr {
     box-shadow: none !important;
 }
 
+.item-row {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.item-row .control-label {
+    margin-top: 10px;
+}
+
+.item-row:hover {
+    background-color: #f0f0f0;
+}
+
 .form-control:focus {
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
