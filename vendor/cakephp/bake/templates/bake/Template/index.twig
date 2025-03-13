@@ -31,7 +31,10 @@ $this->assign('title', 'Titulo'); ?>
                                                 <a
                                                     class="bread-crumb-home"
                                                     href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>"
-                                                    >Início</a
+                                                    ><i
+                                                        class="fa-regular fa-house"
+                                                    ></i>
+                                                    Início</a
                                                 >
                                             </li>
                                             <li
@@ -85,7 +88,10 @@ $this->assign('title', 'Titulo'); ?>
                                 class="btn btn-refresh btn-sm mb-0 col-12 col-md-auto text-dark dark-mode-text-white"
                                 id="refreshButton"
                             >
-                                <i class="fas fa-sync-alt" id="refreshIcon"></i>
+                                <i
+                                    class="fa-light fa-arrows-rotate"
+                                    id="refreshIcon"
+                                ></i>
                                 Atualizar
                                 <span
                                     class="spinner-border spinner-border-sm"

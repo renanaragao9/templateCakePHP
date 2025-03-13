@@ -615,3 +615,255 @@ Cake\Http\Server->run() /var/www/html/pessoais/template/templateCake/webroot/ind
 2025-03-13 09:25:50 info: O user foi editado com sucesso.
 2025-03-13 09:27:05 info: O user foi editado com sucesso.
 2025-03-13 09:27:08 info: O role foi deletado com sucesso.
+2025-03-13 09:47:11 info: O user foi editado com sucesso.
+2025-03-13 10:41:05 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line: 13
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/AuthController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /login
+Client IP: 127.0.0.1
+Trace:
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line 13
+App\Controller\AuthController->initialize() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/Controller.php, line 242
+Cake\Controller\Controller->__construct() [internal], line ??
+ReflectionClass->newInstance() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/ControllerFactory.php, line 88
+Cake\Controller\ControllerFactory->create() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/BaseApplication.php, line 320
+Cake\Http\BaseApplication->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 86
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 67
+Cake\Http\Runner->run() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Server.php, line 99
+Cake\Http\Server->run() /var/www/html/pessoais/template/templateCake/webroot/index.php, line 40
+[main]
+
+2025-03-13 10:41:07 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line: 13
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/AuthController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /login
+Referer URL: http://localhost:8765/login
+Client IP: 127.0.0.1
+Trace:
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line 13
+App\Controller\AuthController->initialize() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/Controller.php, line 242
+Cake\Controller\Controller->__construct() [internal], line ??
+ReflectionClass->newInstance() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/ControllerFactory.php, line 88
+Cake\Controller\ControllerFactory->create() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/BaseApplication.php, line 320
+Cake\Http\BaseApplication->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 86
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/BodyParserMiddleware.php, line 162
+Cake\Http\Middleware\BodyParserMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 67
+Cake\Http\Runner->run() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Server.php, line 99
+Cake\Http\Server->run() /var/www/html/pessoais/template/templateCake/webroot/index.php, line 40
+[main]
+
+2025-03-13 10:47:16 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line: 13
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/AuthController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /login?redirect=%2Fusers
+Client IP: 127.0.0.1
+Trace:
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line 13
+App\Controller\AuthController->initialize() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/Controller.php, line 242
+Cake\Controller\Controller->__construct() [internal], line ??
+ReflectionClass->newInstance() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/ControllerFactory.php, line 88
+Cake\Controller\ControllerFactory->create() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/BaseApplication.php, line 320
+Cake\Http\BaseApplication->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 86
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/CsrfProtectionMiddleware.php, line 166
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 67
+Cake\Http\Runner->run() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Server.php, line 99
+Cake\Http\Server->run() /var/www/html/pessoais/template/templateCake/webroot/index.php, line 40
+[main]
+
+2025-03-13 11:53:40 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line: 13
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/AuthController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /login?redirect=%2Fusers
+Client IP: 127.0.0.1
+Trace:
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line 13
+App\Controller\AuthController->initialize() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/Controller.php, line 242
+Cake\Controller\Controller->__construct() [internal], line ??
+ReflectionClass->newInstance() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/ControllerFactory.php, line 88
+Cake\Controller\ControllerFactory->create() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/BaseApplication.php, line 320
+Cake\Http\BaseApplication->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 86
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/CsrfProtectionMiddleware.php, line 166
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 67
+Cake\Http\Runner->run() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Server.php, line 99
+Cake\Http\Server->run() /var/www/html/pessoais/template/templateCake/webroot/index.php, line 40
+[main]
+
+2025-03-13 13:24:13 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line: 13
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/AuthController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /login?redirect=%2Fcollaborators
+Referer URL: http://localhost:8765/collaborators
+Client IP: 127.0.0.1
+Trace:
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line 13
+App\Controller\AuthController->initialize() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/Controller.php, line 242
+Cake\Controller\Controller->__construct() [internal], line ??
+ReflectionClass->newInstance() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/ControllerFactory.php, line 88
+Cake\Controller\ControllerFactory->create() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/BaseApplication.php, line 320
+Cake\Http\BaseApplication->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 86
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 67
+Cake\Http\Runner->run() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Server.php, line 99
+Cake\Http\Server->run() /var/www/html/pessoais/template/templateCake/webroot/index.php, line 40
+[main]
+
+2025-03-13 13:24:14 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line: 13
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/AuthController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /login?redirect=%2Fcollaborators
+Referer URL: http://localhost:8765/login?redirect=%2Fcollaborators
+Client IP: 127.0.0.1
+Trace:
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line 13
+App\Controller\AuthController->initialize() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/Controller.php, line 242
+Cake\Controller\Controller->__construct() [internal], line ??
+ReflectionClass->newInstance() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/ControllerFactory.php, line 88
+Cake\Controller\ControllerFactory->create() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/BaseApplication.php, line 320
+Cake\Http\BaseApplication->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 86
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/CsrfProtectionMiddleware.php, line 176
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/BodyParserMiddleware.php, line 162
+Cake\Http\Middleware\BodyParserMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 67
+Cake\Http\Runner->run() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Server.php, line 99
+Cake\Http\Server->run() /var/www/html/pessoais/template/templateCake/webroot/index.php, line 40
+[main]
+
+2025-03-13 13:37:34 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line: 13
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/AuthController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /login?redirect=%2Fcollaborators
+Client IP: 127.0.0.1
+Trace:
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line 13
+App\Controller\AuthController->initialize() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/Controller.php, line 242
+Cake\Controller\Controller->__construct() [internal], line ??
+ReflectionClass->newInstance() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/ControllerFactory.php, line 88
+Cake\Controller\ControllerFactory->create() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/BaseApplication.php, line 320
+Cake\Http\BaseApplication->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 86
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/CsrfProtectionMiddleware.php, line 166
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 67
+Cake\Http\Runner->run() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Server.php, line 99
+Cake\Http\Server->run() /var/www/html/pessoais/template/templateCake/webroot/index.php, line 40
+[main]
+
+2025-03-13 14:11:03 notice: 4.5.0 - Dynamic properties will be removed in PHP 8.2. Add `public $Users = null;` to your class definition or use `#[AllowDynamicProperties]` attribute.
+/var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line: 13
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `src/Controller/AuthController.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /login
+Client IP: 127.0.0.1
+Trace:
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Core/functions.php, line 318
+/var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Datasource/ModelAwareTrait.php, line 121
+Cake\Controller\Controller->loadModel() /var/www/html/pessoais/template/templateCake/src/Controller/AuthController.php, line 13
+App\Controller\AuthController->initialize() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/Controller.php, line 242
+Cake\Controller\Controller->__construct() [internal], line ??
+ReflectionClass->newInstance() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/ControllerFactory.php, line 88
+Cake\Controller\ControllerFactory->create() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/BaseApplication.php, line 320
+Cake\Http\BaseApplication->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 86
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/CsrfProtectionMiddleware.php, line 166
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php, line 189
+Cake\Routing\Middleware\RoutingMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php, line 68
+Cake\Routing\Middleware\AssetMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php, line 60
+DebugKit\Middleware\DebugKitMiddleware->process() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 82
+Cake\Http\Runner->handle() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php, line 67
+Cake\Http\Runner->run() /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Server.php, line 99
+Cake\Http\Server->run() /var/www/html/pessoais/template/templateCake/webroot/index.php, line 40
+[main]
+

@@ -10,8 +10,7 @@ td.narrow {
 }
 
 th a::after {
-  font-family: "Font Awesome 5 Free";
-  content: "\f0dc";
+  content: "▼";
   display: inline-block;
   margin-left: 0.2rem;
   opacity: 0.3;
@@ -20,15 +19,27 @@ th a::after {
 
 th a.desc::after,
 th a.asc:hover::after {
-  content: "\f0dd";
+  content: "▲";
   opacity: 1;
 }
 
 th a.asc::after,
 th a.desc:hover::after,
 th a:hover::after {
-  content: "\f0de";
+  content: "▼";
   opacity: 1;
+}
+
+/* Remove icons if the browser does not support the 'content' property */
+@supports not (content: "▼") {
+  th a::after,
+  th a.desc::after,
+  th a.asc:hover::after,
+  th a.asc::after,
+  th a.desc:hover::after,
+  th a:hover::after {
+    content: "";
+  }
 }
 
 .card-title {

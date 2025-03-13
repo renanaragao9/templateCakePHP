@@ -1,6 +1,6 @@
 <li class="nav-item">
     <a class="nav-link" id="nav-icon" data-widget="navbar-search" href="#" role="button">
-        <i class="fas fa-search"></i>
+        <i class="fa-regular fa-magnifying-glass"></i>
     </a>
     <div class="navbar-search-block">
         <form class="form-inline">

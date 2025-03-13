@@ -1,6 +1,6 @@
 <li class="nav-item dropdown">
   <a class="nav-link" id="nav-icon" data-toggle="dropdown" href="#">
-    <i class="far fa-bell"></i>
+    <i class="fa-regular fa-bell-ring"></i>
     <span class="badge badge-warning navbar-badge">15</span>
   </a>
   <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">

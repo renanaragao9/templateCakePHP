@@ -4,7 +4,7 @@ use App\Utility\AccessChecker;
 
 $loggedUserId = $this->request->getSession()->read('Auth.User.id');
 $this->assign('title', 'Titulo'); ?>     
-<section class="content">
+<section class="content mt-4">
     <div class="container-fluid">
         <div class="card card-outline card-primary">
             <div class="content-header">
@@ -23,7 +23,8 @@ $this->assign('title', 'Titulo'); ?>
                                     <li class="breadcrumb-item">
                                         <a
                                             href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>"
-                                            >Início</a
+                                            ><i class="fa-regular fa-house"></i>
+                                            Início</a
                                         >
                                     </li>
                                     <li class="breadcrumb-item">
@@ -163,10 +164,35 @@ $this->assign('title', 'Titulo'); ?>
 <section class="content">
     <div class="container-fluid">
         <div class="card card-outline card-primary">
-            <div class="card-header" style="margin: 0 auto">
-                <h3 class="card-title">
-                    <?= __('Relacionado Events') ?>
-                </h3>
+            <div class="card-header">
+                <div class="container-fluid">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-md-6 order-2 order-md-1 mt-4">
+                            <h3 class="card-title">
+                                <?= __('Relacionado Events') ?>
+                            </h3>
+                        </div>
+                        <div
+                            class="col-12 col-md-6 text-md-right order-1 order-md-2"
+                        >
+                            <div class="card-tools">
+                                <button
+                                    type="button"
+                                    class="btn btn-tool"
+                                    id="icon-dropdown"
+                                    data-card-widget="collapse"
+                                >
+                                    <i
+                                        class="fas fa-minus"
+                                        data-collapsed-icon="fa-plus"
+                                        data-expanded-icon="fa-minus"
+                                    ></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
             </div>
             <?php if (!empty($collaborator->events)) : ?>
             <div
@@ -179,7 +205,7 @@ $this->assign('title', 'Titulo'); ?>
                         method="get"
                         action="<?= $this->Url->build() ?>"
                     >
-                        <div class="input-group w-100">
+                        <div class="input-group">
                             <input
                                 id="EventsSearchInput"
                                 class="form-control col-12"

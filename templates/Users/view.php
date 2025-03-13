@@ -23,7 +23,8 @@ $this->assign('title', 'Titulo'); ?>
                                     <li class="breadcrumb-item">
                                         <a
                                             href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>"
-                                            >Início</a
+                                            ><i class="fa-regular fa-house"></i>
+                                            Início</a
                                         >
                                     </li>
                                     <li class="breadcrumb-item">
