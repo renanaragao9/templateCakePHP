@@ -59,6 +59,17 @@ use Cake\Core\Configure;
                             <i class="fas fa-bicycle icon"></i>
                         </div>
                     </div>
+                    <nav class="navbar fixed-bottom navbar-light bg-light mobile-navbar">
+                        <div class="container-fluid justify-content-around">
+                            <a class="navbar-brand" href="#">
+                                <i class="fa-regular fa-magnifying-glass"></i>
+                            </a>
+                            <a class="navbar-brand" href="<?= $this->Url->build('/') ?>">
+                                <i class="fa-regular fa-house-blank"></i> </a>
+                            <a class="navbar-brand" href="#">
+                                <i class="fa-regular fa-user"></i> </a>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>

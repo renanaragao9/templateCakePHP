@@ -165,7 +165,7 @@ $this->assign('title', 'Titulo'); ?>
                                                 href="#"
                                                 class="btn btn-view btn-sm"
                                                 data-toggle="modal"
-                                                data-target="#detailsModal-<?= $user->id ?>"><i class="fa-light fa-eye"></i></a>
+                                                data-target="#detailsModal-<?= $user->id ?>"><i class="fas fa-eye"></i></a>
                                             <?php if (AccessChecker::hasPermission($loggedUserId, 'users/edit')): ?>
                                                 <a
                                                     href="#"
