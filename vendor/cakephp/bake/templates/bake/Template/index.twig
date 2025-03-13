@@ -83,8 +83,10 @@ $this->assign('title', 'Titulo'); ?>
                             <a
                                 href="<?= $this->Url->build(['action' => 'index']) ?>"
                                 class="btn btn-refresh btn-sm mb-0 col-12 col-md-auto text-dark dark-mode-text-white"
+                                id="refreshButton"
                             >
-                                <i class="fas fa-sync-alt"></i> Atualizar
+                                <i class="fas fa-sync-alt" id="refreshIcon"></i>
+                                Atualizar
                                 <span
                                     class="spinner-border spinner-border-sm"
                                     role="status"

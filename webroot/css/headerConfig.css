@@ -6,6 +6,10 @@ body {
     font-family: "Outfit", sans-serif;
 }
 
+.content-wrapper {
+    background-color: #fdf7f7a4;
+}
+
 /* Inicializar cores */
 :root {
     --color-bg-orange: #ff6f3c;
@@ -56,6 +60,15 @@ h1,
 h3,
 button {
     font-family: "Outfit", sans-serif;
+}
+
+a {
+    font-family: "Outfit", sans-serif;
+    color: var(--color-text-orange-3e);
+}
+
+a:hover {
+    color: var(--color-text-gray-dark);
 }
 
 #nav-icon,
@@ -172,6 +185,12 @@ button {
     color: #4a4a4a !important;
     margin-bottom: 1.5rem;
     text-align: center;
+    font-weight: bold;
+}
+
+.card-title {
+    font-family: "Outfit", sans-serif;
+    font-size: 1.3rem;
     font-weight: bold;
 }
 
@@ -411,5 +430,22 @@ hr {
     50% {
         opacity: 1;
         transform: translateX(-50px);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Estilização de navegação */
+    .container-fluid {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+
+    .content .mt-4 {
+        margin-top: 5px !important;
+    }
+
+    /* Estilização de card e titulo */
+    .card-title {
+        margin-top: 15px;
     }
 }
