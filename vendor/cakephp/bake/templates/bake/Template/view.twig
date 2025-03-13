@@ -187,6 +187,7 @@ searchInputId = otherPluralHumanName ~ 'SearchInput' %} {% set
 noResultsMessageId = otherPluralHumanName ~ 'NoResultsMessage' %} {% set
 tableBodyId = otherPluralHumanName ~ 'TableBody' %}
 
+<?php if (!empty(${{ singularVar }}->{{ details.property }})) : ?>
 <section class="content">
     <div class="container-fluid">
         <div class="card card-outline card-primary">
@@ -244,7 +245,10 @@ tableBodyId = otherPluralHumanName ~ 'TableBody' %}
                         </div>
                     </form>
                 </div>
-                <table class="table table-hover text-nowrap">
+                <table
+                    id="{{ otherPluralHumanName }}Table"
+                    class="table table-hover text-nowrap"
+                >
                     <thead>
                         <tr>
                             {% for field in details.fields %}
@@ -291,35 +295,31 @@ tableBodyId = otherPluralHumanName ~ 'TableBody' %}
         </div>
     </div>
     <script>
-        document
-            .getElementById("{{ searchInputId }}")
-            .addEventListener("keyup", function () {
-                var input, filter, table, tr, td, i, j, txtValue, found;
-                input = document.getElementById("{{ searchInputId }}");
-                filter = input.value.toUpperCase();
-                table = document.querySelector("table");
-                tr = table.getElementsByTagName("tr");
-                found = false;
+        $("#{{ searchInputId }}").on("keyup", function () {
+            var input, filter, table, tr, td, i, j, txtValue, found;
+            input = $("#{{ searchInputId }}");
+            filter = input.val().toUpperCase();
+            table = $("#{{ otherPluralHumanName }}Table");
+            tr = table.find("tr");
+            found = false;
 
-                for (i = 1; i < tr.length; i++) {
-                    tr[i].style.display = "none";
-                    td = tr[i].getElementsByTagName("td");
-                    for (j = 0; j < td.length; j++) {
-                        if (td[j]) {
-                            txtValue = td[j].textContent || td[j].innerText;
-                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                                tr[i].style.display = "";
-                                found = true;
-                                break;
-                            }
-                        }
+            tr.each(function (index) {
+                if (index === 0) return;
+                $(this).hide();
+                td = $(this).find("td");
+                for (j = 0; j < td.length; j++) {
+                    txtValue = td.eq(j).text();
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        $(this).show();
+                        found = true;
+                        break;
                     }
                 }
-
-                document.getElementById(
-                    "{{ noResultsMessageId }}"
-                ).style.display = found ? "none" : "block";
             });
+
+            $("#{{ noResultsMessageId }}").toggle(!found);
+        });
     </script>
 </section>
+<?php endif; ?>
 {% endfor %}

@@ -15,6 +15,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\User[] $users
+ * @property \App\Model\Entity\RolesPermission[] $roles_permissions
  * @property \App\Model\Entity\Permission[] $permissions
  */
 class Role extends Entity
@@ -34,6 +35,7 @@ class Role extends Entity
         'created' => true,
         'modified' => true,
         'users' => true,
+        'roles_permissions' => true,
         'permissions' => true,
     ];
 }

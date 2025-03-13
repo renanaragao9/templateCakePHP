@@ -24,8 +24,8 @@ class RolesControllerTest extends TestCase
     protected $fixtures = [
         'app.Roles',
         'app.Users',
-        'app.Permissions',
         'app.RolesPermissions',
+        'app.Permissions',
     ];
 
     /**
@@ -79,28 +79,6 @@ class RolesControllerTest extends TestCase
      * @uses \App\Controller\RolesController::delete()
      */
     public function testDelete(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test pdf method
-     *
-     * @return void
-     * @uses \App\Controller\RolesController::pdf()
-     */
-    public function testPdf(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test csv method
-     *
-     * @return void
-     * @uses \App\Controller\RolesController::csv()
-     */
-    public function testCsv(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

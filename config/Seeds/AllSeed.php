@@ -8,7 +8,7 @@ class AllSeed extends AbstractSeed
     {
         $this->call('RolesSeed');
         $this->call('PermissionsSeed');
-        $this->call('RolesPermissionsSeed');
         $this->call('UsersSeed');
+        $this->call('RolesPermissionsSeed');
     }
 }

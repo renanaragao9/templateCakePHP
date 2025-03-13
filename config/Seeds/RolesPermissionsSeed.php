@@ -25,7 +25,6 @@ class RolesPermissionsSeed extends AbstractSeed
             ];
         }
 
-        // Inserir associações na tabela roles_permissions
         $rolesPermissionsTable = $this->table('roles_permissions');
         $rolesPermissionsTable->insert($rolesPermissions)->save();
     }

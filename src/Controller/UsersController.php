@@ -54,7 +54,7 @@ public function index(): void
 
     $query = $this->Users->find('all', [
         'conditions' => $conditions,
-        'contain' => ['Roles', 'Collaborators'],
+        'contain' => ['Roles'],
     ]);
 
     $users = $this->paginate($query);
@@ -67,7 +67,7 @@ public function index(): void
 public function view($id = null)
 {
     $user = $this->Users->get($id, [
-        'contain' => ['Roles', 'Collaborators'],
+        'contain' => ['Roles'],
     ]);
 
     $this->set(compact('user'));

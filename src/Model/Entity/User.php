@@ -20,7 +20,6 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenTime $modified
  *
  * @property \App\Model\Entity\Role $role
- * @property \App\Model\Entity\Collaborator[] $collaborators
  */
 class User extends Entity
 {
@@ -44,7 +43,6 @@ class User extends Entity
         'created' => true,
         'modified' => true,
         'role' => true,
-        'collaborators' => true,
     ];
 
     /**
