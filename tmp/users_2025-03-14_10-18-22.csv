@@ -1,0 +1,2 @@
+id,name,email,password,last_login,login_count,active,role_id,created,modified
+1,Admin,admin@aslafit.com,$2y$10$XcM63dXeiiMQR4UgHluxFutgLLNok/5Xu2mI6tN7ruuyEFYtVtIda,"14/03/2025, 09:08",5,1,1,"13/03/2025, 17:26","14/03/2025, 09:08"

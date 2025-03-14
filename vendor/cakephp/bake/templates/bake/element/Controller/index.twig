@@ -31,13 +31,13 @@ public function index(): void
     $conditions = [];
 
     if ($search) {
-        if ($search) {
-            $conditions = [
-                'OR' => [
-                    '{{ currentModelName }}.name LIKE' => '%' . $search . '%',
-                ],
-            ];
-        }
+        $conditions = [
+            'OR' => [
+                {% for field in fields %}
+                    'CAST({{ currentModelName }}.{{ field }} AS CHAR) LIKE' => '%' . $search . '%',
+                {% endfor %}
+            ],
+        ];
     }
 
     $query = $this->{{ currentModelName }}->find('all', [

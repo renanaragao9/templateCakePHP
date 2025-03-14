@@ -496,3 +496,24 @@ hr {
         display: flex;
     }
 }
+
+@media (min-width: 992px) {
+    .modal-dialog-filter {
+        position: fixed;
+        top: 0;
+        right: 0;
+        margin: 0;
+        width: auto;
+        min-height: 500px;
+        max-width: 600px;
+    }
+
+    .modal-content-filter {
+        min-width: 300px;
+        min-height: 500px;
+    }
+
+    .modal-content-filter .form-control {
+        width: 300px !important;
+    }
+}

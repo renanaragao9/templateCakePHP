@@ -110,6 +110,15 @@ $this->assign('title', 'Titulo'); ?>
                                 <i class="fa-regular fa-file-csv"></i>
                                 Exportar
                             </a>
+                            <button
+                                type="button"
+                                class="btn btn-filter btn-sm mb-2 mb-md-0 col-12 col-md-auto"
+                                data-toggle="modal"
+                                data-target="#filterModal"
+                            >
+                                <i class="fa-regular fa-filter-list"></i>
+                                Filtrar
+                            </button>
                         </div>
                     </div>
                     <div class="card-body table-responsive p-0">
@@ -278,6 +287,137 @@ $this->assign('title', 'Titulo'); ?>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!-- Modal de Detalhes -->
+                                <div
+                                    class="modal fade"
+                                    id="detailsModal-<?= ${{
+                                        singularVar
+                                    }}->id ?>"
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="detailsModalLabel-<?= ${{
+                                        singularVar
+                                    }}->id ?>"
+                                    aria-hidden="true"
+                                >
+                                    <div
+                                        class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                                        role="document"
+                                    >
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5
+                                                    class="modal-title"
+                                                    id="detailsModalLabel-<?= ${{
+                                                        singularVar
+                                                    }}->id ?>"
+                                                >
+                                                    Visualizar
+                                                    <?= h(${{ singularVar }}->name)
+                                                    ?>
+                                                </h5>
+                                                <button
+                                                    type="button"
+                                                    class="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                >
+                                                    <span aria-hidden="true"
+                                                        >&times;</span
+                                                    >
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div
+                                                            class="col-12 col-md-6"
+                                                        >
+                                                            <ul
+                                                                class="list-group list-group-flush"
+                                                            >
+                                                                {% for field in
+                                                                fields %} {% if
+                                                                loop.index <=
+                                                                (fields|length
+                                                                // 2) %}
+                                                                <li
+                                                                    class="list-group-item"
+                                                                >
+                                                                    <strong
+                                                                        >{{
+                                                                            field
+                                                                                | humanize
+                                                                        }}:</strong
+                                                                    >
+                                                                    <span
+                                                                        ><?= h(${{ singularVar }}->{{
+                                                                            field
+                                                                        }})
+                                                                        ?></span
+                                                                    >
+                                                                </li>
+                                                                {% endif %} {%
+                                                                endfor %}
+                                                            </ul>
+                                                            <hr />
+                                                        </div>
+                                                        <div
+                                                            class="col-12 col-md-6"
+                                                        >
+                                                            <ul
+                                                                class="list-group list-group-flush"
+                                                            >
+                                                                {% for field in
+                                                                fields %} {% if
+                                                                loop.index >
+                                                                (fields|length
+                                                                // 2) %}
+                                                                <li
+                                                                    class="list-group-item"
+                                                                >
+                                                                    <strong
+                                                                        >{{
+                                                                            field
+                                                                                | humanize
+                                                                        }}:</strong
+                                                                    >
+                                                                    <span
+                                                                        ><?= h(${{ singularVar }}->{{
+                                                                            field
+                                                                        }})
+                                                                        ?></span
+                                                                    >
+                                                                </li>
+                                                                {% endif %} {%
+                                                                endfor %}
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button
+                                                    type="button"
+                                                    class="btn modalView"
+                                                    id="viewButton"
+                                                    data-dismiss="modal"
+                                                >
+                                                    Fechar
+                                                </button>
+                                                <a
+                                                    href="<?= $this->Url->build(['action' => 'view', ${{
+                                                        singularVar
+                                                    }}->id]) ?>"
+                                                    class="btn modalView"
+                                                >
+                                                    Ver Detalhes
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -304,27 +444,23 @@ $this->assign('title', 'Titulo'); ?>
     </div>
 </div>
 
-<!-- Modal de Detalhes -->
+<!-- Modal de Filtro -->
 <div
     class="modal fade"
-    id="detailsModal-<?= ${{ singularVar }}->id ?>"
+    id="filterModal"
     tabindex="-1"
     role="dialog"
-    aria-labelledby="detailsModalLabel-<?= ${{ singularVar }}->id ?>"
+    aria-labelledby="filterModalLabel"
     aria-hidden="true"
 >
     <div
-        class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+        class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg modal-dialog-filter"
         role="document"
     >
-        <div class="modal-content">
+        <div class="modal-content modal-content-filter">
             <div class="modal-header">
-                <h5
-                    class="modal-title"
-                    id="detailsModalLabel-<?= ${{ singularVar }}->id ?>"
-                >
-                    Visualizar
-                    <?= h(${{ singularVar }}->name) ?>
+                <h5 class="modal-title" id="filterModalLabel">
+                    Filtrar {{ pluralHumanName }}
                 </h5>
                 <button
                     type="button"
@@ -336,57 +472,38 @@ $this->assign('title', 'Titulo'); ?>
                 </button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <ul class="list-group list-group-flush">
-                                {% for field in fields %} {% if loop.index <=
-                                (fields|length // 2) %}
-                                <li class="list-group-item">
-                                    <strong>{{ field | humanize }}:</strong>
-                                    <span
-                                        ><?= h(${{ singularVar }}->{{ field }})
-                                        ?></span
-                                    >
-                                </li>
-                                {% endif %} {% endfor %}
-                            </ul>
-                            <hr />
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <ul class="list-group list-group-flush">
-                                {% for field in fields %} {% if loop.index >
-                                (fields|length // 2) %}
-                                <li class="list-group-item">
-                                    <strong>{{ field | humanize }}:</strong>
-                                    <span
-                                        ><?= h(${{ singularVar }}->{{ field }})
-                                        ?></span
-                                    >
-                                </li>
-                                {% endif %} {% endfor %}
-                            </ul>
+                <form
+                    id="filterForm"
+                    class="form-inline w-100"
+                    method="get"
+                    action="<?= $this->Url->build(['action' => 'index']) ?>"
+                >
+                    <div class="form-row w-100">
+                        <div class="form-group col-12">
+                            <!-- Adicione aqui os input para o filtro -->
+                             <?= $this->Form->control('id', [
+                                'type' => 'select',
+                                'options' => null,
+                                'empty' => 'Selecione uma opção',
+                                'label' => false,
+                                'class' => 'form-control w-100'
+                            ]) ?>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer d-flex justify-content-between">
                 <button
                     type="button"
-                    class="btn modalView"
-                    id="viewButton"
+                    class="btn modalCancel"
+                    id="cancelButton"
                     data-dismiss="modal"
                 >
-                    Fechar
+                    Cancelar
                 </button>
-                <a
-                    href="<?= $this->Url->build(['action' => 'view', ${{
-                        singularVar
-                    }}->id]) ?>"
-                    class="btn modalView"
-                >
-                    Ver Detalhes
-                </a>
+                <button class="btn modalView" type="submit" form="filterForm">
+                    Filtrar
+                </button>
             </div>
         </div>
     </div>
