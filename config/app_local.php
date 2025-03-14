@@ -1,4 +1,5 @@
 <?php
+
 return [
     'debug' => filter_var(env('DEBUG', true), FILTER_VALIDATE_BOOLEAN),
     'Security' => [
@@ -37,4 +38,6 @@ return [
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
     ],
+
+    'ApiKey' => env('API_KEY', '0e1d6226-2f53-4949-9737-f1c260647ed1'),
 ];
