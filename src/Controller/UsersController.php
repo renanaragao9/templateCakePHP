@@ -131,7 +131,7 @@ public function edit(?int $id = null): ?Response
     return null;
 }
 
-    public function delete(?int $id = null): Response
+public function delete(?int $id = null): Response
     {
         if (!$this->checkPermission('Users/delete')) {
             return $this->redirect(['action' => 'index']);
@@ -151,4 +151,38 @@ public function edit(?int $id = null): ?Response
         return $this->redirect(['action' => 'index']);
     }
 
-}
+    public function export(): Response
+{
+    if (!$this->checkPermission('Users/index')) {
+        return $this->redirect(['action' => 'index']);
+    }
+
+    $users = $this->Users->find('all', [
+        'contain' => ['Roles'],
+    ]);
+
+    $csvData = [];
+    $header = ['id', 'name', 'email', 'password', 'last_login', 'login_count', 'active', 'role_id', 'created', 'modified'];
+    $csvData[] = $header;
+
+    foreach ($users as $user) {
+        $csvData[] = [
+            $user->id, $user->name, $user->email, $user->password, $user->last_login, $user->login_count, $user->active, $user->role_id, $user->created, $user->modified     ];
+    }
+
+    $filename = 'users_' . date('Y-m-d_H-i-s') . '.csv';
+    $filePath = TMP . $filename;
+
+    $file = fopen($filePath, 'w');
+    foreach ($csvData as $line) {
+        fputcsv($file, $line);
+    }
+    fclose($file);
+
+    $response = $this->response->withFile(
+        $filePath,
+        ['download' => true, 'name' => $filename]
+    );
+
+    return $response;
+}}

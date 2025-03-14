@@ -102,6 +102,14 @@ $this->assign('title', 'Titulo'); ?>
                                     id="refreshSpinner"
                                 ></span>
                             </a>
+                            <a
+                                href="<?= $this->Url->build(['action' => 'export']) ?>"
+                                class="btn btn-export btn-sm mb-0 col-12 col-md-auto text-dark dark-mode-text-white"
+                                id="exportButton"
+                            >
+                                <i class="fa-regular fa-file-csv"></i>
+                                Exportar
+                            </a>
                         </div>
                     </div>
                     <div class="card-body table-responsive p-0">

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /**
@@ -14,6 +15,7 @@ declare(strict_types=1);
  * @since         0.1.0
  * @license       https://www.opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace Bake\Command;
 
 use Bake\Utility\TableScanner;
@@ -131,6 +133,9 @@ class ControllerCommand extends BakeCommand
         }
         $entityClassName = $this->_entityName($modelObj->getAlias());
 
+        $schema = $modelObj->getSchema();
+        $fields = $schema ? $schema->columns() : [];
+
         $data = compact(
             'actions',
             'components',
@@ -146,7 +151,8 @@ class ControllerCommand extends BakeCommand
             'pluralName',
             'prefix',
             'singularHumanName',
-            'singularName'
+            'singularName',
+            'fields'
         );
         $data['name'] = $controllerName;
 
@@ -263,7 +269,7 @@ class ControllerCommand extends BakeCommand
             'help' => 'The namespace/routing prefix to use.',
         ])->addOption('actions', [
             'help' => 'The comma separated list of actions to generate. ' .
-                      'You can include custom methods provided by your template set here.',
+                'You can include custom methods provided by your template set here.',
         ])->addOption('no-test', [
             'boolean' => true,
             'help' => 'Do not generate a test skeleton.',

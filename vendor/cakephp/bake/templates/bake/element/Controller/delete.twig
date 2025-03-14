@@ -1,5 +1,9 @@
+{% set allAssociations = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
+{% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'BelongsToMany')) %}
+{% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'HasOne')) %}
+{% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'HasMany')) %}
 
-    public function delete(?int $id = null): Response
+public function delete(?int $id = null): Response
     {
         if (!$this->checkPermission('{{ currentModelName }}/delete')) {
             return $this->redirect(['action' => 'index']);
@@ -19,3 +23,38 @@
         return $this->redirect(['action' => 'index']);
     }
 
+    public function export(): Response
+{
+    if (!$this->checkPermission('{{ currentModelName }}/index')) {
+        return $this->redirect(['action' => 'index']);
+    }
+
+    ${{ pluralHumanName }} = $this->{{ currentModelName }}->find('all', [
+        'contain' => {{ Bake.exportArray(allAssociations)|raw }},
+    ]);
+
+    $csvData = [];
+    $header = [{{ fields|map(field => "'" ~ field ~ "'")|join(', ') }}];
+    $csvData[] = $header;
+
+    foreach (${{ pluralHumanName }} as ${{ singularHumanName|lower }}) {
+        $csvData[] = [
+            {{ fields|map(field => '$' ~ singularHumanName|lower ~ '->' ~ field)|join(', ') }}     ];
+    }
+
+    $filename = '{{ pluralHumanName }}_' . date('Y-m-d_H-i-s') . '.csv';
+    $filePath = TMP . $filename;
+
+    $file = fopen($filePath, 'w');
+    foreach ($csvData as $line) {
+        fputcsv($file, $line);
+    }
+    fclose($file);
+
+    $response = $this->response->withFile(
+        $filePath,
+        ['download' => true, 'name' => $filename]
+    );
+
+    return $response;
+}
