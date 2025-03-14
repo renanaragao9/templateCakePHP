@@ -62,7 +62,7 @@ class UsersController extends AppController
 
         $query = $this->Users->find('all', [
             'conditions' => $conditions,
-            'contain' => ['Roles'],
+            'contain' => ['Roles', 'Sessions'],
         ]);
 
         $users = $this->paginate($query);
@@ -75,7 +75,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Roles'],
+            'contain' => ['Roles', 'Sessions'],
         ]);
 
         $this->set(compact('user'));
@@ -165,7 +165,7 @@ class UsersController extends AppController
         }
 
         $users = $this->Users->find('all', [
-            'contain' => ['Roles'],
+            'contain' => ['Roles', 'Sessions'],
         ]);
 
         $csvData = [];

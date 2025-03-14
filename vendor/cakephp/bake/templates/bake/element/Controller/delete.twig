@@ -24,37 +24,164 @@ public function delete(?int $id = null): Response
     }
 
     public function export(): Response
-{
-    if (!$this->checkPermission('{{ currentModelName }}/index')) {
-        return $this->redirect(['action' => 'index']);
+    {
+        if (!$this->checkPermission('{{ currentModelName }}/index')) {
+            return $this->redirect(['action' => 'index']);
+        }
+
+        ${{ pluralHumanName }} = $this->{{ currentModelName }}->find('all', [
+            'contain' => {{ Bake.exportArray(allAssociations)|raw }},
+        ]);
+
+        $csvData = [];
+        $header = [{{ fields|map(field => "'" ~ field ~ "'")|join(', ') }}];
+        $csvData[] = $header;
+
+        foreach (${{ pluralHumanName }} as ${{ singularHumanName|lower }}) {
+            $csvData[] = [
+                {{ fields|map(field => '$' ~ singularHumanName|lower ~ '->' ~ field)|join(', ') }}     ];
+        }
+
+        $filename = '{{ pluralHumanName }}_' . date('Y-m-d_H-i-s') . '.csv';
+        $filePath = TMP . $filename;
+
+        $file = fopen($filePath, 'w');
+        foreach ($csvData as $line) {
+            fputcsv($file, $line);
+        }
+        fclose($file);
+
+        $response = $this->response->withFile(
+            $filePath,
+            ['download' => true, 'name' => $filename]
+        );
+
+        return $response;
     }
 
-    ${{ pluralHumanName }} = $this->{{ currentModelName }}->find('all', [
-        'contain' => {{ Bake.exportArray(allAssociations)|raw }},
-    ]);
+    #Chamadas para api - Repasse a logica para o controller de api
 
-    $csvData = [];
-    $header = [{{ fields|map(field => "'" ~ field ~ "'")|join(', ') }}];
-    $csvData[] = $header;
+    /*
+        <?php
 
-    foreach (${{ pluralHumanName }} as ${{ singularHumanName|lower }}) {
-        $csvData[] = [
-            {{ fields|map(field => '$' ~ singularHumanName|lower ~ '->' ~ field)|join(', ') }}     ];
-    }
+        namespace App\Controller\Api;
 
-    $filename = '{{ pluralHumanName }}_' . date('Y-m-d_H-i-s') . '.csv';
-    $filePath = TMP . $filename;
+        use App\Controller\AppController;
+        use Cake\Http\Response;
 
-    $file = fopen($filePath, 'w');
-    foreach ($csvData as $line) {
-        fputcsv($file, $line);
-    }
-    fclose($file);
+        class {{ pluralHumanName }}Controller extends AppController
+        {
+            public function fetch{{ currentModelName }}(): Response
+            {
+                $this->request->allowMethod(['get']);
 
-    $response = $this->response->withFile(
-        $filePath,
-        ['download' => true, 'name' => $filename]
-    );
+                try {
+                    $data = $this->{{ currentModelName }}->find('all')->toArray();
+                    $response = [
+                        'status' => 'success',
+                        'data' => $data
+                    ];
+                } catch (\Exception $e) {
+                    $response = [
+                        'status' => 'error',
+                        'message' => $e->getMessage()
+                    ];
+                }
+                return $this->response
+                    ->withType('application/json')
+                    ->withStringBody(json_encode($response));
+            }
 
-    return $response;
-}
+            public function fetch{{ singularHumanName }}($id): Response
+            {
+                $this->request->allowMethod(['get']);
+
+                try {
+                    $data = $this->{{ currentModelName }}->get($id);
+                    $response = [
+                        'status' => 'success',
+                        'data' => $data
+                    ];
+                } catch (\Exception $e) {
+                    $response = [
+                        'status' => 'error',
+                        'message' => $e->getMessage()
+                    ];
+                }
+                return $this->response
+                    ->withType('application/json')
+                    ->withStringBody(json_encode($response));
+            }
+
+            public function add{{ singularHumanName }}(): Response
+            {
+                $this->request->allowMethod(['post']);
+
+                ${{ singularName }} = $this->{{ currentModelName }}->newEmptyEntity();
+                ${{ singularName }} = $this->{{ currentModelName }}->patchEntity(${{ singularName }}, $this->request->getData());
+
+                if ($this->{{ currentModelName }}->save(${{ singularName }})) {
+                    $response = [
+                        'status' => 'success',
+                        'data' => ${{ singularName }}
+                    ];
+                } else {
+                    $response = [
+                        'status' => 'error',
+                        'message' => 'Unable to add {{ singularHumanName|lower }}'
+                    ];
+                }
+
+                return $this->response
+                    ->withType('application/json')
+                    ->withStringBody(json_encode($response));
+            }
+
+            public function edit{{ singularHumanName }}($id): Response
+            {
+                $this->request->allowMethod(['put', 'patch']);
+
+                ${{ singularName }} = $this->{{ currentModelName }}->get($id);
+                ${{ singularName }} = $this->{{ currentModelName }}->patchEntity(${{ singularName }}, $this->request->getData());
+
+                if ($this->{{ currentModelName }}->save(${{ singularName }})) {
+                    $response = [
+                        'status' => 'success',
+                        'data' => ${{ singularName }}
+                    ];
+                } else {
+                    $response = [
+                        'status' => 'error',
+                        'message' => 'Unable to update {{ singularHumanName|lower }}'
+                    ];
+                }
+
+                return $this->response
+                    ->withType('application/json')
+                    ->withStringBody(json_encode($response));
+            }
+
+            public function delete{{ singularHumanName }}($id): Response
+            {
+                $this->request->allowMethod(['delete']);
+
+                ${{ singularName }} = $this->{{ currentModelName }}->get($id);
+
+                if ($this->{{ currentModelName }}->delete(${{ singularName }})) {
+                    $response = [
+                        'status' => 'success',
+                        'message' => '{{ singularHumanName|lower }} deleted successfully'
+                    ];
+                } else {
+                    $response = [
+                        'status' => 'error',
+                        'message' => 'Unable to delete {{ singularHumanName|lower }}'
+                    ];
+                }
+
+                return $this->response
+                    ->withType('application/json')
+                    ->withStringBody(json_encode($response));
+            }
+        }
+    */

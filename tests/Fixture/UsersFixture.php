@@ -23,12 +23,12 @@ class UsersFixture extends TestFixture
                 'name' => 'Lorem ipsum dolor sit amet',
                 'email' => 'Lorem ipsum dolor sit amet',
                 'password' => 'Lorem ipsum dolor sit amet',
-                'last_login' => '2025-03-14 12:11:16',
+                'last_login' => '2025-03-14 17:02:10',
                 'login_count' => 1,
                 'active' => 1,
                 'role_id' => 1,
-                'created' => '2025-03-14 12:11:16',
-                'modified' => '2025-03-14 12:11:16',
+                'created' => '2025-03-14 17:02:10',
+                'modified' => '2025-03-14 17:02:10',
             ],
         ];
         parent::init();

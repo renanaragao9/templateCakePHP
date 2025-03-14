@@ -3,7 +3,6 @@
 namespace App\Controller\Api;
 
 use App\Controller\AppController;
-use Cake\Event\EventInterface;
 use Cake\I18n\Time;
 use Cake\Http\Exception\UnauthorizedException;
 use Cake\Http\Exception\BadRequestException;
@@ -73,7 +72,9 @@ class AuthController extends AppController
     {
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
+            $data = $this->request->getData();
+            $data['password'] = (new \Cake\Auth\DefaultPasswordHasher())->hash($data['password']);
+            $user = $this->Users->patchEntity($user, $data);
             if ($this->Users->save($user)) {
                 $this->set([
                     'status' => 'success',
@@ -84,6 +85,7 @@ class AuthController extends AppController
                 throw new BadRequestException(__('Não foi possível registrar. Por favor, tente novamente.'));
             }
         } else {
+            throw new BadRequestException(__('Método de requisição inválido.'));
         }
     }
 
@@ -92,6 +94,12 @@ class AuthController extends AppController
         if ($this->request->is('post')) {
             $this->Sessions->deleteAll(['user_id' => $this->Auth->user('id')]);
             $this->Auth->logout();
+
+            // Destruir CSRF token e cookie
+            $this->request->getSession()->delete('csrfToken');
+            $cookie = new \Cake\Http\Cookie\Cookie('csrfToken', '', new \DateTime('-1 hour'));
+            $this->response = $this->response->withExpiredCookie($cookie);
+
             $this->set([
                 'status' => 'success',
                 'message' => __('Logout bem-sucedido.'),

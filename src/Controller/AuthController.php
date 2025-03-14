@@ -103,4 +103,6 @@ class AuthController extends AppController
         $this->Sessions->deleteAll(['user_id' => $this->Auth->user('id')]);
         return $this->redirect($this->Auth->logout());
     }
+
+    
 }

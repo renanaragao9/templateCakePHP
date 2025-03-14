@@ -19,6 +19,7 @@ return function (RouteBuilder $routes): void {
         $routes->connect('/auth/login', ['controller' => 'Auth', 'action' => 'login']);
         $routes->connect('/auth/register', ['controller' => 'Auth', 'action' => 'register']);
         $routes->connect('/auth/logout', ['controller' => 'Auth', 'action' => 'logout']);
+        $routes->connect('/auth/fetch-users', ['controller' => 'Auth', 'action' => 'fetchUsers']);
         $routes->fallbacks(DashedRoute::class);
     });
 };
