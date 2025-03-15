@@ -1,8 +1,8 @@
+
 {% set allAssociations = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
 {% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'BelongsToMany')) %}
 {% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'HasOne')) %}
 {% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'HasMany')) %}
-
 private $identity;
 
 public function initialize(): void

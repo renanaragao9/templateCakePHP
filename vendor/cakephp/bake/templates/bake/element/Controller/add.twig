@@ -1,6 +1,5 @@
 
 {% set compact = ["'#{singularName}'"] %}
-
 public function add(): ?Response
 {
     if (!$this->checkPermission('{{ currentModelName }}/add')) {

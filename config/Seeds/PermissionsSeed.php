@@ -11,21 +11,22 @@ class PermissionsSeed extends AbstractSeed
         $data = [
             // Comando para roda o seed: bin/cake migrations seed --seed PermissionsSeed
 
-            // Users Seeder
-            ['name' => 'Users/index', 'description' => 'Listar', 'group' => 'Usuários'],
-            ['name' => 'Users/add', 'description' => 'Criar', 'group' => 'Usuários'],
-            ['name' => 'Users/edit', 'description' => 'Editar', 'group' => 'Usuários'],
-            ['name' => 'Users/delete', 'description' => 'Deletar', 'group' => 'Usuários'],
-
             // Dashboard Seeder
             ['name' => 'Dashboard/index', 'description' => 'Listar', 'group' => 'Dashboard'],
 
+            #Users Seeder
+            ['name' => 'users/index', 'description' => 'Visualizar', 'group' => 'Users'],
+            ['name' => 'users/add', 'description' => 'Criar', 'group' => 'Users'],
+            ['name' => 'users/edit', 'description' => 'Editar', 'group' => 'Users'],
+            ['name' => 'users/delete', 'description' => 'Deletar', 'group' => 'Users'],
+
             // Roles Seeder
-            ['name' => 'Roles/index', 'description' => 'Listar', 'group' => 'Perfil'],
-            ['name' => 'Roles/add', 'description' => 'Criar', 'group' => 'Perfil'],
-            ['name' => 'Roles/edit', 'description' => 'Editar', 'group' => 'Perfil'],
-            ['name' => 'Roles/delete', 'description' => 'Deletar', 'group' => 'Perfil'],
+            ['name' => 'roles/index', 'description' => 'Listar', 'group' => 'Perfil'],
+            ['name' => 'roles/add', 'description' => 'Criar', 'group' => 'Perfil'],
+            ['name' => 'roles/edit', 'description' => 'Editar', 'group' => 'Perfil'],
+            ['name' => 'roles/delete', 'description' => 'Deletar', 'group' => 'Perfil'],
         ];
+
         $table = $this->table('permissions');
         $table->insert($data)->save();
     }

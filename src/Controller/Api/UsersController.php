@@ -80,10 +80,13 @@ class usersController extends AppController
 
     public function editUser($id): Response
     {
-        $this->request->allowMethod(['put', 'patch']);
-        
+        $this->request->allowMethod(['PUT', 'patch']);
         $user = $this->Users->get($id);
         $user = $this->Users->patchEntity($user, $this->request->getData());
+
+        if (!empty($user->password)) {
+            $user->password = (new DefaultPasswordHasher())->hash($user->password);
+        }
 
         if ($this->Users->save($user)) {
             $response = [

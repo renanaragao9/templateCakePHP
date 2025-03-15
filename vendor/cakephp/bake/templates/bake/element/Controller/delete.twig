@@ -1,8 +1,8 @@
+
 {% set allAssociations = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
 {% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'BelongsToMany')) %}
 {% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'HasOne')) %}
 {% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'HasMany')) %}
-
 public function delete(?int $id = null): Response
     {
         if (!$this->checkPermission('{{ currentModelName }}/delete')) {
@@ -59,7 +59,14 @@ public function delete(?int $id = null): Response
         return $response;
     }
 
-    #Chamadas para api - Repasse a logica para o controller de api
+    /*
+        # Controller API Template
+        # Path: src/Controllers/API/{{ currentModelName }}Controller.php
+        # Copie e cole o conteúdo abaixo no arquivo acima
+        # Lembre-se de alterar os valores das variáveis de acordo com o seu projeto
+        # Não esqueça de adicionar as rotas no arquivo src/Config/routes.php
+        # Para acessar a API, utilize a URL: http://localhost:8765/api/{{ pluralHumanName }}
+    */
 
     /*
         <?php
@@ -69,7 +76,7 @@ public function delete(?int $id = null): Response
         use App\Controller\AppController;
         use Cake\Http\Response;
 
-        class {{ pluralHumanName }}Controller extends AppController
+        class {{ currentModelName }}Controller extends AppController
         {
             public function fetch{{ currentModelName }}(): Response
             {
@@ -184,4 +191,30 @@ public function delete(?int $id = null): Response
                     ->withStringBody(json_encode($response));
             }
         }
+    */
+
+    /*
+        # Rotas API Template
+        # Path: src/Config/routes.php
+        # Copie e cole o conteúdo abaixo no arquivo acima
+        # Lembre-se de alterar os valores das variáveis de acordo com o seu projeto
+    */
+    
+    /*
+        # {{ pluralHumanName }} routes template prefix API   
+
+        # {{ pluralHumanName }} routes API
+        $routes->connect('/{{ pluralHumanName|lower }}', ['controller' => '{{ name }}', 'action' => 'fetch{{ name }}', 'method' => 'GET']);
+        $routes->connect('/{{ singularHumanName|lower }}/:id', ['controller' => '{{ name }}', 'action' => 'fetch{{ singularHumanName }}', 'method' => 'GET'], ['pass' => ['id'], 'id' => '\d+']);
+        $routes->connect('/{{ singularHumanName|lower }}-add', ['controller' => '{{ name }}', 'action' => 'add{{ singularHumanName }}', 'method' => 'POST']);
+        $routes->connect('/{{ singularHumanName|lower }}-edit/:id', ['controller' => '{{ name }}', 'action' => 'edit{{ singularHumanName }}', 'method' => ['PUT', 'PATCH']], ['pass' => ['id'], 'id' => '\d+']);
+        $routes->connect('/{{ singularHumanName|lower }}-delete/:id', ['controller' => '{{ name }}', 'action' => 'delete{{ singularHumanName }}', 'method' => 'DELETE'], ['pass' => ['id'], 'id' => '\d+']);
+    */
+
+    /*
+        # {{ pluralHumanName }} routes simple template prefix /
+        
+        # {{ pluralHumanName }} routes
+        $routes->connect('/{{ pluralHumanName|lower }}', ['controller' => 'Users', 'action' => 'index']);
+        $routes->connect('/{{ singularHumanName|lower }}/view/:id', ['controller' => 'Users', 'action' => 'view'], ['pass' => ['id'], 'id' => '\d+']);
     */

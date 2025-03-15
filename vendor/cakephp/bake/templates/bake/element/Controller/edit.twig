@@ -2,7 +2,6 @@
 {% set belongsTo = Bake.aliasExtractor(modelObj, 'BelongsTo') %}
 {% set belongsToMany = Bake.aliasExtractor(modelObj, 'belongsToMany') %}
 {% set compact = ["'#{singularName}'"] %}
-
 public function edit(?int $id = null): ?Response
 {
     if (!$this->checkPermission('{{ currentModelName }}/edit')) {

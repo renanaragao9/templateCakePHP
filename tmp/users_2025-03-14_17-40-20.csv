@@ -1,0 +1,10 @@
+id,name,email,password,last_login,login_count,active,role_id,created,modified
+1,Admin,admin@aslafit.com,$2y$10$XcM63dXeiiMQR4UgHluxFutgLLNok/5Xu2mI6tN7ruuyEFYtVtIda,"14/03/2025, 17:39",52,1,1,"13/03/2025, 17:26","14/03/2025, 17:39"
+2,"Renan da Silva Aragao",renanaragao159@gmail.com,12345678,"14/03/2025, 13:54",1,1,1,"14/03/2025, 13:54","14/03/2025, 13:54"
+3,"Nome do Usuário",usuario@example.com,senha123,,0,1,1,"14/03/2025, 16:00","14/03/2025, 16:00"
+4,"Nome do Usuário",usuario@example.com.br,senha123,,0,1,1,"14/03/2025, 16:02","14/03/2025, 16:02"
+6,"Nome do Usuário",usuario@example3.com.br,$2y$10$NpPO8XpMWZSdFS01jOfIz.oeReKvdo5w4JFBEluYmqC4nTuhWMN3S,"14/03/2025, 17:16",2,1,1,"14/03/2025, 17:15","14/03/2025, 17:16"
+7,"Nome do Usuário",usuario@example4.com.br,$2y$10$R3jcfgvUDGL8ZynGEK7PAusjrHhydp.bE656jMP5r.1J.pXK0YGFy,,0,1,1,"14/03/2025, 17:17","14/03/2025, 17:17"
+8,exampleUser,usuario@example5.com.br,senha123,,0,1,1,"14/03/2025, 17:23","14/03/2025, 17:23"
+9,exampleUser,usuario@example6.com.br,$2y$10$q4Ocvvbw6Yra3NA0DueViONJKlwla.yAN/UresasCEhY.66t6wnfq,,0,1,1,"14/03/2025, 17:24","14/03/2025, 17:24"
+10,exampleUser,usuario@example7.com.br,$2y$10$1l7rHTNbQkzGBh10YIrHouixfqTdcLtSTAlNxMIjpKECKuxwPdTzG,,0,1,1,"14/03/2025, 17:29","14/03/2025, 17:29"

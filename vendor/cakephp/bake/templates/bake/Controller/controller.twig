@@ -6,11 +6,22 @@
 use App\Utility\AccessChecker;
 use Cake\Http\Response;
 
-// {{ name }} Seeder
-//    ['name' => '{{ name }}/index', 'description' => 'Visualizar'],
-//    ['name' => '{{ name }}/add', 'description' => 'Criar'],
-//    ['name' => '{{ name }}/edit', 'description' => 'Editar'],
-//    ['name' => '{{ name }}/delete', 'description' => 'Deletar'],
+/*
+    # Permissoes de acesso {{ name }}Controller
+    # Copie o conteudo e cole no arquivo de permissoes de acesso
+    # Arquivo de permissoes de acesso: config/Seeds/PermissionsSeed.php
+
+    #***** ATENÇÃO *****#
+    # Caso já tenha o sistema em produção, vá no sistema em Cadastros -> Perfis -> Administrador -> View e adicione as permissões manualmente
+*/
+
+/*
+    #{{ name }} Seeder
+    ['name' => '{{ pluralHumanName|lower }}/index', 'description' => 'Visualizar', 'group' => '{{ name }}'],
+    ['name' => '{{ pluralHumanName|lower }}/add', 'description' => 'Criar', 'group' => '{{ name }}'],
+    ['name' => '{{ pluralHumanName|lower }}/edit', 'description' => 'Editar', 'group' => '{{ name }}'],
+    ['name' => '{{ pluralHumanName|lower }}/delete', 'description' => 'Deletar', 'group' => '{{ name }}'],
+*/
 
 class {{ name }}Controller extends AppController
 {
