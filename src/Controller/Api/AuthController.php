@@ -9,6 +9,8 @@ use Cake\Http\Exception\BadRequestException;
 
 class AuthController extends AppController
 {
+    private const INACTIVITY_LIMIT = 3600; // 60 minutos
+
     public function initialize(): void
     {
         parent::initialize();
@@ -16,6 +18,27 @@ class AuthController extends AppController
         $this->loadModel('Sessions');
         $this->RequestHandler->renderAs($this, 'json');
         $this->response = $this->response->withType('application/json');
+    }
+
+    private function checkInactivity()
+    {
+        $session = $this->Sessions->find()
+            ->where(['user_id' => $this->Auth->user('id')])
+            ->order(['last_activity' => 'DESC'])
+            ->first();
+
+        if ($session) {
+            $lastActivity = $session->last_activity->getTimestamp();
+            $currentTime = Time::now()->getTimestamp();
+
+            if (($currentTime - $lastActivity) > self::INACTIVITY_LIMIT) {
+                $this->logout();
+                throw new UnauthorizedException(__('Sessão expirada devido à inatividade.'));
+            } else {
+                $session->last_activity = Time::now();
+                $this->Sessions->save($session);
+            }
+        }
     }
 
     public function login()
