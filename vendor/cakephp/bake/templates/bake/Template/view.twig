@@ -11,7 +11,8 @@ License */ #}
 use App\Utility\AccessChecker;
 
 $loggedUserId = $this->request->getSession()->read('Auth.User.id');
-$this->assign('title', 'Titulo'); ?> {% set associations = {'BelongsTo': [],
+$this->assign('title', 'Titulo'); 
+?> {% set associations = {'BelongsTo': [],
 'HasOne': [], 'HasMany': [], 'BelongsToMany': []}|merge(associations) %} {% set
 fieldsData = Bake.getViewFieldsData(fields, schema, associations) %} {% set
 associationFields = fieldsData.associationFields %} {% set groupedFields =
@@ -29,28 +30,19 @@ fieldsData.groupedFields %} {% set pK = '$' ~ singularVar ~ '->' ~ primaryKey[0]
                                 <?= __('Visualizar {{ singularVar }}') ?>
                             </h3>
                         </div>
-                        <div
-                            class="col-12 col-md-6 text-md-right order-1 order-md-2"
-                        >
+                        <div class="col-12 col-md-6 text-md-right order-1 order-md-2">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-md-end">
                                     <li class="breadcrumb-item">
-                                        <a
-                                            href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>"
-                                            ><i class="fa-regular fa-house"></i>
-                                            Início</a
-                                        >
+                                        <a href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>">
+                                            <i class="fa-regular fa-house"></i>
+                                            Início
+                                        </a>
                                     </li>
                                     <li class="breadcrumb-item">
-                                        <a
-                                            href="<?= $this->Url->build(['action' => 'index']) ?>"
-                                            >{{ singularVar }}</a
-                                        >
+                                        <a href="<?= $this->Url->build(['action' => 'index']) ?>">{{ singularVar }}</a>
                                     </li>
-                                    <li
-                                        class="breadcrumb-item active"
-                                        aria-current="page"
-                                    >
+                                    <li class="breadcrumb-item active" aria-current="page">
                                         <?= __('Visualizar') ?>
                                     </li>
                                 </ol>
@@ -61,110 +53,64 @@ fieldsData.groupedFields %} {% set pK = '$' ~ singularVar ~ '->' ~ primaryKey[0]
                 </div>
             </div>
             <div class="card-body">
-                {% if groupedFields['string'] %} {% for field in
-                groupedFields['string'] %} {% if associationFields[field] is
-                defined %} {% set details = associationFields[field] %}
+                {% if groupedFields['string'] %} {% for field in groupedFields['string'] %} {% if associationFields[field] is defined %} {% set details = associationFields[field] %}
                 <div class="row item-row">
-                    <label
-                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
-                    >
+                    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label">
                         <?= __('{{ details.property|humanize }}'); ?>
                     </label>
-                    <div
-                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
-                    >
-                        <?= ${{ singularVar }}->has('{{ details.property }}') ?
-                        $this->Html->link(${{ singularVar }}->{{
-                            details.property
-                        }}->{{ details.displayField }}, ['controller' => '{{
-                            details.controller
-                        }}', 'action' => 'view', ${{ singularVar }}->{{
-                            details.property
-                        }}->{{ details.primaryKey[0] }}]) : '' ?>
+                    <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label">
+                        <?= ${{ singularVar }}->has('{{ details.property }}') ? $this->Html->link(${{ singularVar }}->{{ details.property }}->{{ details.displayField }}, ['controller' => '{{ details.controller }}', 'action' => 'view', ${{ singularVar }}->{{ details.property }}->{{ details.primaryKey[0] }}]) : '' ?>
                     </div>
                 </div>
                 {% else %}
                 <div class="row item-row">
-                    <label
-                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
-                    >
+                    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label">
                         <?= __('{{ field|humanize }}'); ?>
                     </label>
-                    <div
-                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
-                    >
+                    <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label">
                         <?= h(${{ singularVar }}->{{ field }}) ?>
                     </div>
                 </div>
-                {% endif %} {% endfor %} {% endif %} {% if associations.HasOne
-                %} {% for alias, details in associations.HasOne %}
+                {% endif %} {% endfor %} {% endif %} {% if associations.HasOne %} {% for alias, details in associations.HasOne %}
                 <div class="row item-row">
-                    <label
-                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
-                    >
+                    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label">
                         <?= __('{{ alias|underscore|singularize|humanize }}'); ?>
                     </label>
-                    <div
-                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
-                    >
-                        <?= ${{ singularVar }}->has('{{ details.property }}') ?
-                        $this->Html->link(${{ singularVar }}->{{
-                            details.property
-                        }}->{{ details.displayField }}, ['controller' => '{{
-                            details.controller
-                        }}', 'action' => 'view', ${{ singularVar }}->{{
-                            details.property
-                        }}->{{ details.primaryKey[0] }}]) : '' ?>
+                    <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label">
+                        <?= ${{ singularVar }}->has('{{ details.property }}') ? $this->Html->link(${{ singularVar }}->{{ details.property }}->{{ details.displayField }}, ['controller' => '{{ details.controller }}', 'action' => 'view', ${{ singularVar }}->{{ details.property }}->{{ details.primaryKey[0] }}]) : '' ?>
                     </div>
                 </div>
-                {% endfor %} {% endif %} {% if groupedFields.number %} {% for
-                field in groupedFields.number %}
+                {% endfor %} {% endif %} {% if groupedFields.number %} {% for field in groupedFields.number %}
                 <div class="row item-row">
-                    <label
-                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
-                    >
+                    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label">
                         <?= __('{{ field|humanize }}'); ?>
                     </label>
-                    <div
-                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
-                    >
-                        {% set columnData = Bake.columnData(field, schema) %} {%
-                        if columnData.null %}
-                        <?= ${{ singularVar }}->{{ field }} === null ? '' :
-                        $this->Number->format(${{ singularVar }}->{{ field }})
-                        ?> {% else %}
+                    <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label">
+                        {% set columnData = Bake.columnData(field, schema) %} {% if columnData.null %}
+                        <?= ${{ singularVar }}->{{ field }} === null ? '' : $this->Number->format(${{ singularVar }}->{{ field }}) ?> 
+                        {% else %}
                         <?= $this->Number->format(${{ singularVar }}->{{
                             field
-                        }}) ?> {% endif %}
+                        }}) ?> 
+                        {% endif %}
                     </div>
                 </div>
-                {% endfor %} {% endif %} {% if groupedFields.date %} {% for
-                field in groupedFields.date %}
+                {% endfor %} {% endif %} {% if groupedFields.date %} {% for field in groupedFields.date %}
                 <div class="row item-row">
-                    <label
-                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
-                    >
+                    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label">
                         <?= __('{{ field|humanize }}'); ?>
                     </label>
-                    <div
-                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
-                    >
+                    <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label">
                         <?= h(${{ singularVar }}->{{ field }}) ?>
                     </div>
                 </div>
-                {% endfor %} {% endif %} {% if groupedFields.boolean %} {% for
-                field in groupedFields.boolean %}
+                {% endfor %} {% endif %} {% if groupedFields.boolean %} {% for field in groupedFields.boolean %}
                 <div class="row item-row">
-                    <label
-                        class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label"
-                    >
+                    <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 control-label" >
                         <?= __('{{ field|humanize }}'); ?>
                     </label>
-                    <div
-                        class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label"
-                    >
-                        <?= ${{ singularVar }}->{{ field }} ? __('Sim') :
-                        __('Não'); ?>
+                    <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 control-label">
+                        <?= ${{ singularVar }}->{{ field }} ? __('Sim') : __('Não'); ?>
                     </div>
                 </div>
                 {% endfor %} {% endif %}
@@ -199,21 +145,10 @@ tableBodyId = otherPluralHumanName ~ 'TableBody' %}
                                 <?= __('Relacionado {{ otherPluralHumanName }}') ?>
                             </h3>
                         </div>
-                        <div
-                            class="col-12 col-md-6 text-md-right order-1 order-md-2"
-                        >
+                        <div class="col-12 col-md-6 text-md-right order-1 order-md-2">
                             <div class="card-tools">
-                                <button
-                                    type="button"
-                                    class="btn btn-tool"
-                                    id="icon-dropdown"
-                                    data-card-widget="collapse"
-                                >
-                                    <i
-                                        class="fas fa-minus"
-                                        data-collapsed-icon="fa-plus"
-                                        data-expanded-icon="fa-minus"
-                                    ></i>
+                                <button type="button" class="btn btn-tool" id="icon-dropdown" data-card-widget="collapse" >
+                                    <i class="fas fa-minus" data-collapsed-icon="fa-plus" data-expanded-icon="fa-minus"></i>
                                 </button>
                             </div>
                         </div>
@@ -222,75 +157,52 @@ tableBodyId = otherPluralHumanName ~ 'TableBody' %}
                 </div>
             </div>
             <?php if (!empty(${{ singularVar }}->{{ details.property }})) : ?>
-            <div
-                class="card-body table-responsive p-0"
-                style="max-height: 400px; overflow-y: auto"
-            >
-                <div class="col-12 col-md-6 mb-2 mb-md-2 mt-2">
-                    <form
-                        class="form-inline w-100"
-                        method="get"
-                        action="<?= $this->Url->build() ?>"
-                    >
-                        <div class="input-group">
-                            <input
-                                id="{{ searchInputId }}"
-                                class="form-control col-12"
-                                type="search"
-                                placeholder="Pesquisar..."
-                                aria-label="Pesquisar"
-                                name="search"
-                                value="<?= $this->request->getQuery('search') ?>"
-                            />
-                        </div>
-                    </form>
+                <div class="card-body table-responsive p-0" style="max-height: 400px; overflow-y: auto">
+                    <div class="col-12 col-md-6 mb-2 mb-md-2 mt-2">
+                        <form class="form-inline w-100" method="get" action="<?= $this->Url->build() ?>">
+                            <div class="input-group">
+                                <input id="{{ searchInputId }}" class="form-control col-12" type="search" placeholder="Pesquisar..." aria-label="Pesquisar" name="search" value="<?= $this->request->getQuery('search') ?>"/>
+                            </div>
+                        </form>
+                    </div>
+                    <table id="{{ otherPluralHumanName }}Table" class="table table-hover text-nowrap">
+                        <thead>
+                            <tr>
+                                {% for field in details.fields %}
+                                <th><?= __('{{ field|humanize }}') ?></th>
+                                {% endfor %}
+                                <th class="actions"><?= __('Ações') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody id="{{ tableBodyId }}">
+                            <?php foreach (${{ singularVar }}->{{ details.property }} as ${{ otherSingularVar }}) : ?>
+                                <tr>
+                                    {% for field in details.fields %}
+                                    <td>
+                                        <?= h(${{ otherSingularVar }}->{{ field }}) ?>
+                                    </td>
+                                    {% endfor %} {% set otherPk = '$' ~ otherSingularVar ~ '->' ~ details.primaryKey[0] %}
+                                    <td class="actions">
+                                        <?= $this->Html->link('<i class="fas fa-eye"></i>', 
+                                            [
+                                                'controller' => '{{ otherPluralHumanName }}', 
+                                                'action' => 'view', 
+                                                ${{ singularVar }}->id
+                                            ], 
+                                            [ 
+                                                'class' => 'btn btn-view btn-sm',
+                                                'escape' => false 
+                                            ]) 
+                                        ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                    <div id="{{ noResultsMessageId }}" style="display: none; text-align: center; padding: 10px">
+                        <?= __('Nenhum resultado encontrado.') ?>
+                    </div>
                 </div>
-                <table
-                    id="{{ otherPluralHumanName }}Table"
-                    class="table table-hover text-nowrap"
-                >
-                    <thead>
-                        <tr>
-                            {% for field in details.fields %}
-                            <th><?= __('{{ field|humanize }}') ?></th>
-                            {% endfor %}
-                            <th class="actions"><?= __('Ações') ?></th>
-                        </tr>
-                    </thead>
-                    <tbody id="{{ tableBodyId }}">
-                        <?php foreach (${{ singularVar }}->{{
-                            details.property
-                        }}
-                        as ${{
-                            otherSingularVar
-                        }}) : ?>
-                        <tr>
-                            {% for field in details.fields %}
-                            <td>
-                                <?= h(${{ otherSingularVar }}->{{ field }}) ?>
-                            </td>
-                            {% endfor %} {% set otherPk = '$' ~ otherSingularVar
-                            ~ '->' ~ details.primaryKey[0] %}
-                            <td class="actions">
-                                <?= $this->Html->link('<i class="fas fa-eye"></i
-                                >', ['controller' => '{{
-                                    otherPluralHumanName
-                                }}', 'action' => 'view', ${{
-                                    singularVar
-                                }}->id], [ 'class' => 'btn btn-view btn-sm',
-                                'escape' => false ]) ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
-                <div
-                    id="{{ noResultsMessageId }}"
-                    style="display: none; text-align: center; padding: 10px"
-                >
-                    <?= __('Nenhum resultado encontrado.') ?>
-                </div>
-            </div>
             <?php endif; ?>
         </div>
     </div>

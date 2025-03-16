@@ -5,6 +5,20 @@ com font-awesome ou qualquer outra biblioteca de ícones -->
 use App\Utility\AccessChecker;
 
 $loggedUserId = $this->request->getSession()->read('Auth.User.id');
+
+function hasPermission($userId, $permission)
+{
+  return AccessChecker::hasPermission($userId, $permission);
+}
+
+function generateNavItem($controller, $action, $iconClass, $label, $request, $htmlHelper)
+{
+  return $htmlHelper->link(
+    "<i class=\"$iconClass nav-icon\"></i><p>$label</p>",
+    ['controller' => $controller, 'action' => $action],
+    ['class' => 'nav-link ' . ($request->getParam('controller') === $controller ? 'active' : ''), 'escape' => false]
+  );
+}
 ?>
 
 <li class="nav-item">
@@ -16,21 +30,9 @@ $loggedUserId = $this->request->getSession()->read('Auth.User.id');
   </a>
 </li>
 
-<?php if (
-  AccessChecker::hasPermission($loggedUserId, 'Roles/index') ||
-  AccessChecker::hasPermission($loggedUserId, 'Users/index')
-): ?>
-  <li class="nav-item has-treeview <?= (
-                                      $this->request->getParam('controller') === 'Roles' ||
-                                      $this->request->getParam('controller') === 'Users'
-                                      ? 'menu-open' : '')
-                                      ? 'menu-open' : ''
-                                    ?>">
-    <a href="#" class="nav-link <?=
-                                $this->request->getParam('controller') === 'Roles' ||
-                                  $this->request->getParam('controller') === 'Users'
-                                  ? 'active' : ''
-                                ?>">
+<?php if (hasPermission($loggedUserId, 'Roles/index') || hasPermission($loggedUserId, 'Users/index')): ?>
+  <li class="nav-item has-treeview <?= ($this->request->getParam('controller') === 'Roles' || $this->request->getParam('controller') === 'Users' ? 'menu-open' : '') ?>">
+    <a href="#" class="nav-link <?= $this->request->getParam('controller') === 'Roles' || $this->request->getParam('controller') === 'Users' ? 'active' : '' ?>">
       <i class="nav-icon fas fa-edit"></i>
       <p>
         Cadastro
@@ -38,22 +40,14 @@ $loggedUserId = $this->request->getSession()->read('Auth.User.id');
       </p>
     </a>
     <ul class="nav nav-treeview">
-      <?php if (AccessChecker::hasPermission($loggedUserId, 'Users/index')): ?>
+      <?php if (hasPermission($loggedUserId, 'Users/index')): ?>
         <li class="nav-item">
-          <?= $this->Html->link(
-            '<i class="far fa-circle nav-icon"></i><p>Usuários</p>',
-            ['controller' => 'Users', 'action' => 'index'],
-            ['class' => 'nav-link ' . ($this->request->getParam('controller') === 'Users' ? 'active' : ''), 'escape' => false]
-          ) ?>
+          <?= generateNavItem('Users', 'index', 'far fa-circle', 'Usuários', $this->request, $this->Html) ?>
         </li>
       <?php endif; ?>
-      <?php if (AccessChecker::hasPermission($loggedUserId, 'Roles/index')): ?>
+      <?php if (hasPermission($loggedUserId, 'Roles/index')): ?>
         <li class="nav-item">
-          <?= $this->Html->link(
-            '<i class="far fa-circle nav-icon"></i><p>Perfis</p>',
-            ['controller' => 'Roles', 'action' => 'index'],
-            ['class' => 'nav-link ' . ($this->request->getParam('controller') === 'Roles' ? 'active' : ''), 'escape' => false]
-          ) ?>
+          <?= generateNavItem('Roles', 'index', 'far fa-circle', 'Perfis', $this->request, $this->Html) ?>
         </li>
       <?php endif; ?>
     </ul>
