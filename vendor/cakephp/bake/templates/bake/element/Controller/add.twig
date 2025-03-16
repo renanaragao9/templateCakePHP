@@ -2,7 +2,7 @@
 {% set compact = ["'#{singularName}'"] %}
 public function add(): ?Response
 {
-    if (!$this->checkPermission('{{ currentModelName }}/add')) {
+    if (!$this->checkPermission('{{ pluralHumanName|lower }}/add')) {
         return $this->redirect(['action' => 'index']);
     }
 

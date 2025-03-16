@@ -8273,3 +8273,91 @@ Client IP: 127.0.0.1
 2025-03-15 15:24:02 alert: App config file doesn`t exist
 2025-03-15 15:24:02 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
 2025-03-15 15:24:02 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 21:16:34 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 21:16:34 alert: App config file doesn`t exist
+2025-03-15 21:16:34 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 21:16:34 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 21:16:37 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 21:16:37 alert: App config file doesn`t exist
+2025-03-15 21:16:37 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 21:16:37 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 21:16:41 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 21:16:41 alert: App config file doesn`t exist
+2025-03-15 21:16:41 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 21:16:41 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 21:16:52 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 21:16:52 alert: App config file doesn`t exist
+2025-03-15 21:16:52 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 21:16:52 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 21:16:58 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 21:16:58 alert: App config file doesn`t exist
+2025-03-15 21:16:58 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 21:16:58 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 21:17:31 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 21:17:31 alert: App config file doesn`t exist
+2025-03-15 21:17:31 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 21:17:31 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 22:59:44 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 22:59:44 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 22:59:44 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 22:59:44 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 22:59:44 alert: App config file doesn`t exist
+2025-03-15 22:59:44 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 22:59:44 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 22:59:45 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 22:59:45 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 22:59:45 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 22:59:45 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 22:59:45 alert: App config file doesn`t exist
+2025-03-15 22:59:45 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 22:59:45 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 23:01:05 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 23:01:05 error: [Cake\Controller\Exception\MissingActionException] Action UsersController::visualizar() could not be found, or is not accessible. in /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/Controller.php on line 539
+Exception Attributes: array (
+  'controller' => 'UsersController',
+  'action' => 'visualizar',
+  'prefix' => '',
+  'plugin' => NULL,
+)
+Stack Trace:
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/ControllerFactory.php:135
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Controller/ControllerFactory.php:115
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/BaseApplication.php:325
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php:86
+- /var/www/html/pessoais/template/templateCake/src/Application.php:67
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/ClosureDecoratorMiddleware.php:67
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php:82
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/CsrfProtectionMiddleware.php:176
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php:82
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Middleware/BodyParserMiddleware.php:157
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php:82
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/RoutingMiddleware.php:189
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php:82
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Routing/Middleware/AssetMiddleware.php:68
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php:82
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Error/Middleware/ErrorHandlerMiddleware.php:149
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php:82
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/debug_kit/src/Middleware/DebugKitMiddleware.php:60
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php:82
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Runner.php:67
+- /var/www/html/pessoais/template/templateCake/vendor/cakephp/cakephp/src/Http/Server.php:99
+- /var/www/html/pessoais/template/templateCake/webroot/index.php:40
+- [main]:
+
+Request URL: /users/visualizar/1
+Client IP: 127.0.0.1
+2025-03-15 23:01:05 alert: App config file doesn`t exist
+2025-03-15 23:01:05 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 23:01:05 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 23:01:08 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 23:01:08 alert: App config file doesn`t exist
+2025-03-15 23:01:08 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 23:01:08 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 23:01:19 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 23:01:19 alert: App config file doesn`t exist
+2025-03-15 23:01:19 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 23:01:19 warning: The datasource configuration "debug_kit" was not found.
+2025-03-15 23:01:32 warning: DebugKit not enabled. You need to either install pdo_sqlite, or define the "debug_kit" connection name.
+2025-03-15 23:01:32 alert: App config file doesn`t exist
+2025-03-15 23:01:32 warning: Unable to save request. Check your debug_kit datasource connection or ensure that PDO SQLite extension is enabled.
+2025-03-15 23:01:32 warning: The datasource configuration "debug_kit" was not found.

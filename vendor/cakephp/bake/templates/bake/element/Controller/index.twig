@@ -23,7 +23,7 @@ private function checkPermission(string $permission): bool
 
 public function index(): void
 {
-    if (!$this->checkPermission('{{ currentModelName }}/index')) {
+    if (!$this->checkPermission('{{ pluralHumanName|lower }}/index')) {
         return;
     }
 

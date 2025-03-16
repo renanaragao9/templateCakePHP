@@ -5,7 +5,7 @@
 {% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'HasMany')) %}
 public function delete(?int $id = null): Response
     {
-        if (!$this->checkPermission('{{ currentModelName }}/delete')) {
+        if (!$this->checkPermission('{{ pluralHumanName|lower }}/delete')) {
             return $this->redirect(['action' => 'index']);
         }
         
@@ -25,7 +25,7 @@ public function delete(?int $id = null): Response
 
     public function export(): Response
     {
-        if (!$this->checkPermission('{{ currentModelName }}/index')) {
+        if (!$this->checkPermission('{{ pluralHumanName|lower }}/index')) {
             return $this->redirect(['action' => 'index']);
         }
 

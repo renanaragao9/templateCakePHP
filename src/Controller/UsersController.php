@@ -7,26 +7,8 @@ namespace App\Controller;
 use App\Utility\AccessChecker;
 use Cake\Http\Response;
 
-/*
-    # Permissoes de acesso UsersController
-    # Copie o conteudo e cole no arquivo de permissoes de acesso
-    # Arquivo de permissoes de acesso: config/Seeds/PermissionsSeed.php
-
-    #***** ATENÇÃO *****#
-    # Caso já tenha o sistema em produção, vá no sistema em Cadastros -> Perfis -> Administrador -> View e adicione as permissões manualmente
-*/
-
-/*
-    #Users Seeder
-    ['name' => 'users/index', 'description' => 'Visualizar', 'group' => 'Users'],
-    ['name' => 'users/add', 'description' => 'Criar', 'group' => 'Users'],
-    ['name' => 'users/edit', 'description' => 'Editar', 'group' => 'Users'],
-    ['name' => 'users/delete', 'description' => 'Deletar', 'group' => 'Users'],
-*/
-
 class UsersController extends AppController
 {
-
     private $identity;
 
     public function initialize(): void
@@ -47,7 +29,7 @@ class UsersController extends AppController
 
     public function index(): void
     {
-        if (!$this->checkPermission('Users/index')) {
+        if (!$this->checkPermission('users/index')) {
             return;
         }
 
@@ -85,6 +67,10 @@ class UsersController extends AppController
 
     public function view($id = null)
     {
+        if (!$this->checkPermission('users/index')) {
+            return;
+        }
+
         $user = $this->Users->get($id, [
             'contain' => ['Roles', 'Sessions'],
         ]);
@@ -94,7 +80,7 @@ class UsersController extends AppController
 
     public function add(): ?Response
     {
-        if (!$this->checkPermission('Users/add')) {
+        if (!$this->checkPermission('users/add')) {
             return $this->redirect(['action' => 'index']);
         }
 
@@ -105,22 +91,24 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
 
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('O user foi salvo com sucesso.'));
+                $this->Flash->success(__('O usuário foi salvo com sucesso.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('O user não pode ser salvo. Por favor, tente novamente.'));
+                $this->Flash->error(__('O usuário não pode ser salvo. Por favor, tente novamente.'));
                 return $this->redirect(['action' => 'index']);
             }
         }
+
         $roles = $this->Users->Roles->find('list', ['limit' => 200])->all();
 
         $this->set(compact('user', 'roles'));
+
         return null;
     }
 
     public function edit(?int $id = null): ?Response
     {
-        if (!$this->checkPermission('Users/edit')) {
+        if (!$this->checkPermission('users/edit')) {
             return $this->redirect(['action' => 'index']);
         }
 
@@ -133,23 +121,25 @@ class UsersController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
 
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('O user foi editado com sucesso.'));
-                $this->log('O user foi editado com sucesso.', 'info');
+                $this->Flash->success(__('O usuário foi editado com sucesso.'));
+                $this->log('O usuário foi editado com sucesso.', 'info');
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('O user não pode ser editado. Por favor, tente novamente.'));
+                $this->Flash->error(__('O usuário não pode ser editado. Por favor, tente novamente.'));
                 return $this->redirect(['action' => 'index']);
             }
         }
+
         $roles = $this->Users->Roles->find('list', ['limit' => 200])->all();
 
         $this->set(compact('user', 'roles'));
+
         return null;
     }
 
     public function delete(?int $id = null): Response
     {
-        if (!$this->checkPermission('Users/delete')) {
+        if (!$this->checkPermission('users/delete')) {
             return $this->redirect(['action' => 'index']);
         }
 
@@ -169,7 +159,7 @@ class UsersController extends AppController
 
     public function export(): Response
     {
-        if (!$this->checkPermission('Users/index')) {
+        if (!$this->checkPermission('users/index')) {
             return $this->redirect(['action' => 'index']);
         }
 
@@ -200,9 +190,11 @@ class UsersController extends AppController
         $filePath = TMP . $filename;
 
         $file = fopen($filePath, 'w');
+
         foreach ($csvData as $line) {
             fputcsv($file, $line);
         }
+
         fclose($file);
 
         $response = $this->response->withFile(
@@ -212,164 +204,4 @@ class UsersController extends AppController
 
         return $response;
     }
-
-    /*
-        # Controller API Template
-        # Path: src/Controllers/API/UsersController.php
-        # Copie e cole o conteúdo abaixo no arquivo acima
-        # Lembre-se de alterar os valores das variáveis de acordo com o seu projeto
-        # Não esqueça de adicionar as rotas no arquivo src/Config/routes.php
-        # Para acessar a API, utilize a URL: http://localhost:8765/api/users
-    */
-
-    /*
-        <?php
-
-        namespace App\Controller\Api;
-
-        use App\Controller\AppController;
-        use Cake\Http\Response;
-
-        class UsersController extends AppController
-        {
-            public function fetchUsers(): Response
-            {
-                $this->request->allowMethod(['get']);
-
-                try {
-                    $data = $this->Users->find('all')->toArray();
-                    $response = [
-                        'status' => 'success',
-                        'data' => $data
-                    ];
-                } catch (\Exception $e) {
-                    $response = [
-                        'status' => 'error',
-                        'message' => $e->getMessage()
-                    ];
-                }
-                return $this->response
-                    ->withType('application/json')
-                    ->withStringBody(json_encode($response));
-            }
-
-            public function fetchUser($id): Response
-            {
-                $this->request->allowMethod(['get']);
-
-                try {
-                    $data = $this->Users->get($id);
-                    $response = [
-                        'status' => 'success',
-                        'data' => $data
-                    ];
-                } catch (\Exception $e) {
-                    $response = [
-                        'status' => 'error',
-                        'message' => $e->getMessage()
-                    ];
-                }
-                return $this->response
-                    ->withType('application/json')
-                    ->withStringBody(json_encode($response));
-            }
-
-            public function addUser(): Response
-            {
-                $this->request->allowMethod(['post']);
-
-                $user = $this->Users->newEmptyEntity();
-                $user = $this->Users->patchEntity($user, $this->request->getData());
-
-                if ($this->Users->save($user)) {
-                    $response = [
-                        'status' => 'success',
-                        'data' => $user
-                    ];
-                } else {
-                    $response = [
-                        'status' => 'error',
-                        'message' => 'Unable to add user'
-                    ];
-                }
-
-                return $this->response
-                    ->withType('application/json')
-                    ->withStringBody(json_encode($response));
-            }
-
-            public function editUser($id): Response
-            {
-                $this->request->allowMethod(['put', 'patch']);
-
-                $user = $this->Users->get($id);
-                $user = $this->Users->patchEntity($user, $this->request->getData());
-
-                if ($this->Users->save($user)) {
-                    $response = [
-                        'status' => 'success',
-                        'data' => $user
-                    ];
-                } else {
-                    $response = [
-                        'status' => 'error',
-                        'message' => 'Unable to update user'
-                    ];
-                }
-
-                return $this->response
-                    ->withType('application/json')
-                    ->withStringBody(json_encode($response));
-            }
-
-            public function deleteUser($id): Response
-            {
-                $this->request->allowMethod(['delete']);
-
-                $user = $this->Users->get($id);
-
-                if ($this->Users->delete($user)) {
-                    $response = [
-                        'status' => 'success',
-                        'message' => 'user deleted successfully'
-                    ];
-                } else {
-                    $response = [
-                        'status' => 'error',
-                        'message' => 'Unable to delete user'
-                    ];
-                }
-
-                return $this->response
-                    ->withType('application/json')
-                    ->withStringBody(json_encode($response));
-            }
-        }
-    */
-
-    /*
-        # Rotas API Template
-        # Path: src/Config/routes.php
-        # Copie e cole o conteúdo abaixo no arquivo acima
-        # Lembre-se de alterar os valores das variáveis de acordo com o seu projeto
-    */
-
-    /*
-        # users routes template prefix API   
-
-        # users routes API
-        $routes->connect('/users', ['controller' => 'Users', 'action' => 'fetchUsers', 'method' => 'GET']);
-        $routes->connect('/user/:id', ['controller' => 'Users', 'action' => 'fetchUser', 'method' => 'GET'], ['pass' => ['id'], 'id' => '\d+']);
-        $routes->connect('/user-add', ['controller' => 'Users', 'action' => 'addUser', 'method' => 'POST']);
-        $routes->connect('/user-edit/:id', ['controller' => 'Users', 'action' => 'editUser', 'method' => ['PUT', 'PATCH']], ['pass' => ['id'], 'id' => '\d+']);
-        $routes->connect('/user-delete/:id', ['controller' => 'Users', 'action' => 'deleteUser', 'method' => 'DELETE'], ['pass' => ['id'], 'id' => '\d+']);
-    */
-
-    /*
-        # users routes simple template prefix /
-        
-        # users routes
-        $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);
-        $routes->connect('/user/view/:id', ['controller' => 'Users', 'action' => 'view'], ['pass' => ['id'], 'id' => '\d+']);
-    */
 }

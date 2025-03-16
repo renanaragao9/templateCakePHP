@@ -5,6 +5,10 @@
 {% set allAssociations = allAssociations|merge(Bake.aliasExtractor(modelObj, 'HasMany')) %}
 public function view($id = null)
 {
+    if (!$this->checkPermission('{{ pluralHumanName|lower }}/index')) {
+        return;
+    }
+    
     ${{ singularName }} = $this->{{ currentModelName }}->get($id, [
         'contain' => {{ Bake.exportArray(allAssociations)|raw }},
     ]);

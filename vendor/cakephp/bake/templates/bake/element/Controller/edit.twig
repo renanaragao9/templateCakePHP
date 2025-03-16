@@ -4,7 +4,7 @@
 {% set compact = ["'#{singularName}'"] %}
 public function edit(?int $id = null): ?Response
 {
-    if (!$this->checkPermission('{{ currentModelName }}/edit')) {
+    if (!$this->checkPermission('{{ pluralHumanName|lower }}/edit')) {
         return $this->redirect(['action' => 'index']);
     }
 
