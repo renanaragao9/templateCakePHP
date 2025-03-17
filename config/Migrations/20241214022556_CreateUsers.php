@@ -38,7 +38,7 @@ class CreateUsers extends AbstractMigration
         $table->addColumn('login_count', 'integer', [
             'default' => 0,
             'limit' => 11,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('active', 'boolean', [
             'default' => true,

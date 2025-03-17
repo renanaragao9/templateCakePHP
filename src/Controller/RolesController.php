@@ -24,6 +24,7 @@ class RolesController extends AppController
             $this->redirect('/');
             return false;
         }
+
         return true;
     }
 
@@ -101,7 +102,9 @@ class RolesController extends AppController
         }
 
         $permissions = $this->Roles->Permissions->find('list', ['limit' => 200])->all();
+
         $this->set(compact('role', 'permissions'));
+
         return null;
     }
 

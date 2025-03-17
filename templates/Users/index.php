@@ -3,7 +3,7 @@
 use App\Utility\AccessChecker;
 
 $loggedUserId = $this->request->getSession()->read('Auth.User.id');
-$this->assign('title', 'Titulo');
+$this->assign('title', 'Usuários');
 ?>
 
 <div class="content mt-4">
@@ -16,7 +16,7 @@ $this->assign('title', 'Titulo');
                             <div class="row align-items-center">
                                 <div class="col-12 col-md-6 order-2 order-md-1 mt-4">
                                     <h3 class="card-title">
-                                        <?= __('Gerenciar users') ?>
+                                        <?= __('Gerenciar usuários') ?>
                                     </h3>
                                 </div>
                                 <div class="col-12 col-md-6 text-md-right order-1 order-md-2">
@@ -30,7 +30,7 @@ $this->assign('title', 'Titulo');
                                                 </a>
                                             </li>
                                             <li class="breadcrumb-item active" aria-current="page">
-                                                <?= __('users') ?>
+                                                <?= __('Usuários') ?>
                                             </li>
                                         </ol>
                                     </nav>
@@ -73,31 +73,22 @@ $this->assign('title', 'Titulo');
                             <thead>
                                 <tr>
                                     <th>
-                                        <?= $this->Paginator->sort('id') ?>
+                                        <?= $this->Paginator->sort('id', 'ID') ?>
                                     </th>
                                     <th>
-                                        <?= $this->Paginator->sort('name') ?>
+                                        <?= $this->Paginator->sort('name', 'Nome') ?>
                                     </th>
                                     <th>
-                                        <?= $this->Paginator->sort('email') ?>
+                                        <?= $this->Paginator->sort('email', 'Email') ?>
                                     </th>
                                     <th>
-                                        <?= $this->Paginator->sort('last_login') ?>
+                                        <?= $this->Paginator->sort('last_login', 'Último Login') ?>
                                     </th>
                                     <th>
-                                        <?= $this->Paginator->sort('login_count') ?>
+                                        <?= $this->Paginator->sort('active', 'Ativo') ?>
                                     </th>
                                     <th>
-                                        <?= $this->Paginator->sort('active') ?>
-                                    </th>
-                                    <th>
-                                        <?= $this->Paginator->sort('role_id') ?>
-                                    </th>
-                                    <th>
-                                        <?= $this->Paginator->sort('created') ?>
-                                    </th>
-                                    <th>
-                                        <?= $this->Paginator->sort('modified') ?>
+                                        <?= $this->Paginator->sort('role_id', 'Função') ?>
                                     </th>
                                     <th class="actions">
                                         <?= __('Ações') ?>
@@ -120,19 +111,10 @@ $this->assign('title', 'Titulo');
                                             <?= h($user->last_login) ?>
                                         </td>
                                         <td>
-                                            <?= $this->Number->format($user->login_count) ?>
-                                        </td>
-                                        <td>
-                                            <?= h($user->active) ?>
+                                            <?= h($user->active) ? 'Sim' : 'Não' ?>
                                         </td>
                                         <td>
                                             <?= $user->role ? h($user->role->name) : '-' ?>
-                                        </td>
-                                        <td>
-                                            <?= h($user->created) ?>
-                                        </td>
-                                        <td>
-                                            <?= h($user->modified) ?>
                                         </td>
                                         <td class="actions">
                                             <a href="#" class="btn btn-view btn-sm" data-toggle="modal" data-target="#detailsModal-<?= $user->id ?>">
@@ -151,134 +133,12 @@ $this->assign('title', 'Titulo');
                                         </td>
                                     </tr>
 
-                                    <!-- Incluir os modais de edição, visualização e exclusão -->
                                     <?php
-                                    include __DIR__ . '/add.php';
                                     include __DIR__ . '/edit.php';
+                                    include __DIR__ . '/delete.php';
+                                    include __DIR__ . '/view_index.php';
                                     ?>
 
-                                    <!-- Modal de Delete -->
-                                    <div class="modal fade" id="deleteModal-<?= $user->id ?>" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel-<?= $user->id ?>" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="deleteModalLabel-<?= $user->id ?>">
-                                                        <?= __('Confirmar Exclusão') ?>
-                                                    </h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>
-                                                        <?= __('Você tem certeza que deseja excluir # {0}?', $user->name) ?>
-                                                    </p>
-                                                </div>
-                                                <div class="modal-footer justify-content-between">
-                                                    <button type="button" class="btn modalCancel" data-dismiss="modal">
-                                                        Cancelar
-                                                    </button>
-                                                    <?= $this->Form->postLink(
-                                                        __('Excluir'),
-                                                        [
-                                                            'action' => 'delete',
-                                                            $user->id
-                                                        ],
-                                                        [
-                                                            'class' => 'btn modalDelete',
-                                                            'id' => 'deleteButton-' . $user->id,
-                                                            'data-id' => $user->id
-                                                        ]
-                                                    )
-                                                    ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- Modal de Detalhes -->
-                                    <div class="modal fade" id="detailsModal-<?= $user->id ?>" tabindex="-1" role="dialog" aria-labelledby="detailsModalLabel-<?= $user->id ?>" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="detailsModalLabel-<?= $user->id ?>">
-                                                        Visualizar
-                                                        <?= h($user->name) ?>
-                                                    </h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-12 col-md-6">
-                                                                <ul class="list-group list-group-flush">
-
-                                                                    <li class="list-group-item">
-                                                                        <strong>Id:</strong>
-                                                                        <span> <?= h($user->id) ?> </span>
-                                                                    </li>
-
-                                                                    <li class="list-group-item">
-                                                                        <strong>Name:</strong>
-                                                                        <span> <?= h($user->name) ?> </span>
-                                                                    </li>
-
-                                                                    <li class="list-group-item">
-                                                                        <strong>Email:</strong>
-                                                                        <span> <?= h($user->email) ?> </span>
-                                                                    </li>
-
-                                                                    <li class="list-group-item">
-                                                                        <strong>Last Login:</strong>
-                                                                        <span> <?= h($user->last_login) ?> </span>
-                                                                    </li>
-                                                                </ul>
-                                                                <hr />
-                                                            </div>
-                                                            <div class="col-12 col-md-6">
-                                                                <ul class="list-group list-group-flush">
-                                                                    <li class="list-group-item">
-                                                                        <strong>Login Count:</strong>
-                                                                        <span><?= h($user->login_count) ?> </span>
-                                                                    </li>
-
-                                                                    <li class="list-group-item">
-                                                                        <strong>Active:</strong>
-                                                                        <span><?= h($user->active) ?> </span>
-                                                                    </li>
-
-                                                                    <li class="list-group-item">
-                                                                        <strong>Role Id:</strong>
-                                                                        <span><?= h($user->role_id) ?> </span>
-                                                                    </li>
-
-                                                                    <li class="list-group-item">
-                                                                        <strong>Created:</strong>
-                                                                        <span><?= h($user->created) ?> </span>
-                                                                    </li>
-
-                                                                    <li class="list-group-item">
-                                                                        <strong>Modified:</strong>
-                                                                        <span><?= h($user->modified) ?> </span>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn modalView" id="viewButton" data-dismiss="modal">
-                                                        Fechar
-                                                    </button>
-                                                    <a href="<?= $this->Url->build(['action' => 'view', $user->id]) ?>" class="btn modalView">
-                                                        Ver Detalhes
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -302,74 +162,14 @@ $this->assign('title', 'Titulo');
     </div>
 </div>
 
-<!-- Modal de Filtro -->
-<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg modal-dialog-filter" role="document">
-        <div class="modal-content modal-content-filter">
-            <div class="modal-header">
-                <h5 class="modal-title" id="filterModalLabel">
-                    Filtrar Users
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form id="filterForm" class="form-inline w-100" method="get"
-                    action="<?= $this->Url->build(['action' => 'index']) ?>">
-                    <div class="form-row w-100">
-                        <div class="form-group col-12">
-                            <!-- Adicione aqui os input para o filtro -->
-                            <?= $this->Form->control(
-                                'id',
-                                [
-                                    'type' => 'select',
-                                    'options' => null,
-                                    'empty' => 'Selecione uma opção',
-                                    'label' => false,
-                                    'class' => 'form-control w-100'
-                                ]
-                            )
-                            ?>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer d-flex justify-content-between">
-                <button type="button" class="btn modalCancel" id="cancelButton" data-dismiss="modal">
-                    Cancelar
-                </button>
-                <button class="btn modalView" type="submit" form="filterForm">
-                    Filtrar
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+
+<?php
+include __DIR__ . '/add.php';
+include __DIR__ . '/filter.php';
+?>
 
 <script>
-    function searchTableBody(query) {
-        $.ajax({
-            url: '<?= $this->Url->build(['action' => 'index']) ?>',
-            method: 'GET',
-            data: {
-                search: query
-            },
-            success: function(response) {
-                var tableBody = $(response).find('#TableBody').html();
-                if (tableBody.trim() === '') {
-                    $('#TableBody').html('<tr><td colspan="9">Não foi possível encontrar resultados para "' + query + '"</td></tr>');
-                } else {
-                    $('#TableBody').html(tableBody);
-                }
-            },
-            error: function() {
-                console.log('Erro ao realizar a pesquisa.');
-            }
-        });
-    }
-
-    (function() {
-        Object.freeze(searchTableBody);
-    })();
+    var searchUrl = '<?= $this->Url->build(['action' => 'index']) ?>';
 </script>
+
+<?php $this->Html->script('Global/index.js', ['block' => true]); ?>

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Model\Table;
@@ -63,25 +64,30 @@ class UsersTable extends Table
      * @param \Cake\Validation\Validator $validator Validator instance.
      * @return \Cake\Validation\Validator
      */
+
     public function validationDefault(Validator $validator): Validator
     {
         $validator
             ->scalar('name')
-            ->maxLength('name', 255)
-            ->requirePresence('name', 'create')
-            ->notEmptyString('name');
+            ->maxLength('name', 255, 'O nome não pode ter mais de 255 caracteres.')
+            ->requirePresence('name', 'create', 'O nome é obrigatório.')
+            ->notEmptyString('name', 'O nome não pode estar vazio.');
 
         $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmptyString('email')
-            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->email('email', false, 'Por favor, forneça um endereço de e-mail válido.')
+            ->requirePresence('email', 'create', 'O e-mail é obrigatório.')
+            ->notEmptyString('email', 'O e-mail não pode estar vazio.')
+            ->add('email', 'unique', [
+                'rule' => 'validateUnique',
+                'provider' => 'table',
+                'message' => 'Este e-mail já está em uso.'
+            ]);
 
         $validator
             ->scalar('password')
-            ->maxLength('password', 255)
-            ->requirePresence('password', 'create')
-            ->notEmptyString('password');
+            ->maxLength('password', 255, 'A senha não pode ter mais de 255 caracteres.')
+            ->requirePresence('password', 'create', 'A senha é obrigatória.')
+            ->notEmptyString('password', 'A senha não pode estar vazia.');
 
         $validator
             ->dateTime('last_login')
@@ -89,15 +95,15 @@ class UsersTable extends Table
 
         $validator
             ->integer('login_count')
-            ->notEmptyString('login_count');
+            ->allowEmptyString('login_count');
 
         $validator
             ->boolean('active')
-            ->notEmptyString('active');
+            ->notEmptyString('active', 'O campo ativo não pode estar vazio.');
 
         $validator
             ->integer('role_id')
-            ->notEmptyString('role_id');
+            ->notEmptyString('role_id', 'O campo role_id não pode estar vazio.');
 
         return $validator;
     }

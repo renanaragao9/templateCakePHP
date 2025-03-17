@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\Utility\AccessChecker;
 use Cake\Http\Response;
+use Cake\Auth\DefaultPasswordHasher;
 
 class UsersController extends AppController
 {
@@ -80,15 +81,21 @@ class UsersController extends AppController
 
     public function add(): ?Response
     {
-        if (!$this->checkPermission('users/add')) {
+        if (!$this->checkPermission('users/index')) {
             return $this->redirect(['action' => 'index']);
         }
 
-        $user = $this->Users->newEmptyEntity();
+        $user = $this->Users->newEmptyEntity(['contain' => ['Roles']]);
 
         if ($this->request->is('post')) {
 
-            $user = $this->Users->patchEntity($user, $this->request->getData());
+            $data = $this->request->getData();
+
+            if (!empty($data['password'])) {
+                $data['password'] = (new DefaultPasswordHasher())->hash($data['password']);
+            }
+
+            $user = $this->Users->patchEntity($user, $data);
 
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('O usuário foi salvo com sucesso.'));
@@ -98,9 +105,9 @@ class UsersController extends AppController
                 return $this->redirect(['action' => 'index']);
             }
         }
-        $roles = $this->Users->Roles->find('list', ['limit' => 200])->all();
 
-        $this->set(compact('user', 'roles'));
+        $this->set(compact('user'));
+
         return null;
     }
 
@@ -116,7 +123,27 @@ class UsersController extends AppController
 
         if ($this->request->is(['patch', 'post', 'put'])) {
 
-            $user = $this->Users->patchEntity($user, $this->request->getData());
+            $data = $this->request->getData();
+
+            if ($data['email'] !== $user->email) {
+
+                $existingUser = $this->Users->find('all', [
+                    'conditions' => ['email' => $data['email']],
+                ])->first();
+
+                if ($existingUser) {
+                    $this->Flash->error(__('O email fornecido já está em uso.'));
+                    return $this->redirect(['action' => 'index']);
+                }
+            }
+
+            if (empty($data['password'])) {
+                unset($data['password']);
+            } else {
+                $data['password'] = (new DefaultPasswordHasher())->hash($data['password']);
+            }
+
+            $user = $this->Users->patchEntity($user, $data);
 
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('O usuário foi editado com sucesso.'));
@@ -127,9 +154,11 @@ class UsersController extends AppController
                 return $this->redirect(['action' => 'index']);
             }
         }
+
         $roles = $this->Users->Roles->find('list', ['limit' => 200])->all();
 
         $this->set(compact('user', 'roles'));
+
         return null;
     }
 
@@ -164,7 +193,7 @@ class UsersController extends AppController
         ]);
 
         $csvData = [];
-        $header = ['id', 'name', 'email', 'password', 'last_login', 'login_count', 'active', 'role_id', 'created', 'modified'];
+        $header = ['id', 'nome', 'email', 'último_login', 'contagem_login', 'ativo', 'perfil', 'criado', 'modificado'];
         $csvData[] = $header;
 
         foreach ($users as $user) {
@@ -172,17 +201,16 @@ class UsersController extends AppController
                 $user->id,
                 $user->name,
                 $user->email,
-                $user->password,
                 $user->last_login,
                 $user->login_count,
-                $user->active,
-                $user->role_id,
+                $user->active ? 'Sim' : 'Não',
+                $user->role->name,
                 $user->created,
                 $user->modified
             ];
         }
 
-        $filename = 'users_' . date('Y-m-d_H-i-s') . '.csv';
+        $filename = 'usuarios_' . date('Y-m-d_H-i-s') . '.csv';
         $filePath = TMP . $filename;
 
         $file = fopen($filePath, 'w');

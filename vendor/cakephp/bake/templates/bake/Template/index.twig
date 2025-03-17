@@ -152,7 +152,7 @@ $this->assign('title', 'Titulo');
                                             </div>
                                             <div class="modal-body">
                                                 <p>
-                                                    <?= __('Você tem certeza que deseja excluir # {0}?', ${{ singularVar }}->name) ?>
+                                                    <?= __('Você tem certeza que deseja excluir {0}?', ${{ singularVar }}->name) ?>
                                                 </p>
                                             </div>
                                             <div class="modal-footer justify-content-between">
@@ -296,28 +296,7 @@ $this->assign('title', 'Titulo');
 </div>
 
 <script>
-    function searchTableBody(query) {
-        $.ajax({
-            url: '<?= $this->Url->build(['action' => 'index']) ?>',
-            method: 'GET',
-            data: {
-                search: query
-            },
-            success: function (response) {
-                var tableBody = $(response).find('#TableBody').html();
-                if (tableBody.trim() === '') {
-                    $('#TableBody').html('<tr><td colspan="9">Não foi possível encontrar resultados para "' + query + '"</td></tr>');
-                } else {
-                    $('#TableBody').html(tableBody);
-                }
-            },
-            error: function () {
-                console.log('Erro ao realizar a pesquisa.');
-            }
-        });
-    }
-
-    (function () {
-        Object.freeze(searchTableBody);
-    })();
+    var searchUrl = '<?= $this->Url->build(['action' => 'index']) ?>';
 </script>
+
+<?php $this->Html->script('Global/index.js', ['block' => true]); ?>

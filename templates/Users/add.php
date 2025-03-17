@@ -17,7 +17,9 @@
                             <?= $this->Form->control(
                                 'name',
                                 [
-                                    'class' => 'form-control'
+                                    'label' => __('Nome'),
+                                    'class' => 'form-control',
+                                    'required' => true
                                 ]
                             )
                             ?>
@@ -28,7 +30,9 @@
                             <?= $this->Form->control(
                                 'email',
                                 [
-                                    'class' => 'form-control'
+                                    'label' => __('Email'),
+                                    'class' => 'form-control',
+                                    'required' => true
                                 ]
                             )
                             ?>
@@ -39,40 +43,9 @@
                             <?= $this->Form->control(
                                 'password',
                                 [
-                                    'class' => 'form-control'
-                                ]
-                            )
-                            ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-s12">
-                        <div class="form-group">
-                            <?= $this->Form->control(
-                                'last_login',
-                                [
-                                    'class' => 'form-control'
-                                ]
-                            )
-                            ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-s12">
-                        <div class="form-group">
-                            <?= $this->Form->control(
-                                'login_count',
-                                [
-                                    'class' => 'form-control'
-                                ]
-                            )
-                            ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-s12">
-                        <div class="form-group">
-                            <?= $this->Form->control(
-                                'active',
-                                [
-                                    'class' => 'form-control'
+                                    'label' => __('Senha'),
+                                    'class' => 'form-control',
+                                    'required' => true
                                 ]
                             )
                             ?>
@@ -84,11 +57,26 @@
                                 'role_id',
                                 [
                                     'options' => $roles,
-                                    'class' => 'form-control'
+                                    'label' => __('Perfil'),
+                                    'class' => 'form-control',
+                                    'required' => true
                                 ]
                             )
                             ?>
                         </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-s12">
+                    <div class="form-group">
+                        <?= $this->Form->control(
+                            'active',
+                            [
+                                'type' => 'checkbox',
+                                'label' => __('Ativo'),
+                                'class' => 'form-check-input'
+                            ]
+                        )
+                        ?>
                     </div>
                 </div>
             </div>
