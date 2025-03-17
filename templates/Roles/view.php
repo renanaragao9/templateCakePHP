@@ -235,7 +235,7 @@ $this->assign('title', 'Titulo'); ?>
 <?php endif; ?>
 
 <?php if (!empty($role->users)) : ?>
-    <section class="content">
+    <section class="content" id="footer-card-view">
         <div class="container-fluid">
             <div class="card card-outline card-primary">
                 <div class="card-header">
@@ -382,7 +382,6 @@ $this->assign('title', 'Titulo'); ?>
                         }
                     }
                 });
-
                 $("#UsersNoResultsMessage").toggle(!found);
             });
         </script>

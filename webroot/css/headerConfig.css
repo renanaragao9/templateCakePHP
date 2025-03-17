@@ -52,7 +52,11 @@ body {
 /* Estilização de navegação */
 
 .nav-link.active {
-    background-color: rgba(0, 123, 255, 0.1) !important;
+    background: linear-gradient(
+        to right,
+        rgba(0, 123, 255, 0.1) 0%,
+        transparent 100%
+    ) !important;
     color: #fff !important;
 }
 
@@ -194,6 +198,10 @@ a:hover {
     font-weight: bold;
 }
 
+#footer-card-view {
+    padding-bottom: 100px;
+}
+
 hr {
     border-top: 1px solid #e9ecef;
     margin-top: 1rem;
@@ -217,7 +225,8 @@ hr {
 }
 
 .btn-view:hover {
-    background-color: var(--color-hover-teal);
+    background-color: var(--color-bg-teal);
+    color: var(--color-text-white);
 }
 
 .btn-edit {
@@ -229,7 +238,8 @@ hr {
 }
 
 .btn-edit:hover {
-    background-color: var(--color-hover-orange);
+    background-color: var(--color-bg-orange);
+    color: var(--color-text-white);
 }
 
 .btn-delete {
@@ -241,7 +251,8 @@ hr {
 }
 
 .btn-delete:hover {
-    background-color: var(--color-hover-error);
+    background-color: var(--color-bg-error);
+    color: var(--color-text-white);
 }
 
 /* Modais e index */

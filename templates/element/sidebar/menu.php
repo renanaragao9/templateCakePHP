@@ -42,12 +42,13 @@ function generateNavItem($controller, $action, $iconClass, $label, $request, $ht
     <ul class="nav nav-treeview">
       <?php if (hasPermission($loggedUserId, 'Users/index')): ?>
         <li class="nav-item">
-          <?= generateNavItem('Users', 'index', 'far fa-circle', 'Usuários', $this->request, $this->Html) ?>
+          <?= generateNavItem('Users', 'index', 'fa-light fa-circle-notch', 'Usuários', $this->request, $this->Html) ?>
         </li>
       <?php endif; ?>
+
       <?php if (hasPermission($loggedUserId, 'Roles/index')): ?>
         <li class="nav-item">
-          <?= generateNavItem('Roles', 'index', 'far fa-circle', 'Perfis', $this->request, $this->Html) ?>
+          <?= generateNavItem('Roles', 'index', 'fa-light fa-circle-notch', 'Perfis', $this->request, $this->Html) ?>
         </li>
       <?php endif; ?>
     </ul>
