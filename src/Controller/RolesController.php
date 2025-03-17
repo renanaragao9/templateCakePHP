@@ -96,7 +96,7 @@ class RolesController extends AppController
                 $this->Flash->success(__('O perfil foi salvo com sucesso.'));
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('O perfil não pôde ser salvo. Por favor, tente novamente.'));
+                $this->Flash->error(__('O perfil não pode ser salvo. Por favor, tente novamente.'));
             }
         }
 
@@ -135,7 +135,7 @@ class RolesController extends AppController
                 $this->log('O perfil foi editado com sucesso.', 'info');
                 return $this->redirect(['action' => 'index']);
             } else {
-                $this->Flash->error(__('O perfil não pôde ser salvo. Por favor, tente novamente.'));
+                $this->Flash->error(__('O perfil não pode ser salvo. Por favor, tente novamente.'));
             }
         }
 
@@ -164,7 +164,7 @@ class RolesController extends AppController
             $this->log('O role foi deletado com sucesso.', 'info');
             $this->Flash->success(__('O perfil foi deletado com sucesso.'));
         } else {
-            $this->Flash->error(__('O perfil não pôde ser deletado. Por favor, tente novamente.'));
+            $this->Flash->error(__('O perfil não pode ser deletado. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
