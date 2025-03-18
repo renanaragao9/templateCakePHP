@@ -6,6 +6,9 @@ namespace App\Controller;
 
 use App\Utility\AccessChecker;
 use Cake\Http\Response;
+use App\Service\Roles\AddService;
+use App\Service\Roles\EditService;
+use App\Service\Roles\DeleteService;
 
 class RolesController extends AppController
 {
@@ -80,31 +83,18 @@ class RolesController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $role = $this->Roles->newEmptyEntity();
+        $service = new AddService($this->Roles);
 
         if ($this->request->is('post')) {
-            $role = $this->Roles->patchEntity($role, $this->request->getData());
-            if ($this->Roles->save($role)) {
-                $permissions = $this->request->getData('permissions');
-                if (!empty($permissions)) {
-                    foreach ($permissions as $permissionId) {
-                        $rolePermission = $this->Roles->RolesPermissions->newEmptyEntity();
-                        $rolePermission->role_id = $role->id;
-                        $rolePermission->permission_id = (int)$permissionId;
-                        $this->Roles->RolesPermissions->save($rolePermission);
-                    }
-                }
-                $this->Flash->success(__('O perfil foi salvo com sucesso.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('O perfil não pode ser salvo. Por favor, tente novamente.'));
-            }
+            $result = $service->run($this->request->getData());
+            $this->Flash->{$result['success'] ? 'success' : 'error'}($result['message']);
+            return $this->redirect(['action' => 'index']);
         }
 
+        $role = $service->getNewEntity();
         $permissions = $this->Roles->Permissions->find('list', ['limit' => 200])->all();
 
         $this->set(compact('role', 'permissions'));
-
         return null;
     }
 
@@ -114,38 +104,19 @@ class RolesController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $role = $this->Roles->get($id, [
-            'contain' => ['Permissions'],
-        ]);
+        $service = new EditService($this->Roles);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $role = $this->Roles->patchEntity($role, $this->request->getData());
-
-            if ($this->Roles->save($role)) {
-                $this->Roles->RolesPermissions->deleteAll(['role_id' => $role->id]);
-
-                $permissions = $this->request->getData('permissions');
-                if (!empty($permissions)) {
-                    foreach ($permissions as $permissionId) {
-                        $rolePermission = $this->Roles->RolesPermissions->newEmptyEntity();
-                        $rolePermission->role_id = $role->id;
-                        $rolePermission->permission_id = (int)$permissionId;
-                        $this->Roles->RolesPermissions->save($rolePermission);
-                    }
-                }
-
-                $this->Flash->success(__('O perfil foi editado com sucesso.'));
-                $this->log('O perfil foi editado com sucesso.', 'info');
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('O perfil não pode ser salvo. Por favor, tente novamente.'));
-            }
+            $result = $service->run($id, $this->request->getData());
+            $this->Flash->{$result['success'] ? 'success' : 'error'}($result['message']);
+            return $this->redirect(['action' => 'index']);
         }
 
-        $permissions = $this->Roles->Permissions->find('list', ['limit' => 200])->all();
-        $this->set(compact('role', 'permissions'));
+        $data = $service->getEditData($id);
+        $this->set($data);
         return null;
     }
+
 
     public function delete(?int $id = null): Response
     {
@@ -153,23 +124,10 @@ class RolesController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $this->request->allowMethod(['post', 'delete']);
+        $service = new DeleteService($this->Roles);
+        $result = $service->run($id);
 
-        if ($id === 1) {
-            $this->Flash->warning(__('O perfil de administrador não pode ser apagado.'));
-            return $this->redirect(['action' => 'index']);
-        }
-
-        $role = $this->Roles->get($id);
-
-        if ($this->Roles->delete($role)) {
-            $this->Roles->RolesPermissions->deleteAll(['role_id' => $role->id]);
-            $this->log('O role foi deletado com sucesso.', 'info');
-            $this->Flash->success(__('O perfil foi deletado com sucesso.'));
-        } else {
-            $this->Flash->error(__('O perfil não pode ser deletado. Por favor, tente novamente.'));
-        }
-
+        $this->Flash->{$result['success'] ? 'success' : 'error'}($result['message']);
         return $this->redirect(['action' => 'index']);
     }
 }

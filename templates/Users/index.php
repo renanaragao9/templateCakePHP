@@ -108,7 +108,7 @@ $this->assign('title', 'Usuários');
                                             <?= h($user->email) ?>
                                         </td>
                                         <td>
-                                            <?= h($user->last_login) ?>
+                                            <?= h($user->last_login) ? h($user->last_login) : '-' ?>
                                         </td>
                                         <td>
                                             <?= h($user->active) ? 'Sim' : 'Não' ?>

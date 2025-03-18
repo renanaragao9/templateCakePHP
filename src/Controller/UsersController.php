@@ -4,6 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Service\Users\AddService;
+use App\Service\Users\ViewService;
+use App\Service\Users\EditService;
+use App\Service\Users\DeleteService;
+use App\Service\Users\ExportService;
 use App\Utility\AccessChecker;
 use Cake\Http\Response;
 use Cake\Auth\DefaultPasswordHasher;
@@ -85,29 +90,16 @@ class UsersController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $user = $this->Users->newEmptyEntity(['contain' => ['Roles']]);
+        $service = new AddService($this->Users);
 
         if ($this->request->is('post')) {
+            $result = $service->run($this->request->getData());
 
-            $data = $this->request->getData();
-
-            if (!empty($data['password'])) {
-                $data['password'] = (new DefaultPasswordHasher())->hash($data['password']);
-            }
-
-            $user = $this->Users->patchEntity($user, $data);
-
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('O usuário foi salvo com sucesso.'));
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('O usuário não pode ser salvo. Por favor, tente novamente.'));
-                return $this->redirect(['action' => 'index']);
-            }
+            $this->Flash->{$result['success'] ? 'success' : 'error'}($result['message']);
+            return $this->redirect(['action' => 'index']);
         }
 
-        $this->set(compact('user'));
-
+        $this->set('user', $service->getNewEntity());
         return null;
     }
 
@@ -117,48 +109,16 @@ class UsersController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $user = $this->Users->get($id, [
-            'contain' => [],
-        ]);
+        $service = new EditService($this->Users);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $result = $service->run($id, $this->request->getData());
 
-            $data = $this->request->getData();
-
-            if ($data['email'] !== $user->email) {
-
-                $existingUser = $this->Users->find('all', [
-                    'conditions' => ['email' => $data['email']],
-                ])->first();
-
-                if ($existingUser) {
-                    $this->Flash->error(__('O email fornecido já está em uso.'));
-                    return $this->redirect(['action' => 'index']);
-                }
-            }
-
-            if (empty($data['password'])) {
-                unset($data['password']);
-            } else {
-                $data['password'] = (new DefaultPasswordHasher())->hash($data['password']);
-            }
-
-            $user = $this->Users->patchEntity($user, $data);
-
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('O usuário foi editado com sucesso.'));
-                $this->log('O user foi editado com sucesso.', 'info');
-                return $this->redirect(['action' => 'index']);
-            } else {
-                $this->Flash->error(__('O usuário não pode ser editado. Por favor, tente novamente.'));
-                return $this->redirect(['action' => 'index']);
-            }
+            $this->Flash->{$result['success'] ? 'success' : 'error'}($result['message']);
+            return $this->redirect(['action' => 'index']);
         }
 
-        $roles = $this->Users->Roles->find('list', ['limit' => 200])->all();
-
-        $this->set(compact('user', 'roles'));
-
+        $this->set($service->getEditData($id));
         return null;
     }
 
@@ -168,17 +128,10 @@ class UsersController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $this->request->allowMethod(['post', 'delete']);
+        $service = new DeleteService($this->Users);
+        $result = $service->run($id);
 
-        $user = $this->Users->get($id);
-
-        if ($this->Users->delete($user)) {
-            $this->log('O usuário foi deletado com sucesso.', 'info');
-            $this->Flash->success(__('O user foi deletado com sucesso..'));
-        } else {
-            $this->Flash->error(__('O user usuário pode ser deletado. Por favor, tente novamente.'));
-        }
-
+        $this->Flash->{$result['success'] ? 'success' : 'error'}($result['message']);
         return $this->redirect(['action' => 'index']);
     }
 
@@ -188,42 +141,7 @@ class UsersController extends AppController
             return $this->redirect(['action' => 'index']);
         }
 
-        $users = $this->Users->find('all', [
-            'contain' => ['Roles', 'Sessions'],
-        ]);
-
-        $csvData = [];
-        $header = ['id', 'nome', 'email', 'último_login', 'contagem_login', 'ativo', 'perfil', 'criado', 'modificado'];
-        $csvData[] = $header;
-
-        foreach ($users as $user) {
-            $csvData[] = [
-                $user->id,
-                $user->name,
-                $user->email,
-                $user->last_login,
-                $user->login_count,
-                $user->active ? 'Sim' : 'Não',
-                $user->role->name,
-                $user->created,
-                $user->modified
-            ];
-        }
-
-        $filename = 'usuarios_' . date('Y-m-d_H-i-s') . '.csv';
-        $filePath = TMP . $filename;
-
-        $file = fopen($filePath, 'w');
-        foreach ($csvData as $line) {
-            fputcsv($file, $line);
-        }
-        fclose($file);
-
-        $response = $this->response->withFile(
-            $filePath,
-            ['download' => true, 'name' => $filename]
-        );
-
-        return $response;
+        $service = new ExportService($this->Users);
+        return $service->run();
     }
 }

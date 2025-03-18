@@ -69,7 +69,7 @@ class usersController extends AppController
         } else {
             $response = [
                 'status' => 'error',
-                'message' => 'Unable to add user'
+                'message' => 'Não foi possível adicionar o usuário'
             ];
         }
 
@@ -96,7 +96,7 @@ class usersController extends AppController
         } else {
             $response = [
                 'status' => 'error',
-                'message' => 'Unable to update user'
+                'message' => 'Não foi possível atualizar o usuário'
             ];
         }
 
@@ -114,12 +114,12 @@ class usersController extends AppController
         if ($this->Users->delete($user)) {
             $response = [
                 'status' => 'success',
-                'message' => 'user deleted successfully'
+                'message' => 'usuário excluído com sucesso'
             ];
         } else {
             $response = [
                 'status' => 'error',
-                'message' => 'Unable to delete user'
+                'message' => 'Não foi possível excluir o usuário'
             ];
         }
 
