@@ -108,6 +108,23 @@ class UsersTable extends Table
         return $validator;
     }
 
+    public function validationPassword(Validator $validator): Validator
+    {
+        $validator
+            ->add('password', [
+                'length' => [
+                    'rule' => ['minLength', 6],
+                    'message' => 'A senha deve ter pelo menos 6 caracteres.',
+                ],
+            ])
+            ->add('confirm_password', 'compareWith', [
+                'rule' => ['compareWith', 'password'],
+                'message' => 'As senhas não coincidem.',
+            ]);
+
+        return $validator;
+    }
+
     /**
      * Returns a rules checker object that will be used for validating
      * application integrity.

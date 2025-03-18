@@ -1,33 +1,59 @@
-<div class="login-box">
-    <div class="card">
-        <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
-            <?= $this->Flash->render() ?>
-            <?= $this->Form->create() ?>
-            <div class="input-group mb-3">
-                <?= $this->Form->control('email', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Email']) ?>
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-envelope"></span>
-                    </div>
-                </div>
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrar</title>
+
+    <?php echo $this->Html->meta('icon') ?>
+    <?php echo $this->fetch('meta') ?>
+
+    <!-- Icones e Fontes -->
+    <?php echo $this->Html->css('CakeLte./AdminLTE/plugins/fontawesome-free/css/all.min.css') ?>
+
+    <!-- Estilo -->
+    <?php echo $this->Html->css('Login/style_login.css') ?>
+</head>
+
+<body>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+
+                <?php
+                include __DIR__ . '/Components/Login/first_page.php';
+                include __DIR__ . '/Components/Login/second_page.php';
+                ?>
             </div>
-            <div class="input-group mb-3">
-                <?= $this->Form->control('password', ['label' => false, 'class' => 'form-control', 'placeholder' => 'Password']) ?>
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fas fa-lock"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-8">
-                </div>
-                <div class="col-4">
-                    <?= $this->Form->button(__('Sign In'), ['class' => 'btn btn-primary btn-block']) ?>
-                </div>
-            </div>
-            <?= $this->Form->end() ?>
+        </div>
+
+        <div class="panels-container">
+            <?php
+            include __DIR__ . '/Components/Login/third_page.php';
+            ?>
         </div>
     </div>
-</div>
+
+
+    <?php
+    echo $this->Html->script('https://code.jquery.com/jquery-3.6.0.min.js');
+    echo $this->Html->script('Login/home.js');
+    echo $this->Html->script('Login/view_password.js');
+    ?>
+
+    <!-- VLIBRAS
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script> -->
+</body>
+
+</html>

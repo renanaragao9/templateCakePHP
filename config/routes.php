@@ -13,6 +13,8 @@ return function (RouteBuilder $routes): void {
         $routes->connect('/login', ['controller' => 'Auth', 'action' => 'login']);
         $routes->connect('/logout', ['controller' => 'Auth', 'action' => 'logout']);
         $routes->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
+        $routes->connect('/reset-password', ['controller' => 'Auth', 'action' => 'resetPassword']);
+        $routes->connect('/change-password/*', ['controller' => 'Auth', 'action' => 'changePassword']);
 
         # Users routes
         $routes->connect('/users', ['controller' => 'Users', 'action' => 'index']);

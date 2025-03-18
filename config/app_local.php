@@ -30,12 +30,23 @@ return [
 
     'EmailTransport' => [
         'default' => [
-            'host' => 'localhost',
-            'port' => 25,
-            'username' => null,
-            'password' => null,
+            'className' => 'Smtp',
+            'host' => 'smtp.mailtrap.io',
+            'port' => 2525,
+            'username' => 'ccf434307d88b0',
+            'password' => 'ac1b80b9c5ac60',
+            'tls' => false,
             'client' => null,
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
+        ],
+    ],
+
+    'Email' => [
+        'default' => [
+            'transport' => 'default',
+            'from' => 'template@example.com',
+            'charset' => 'utf-8',
+            'headerCharset' => 'utf-8',
         ],
     ],
 

@@ -49,6 +49,15 @@ class CreateUsers extends AbstractMigration
             'limit' => 11,
             'null' => false,
         ]);
+        $table->addColumn('reset_token', 'string', [
+            'default' => null,
+            'limit' => 255,
+            'null' => true,
+        ]);
+        $table->addColumn('token_created_at', 'datetime', [
+            'default' => null,
+            'null' => true,
+        ]);
         $table->addColumn('created', 'datetime', [
             'default' => 'CURRENT_TIMESTAMP',
             'null' => false,

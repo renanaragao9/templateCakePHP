@@ -16,6 +16,7 @@ use Cake\ORM\Locator\TableLocator;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
 use App\Middleware\ApiKeyMiddleware;
+use App\Event\PasswordResetObserver;
 
 class Application extends BaseApplication
 {
@@ -35,6 +36,8 @@ class Application extends BaseApplication
         if (Configure::read('debug')) {
             $this->addPlugin('DebugKit');
         }
+
+        $this->getEventManager()->on(new PasswordResetObserver());
 
         $this->addPlugin('CakeLte');
     }
